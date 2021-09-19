@@ -257,6 +257,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B5E434126B1912A00A7996B /* Build configuration list for PBXNativeTarget "PDFDocumentBuilder" */;
 			buildPhases = (
+				8BDE90D326F7470D00E095D9 /* ShellScript */,
 				8B5E431326B1912700A7996B /* Sources */,
 				8B5E431426B1912700A7996B /* Frameworks */,
 				8B5E431526B1912700A7996B /* Resources */,
@@ -373,6 +374,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8BDE90D326F7470D00E095D9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8B5E431326B1912700A7996B /* Sources */ = {

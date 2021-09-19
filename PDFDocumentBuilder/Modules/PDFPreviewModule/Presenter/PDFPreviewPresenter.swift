@@ -5,7 +5,8 @@
 //  Created by Nikolai Faustov on 17.09.2021.
 //
 
-final class PDFPreviewPresenter<V, I>: PresenterInteractor<V, I>, PDFPreviewModule where V: PDFPreviewView, I: PDFPreviewInteraction {
+final class PDFPreviewPresenter<V, I>: PresenterInteractor<V, I>, PDFPreviewModule
+where V: PDFPreviewView, I: PDFPreviewInteraction {
     weak var coordinator: PDFPreviewCoordinator?
 
     var didFinish: (() -> Void)?
