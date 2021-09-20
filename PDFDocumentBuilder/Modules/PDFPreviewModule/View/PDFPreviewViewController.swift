@@ -19,23 +19,30 @@ final class PDFPreviewViewController: UIViewController {
 
         view.backgroundColor = .systemBackground
 
-        setupConstraints()
-
-        if let data = documentData {
-            pdfView.document = PDFDocument(data: data)
-            pdfView.autoScales = true
-        }
-    }
-
-    private func setupConstraints() {
+//        if let data = documentData {
+//            pdfView.document = PDFDocument(data: data)
+//            pdfView.autoScales = true
+//        }
+        let passport = PassportData(
+            name: "",
+            surname: "",
+            patronymic: "",
+            gender: "",
+            seriesNumber: "",
+            birthday: "",
+            birthplace: "",
+            issueDate: "",
+            authority: "",
+            authorityCode: ""
+        )
+        let patient = Patient(id: UUID(), passport: passport)
+        let service = Service(title: "ПЦР тест", price: 1950)
+        let contract = ContractBody(patient: patient, services: [service])
+        let pdf = PDFCreator(body: contract)
+        pdfView = PDFView(frame: view.frame)
+        pdfView.document = PDFDocument(data: pdf.createContract())
+        pdfView.autoScales = true
         view.addSubview(pdfView)
-        pdfView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            pdfView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            pdfView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            pdfView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            pdfView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
     }
 }
 

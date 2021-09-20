@@ -39,6 +39,7 @@ final class PDFCreator: NSObject {
             context.beginPage()
             let titleBottom = addTitle(pageRect: pageRect)
             let dateBottom = addDate(pageRect: pageRect, dateTop: titleBottom + 10)
+            body.make(context.cgContext, pageRect: pageRect, bodyTop: dateBottom + 10)
         }
 
         return data
@@ -58,10 +59,9 @@ final class PDFCreator: NSObject {
             width: titleStringSize.width,
             height: titleStringSize.height
         )
-
         attributedTitle.draw(in: titleStringRect)
 
-        return titleStringRect.origin.y + titleStringRect.size.height
+        return titleStringRect.maxY
     }
 
     private func addDate(pageRect: CGRect, dateTop: CGFloat) -> CGFloat {
@@ -77,7 +77,6 @@ final class PDFCreator: NSObject {
             width: dateStringSize.width,
             height: dateStringSize.height
         )
-
         attributedDate.draw(in: dateStringRect)
 
         return dateStringRect.maxY

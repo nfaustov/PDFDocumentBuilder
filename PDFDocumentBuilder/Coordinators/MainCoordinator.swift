@@ -23,5 +23,9 @@ final class MainCoordinator: Coordinator {
     }
 
     private func pdfPreviewCoordinator() {
+        let child = PDFPreviewCoordinator(navigationController: navigationController, modules: modules)
+        child.parentCoordinator = self
+        childCoordinators.append(child)
+        child.start()
     }
 }
