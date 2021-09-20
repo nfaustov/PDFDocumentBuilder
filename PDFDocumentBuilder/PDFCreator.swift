@@ -38,15 +38,18 @@ final class PDFCreator: NSObject {
         let data = renderer.pdfData { context in
             context.beginPage()
             let titleBottom = addTitle(pageRect: pageRect)
-            let dateBottom = addDate(pageRect: pageRect, dateTop: titleBottom + 10)
-            body.make(context.cgContext, pageRect: pageRect, bodyTop: dateBottom + 10)
+            let dateBottom = addDate(pageRect: pageRect, dateTop: titleBottom + 5)
+            body.makeFirstPage(context.cgContext, pageRect: pageRect, textTop: dateBottom + 10)
+
+            context.beginPage()
+            body.makeSecondPage(context.cgContext, pageRect: pageRect, textTop: 30)
         }
 
         return data
     }
 
     private func addTitle(pageRect: CGRect) -> CGFloat {
-        let titleFont = UIFont.systemFont(ofSize: 18.0, weight: .bold)
+        let titleFont = UIFont.systemFont(ofSize: 14.0, weight: .bold)
         let titleAttributes: [NSAttributedString.Key: Any] = [.font: titleFont]
         let attributedTitle = NSAttributedString(
             string: title,
@@ -55,7 +58,7 @@ final class PDFCreator: NSObject {
         let titleStringSize = attributedTitle.size()
         let titleStringRect = CGRect(
             x: (pageRect.width - titleStringSize.width) / 2.0,
-            y: 36,
+            y: 30,
             width: titleStringSize.width,
             height: titleStringSize.height
         )
@@ -65,14 +68,14 @@ final class PDFCreator: NSObject {
     }
 
     private func addDate(pageRect: CGRect, dateTop: CGFloat) -> CGFloat {
-        let dateFont = UIFont.systemFont(ofSize: 14, weight: .regular)
+        let dateFont = UIFont.systemFont(ofSize: 10, weight: .regular)
         let dateAttributes: [NSAttributedString.Key: Any] = [.font: dateFont]
-        let formatter = DateFormatter.shared
-        let dateString = formatter.string(from: date)
+        DateFormatter.shared.dateFormat = "dd.MM.YYYY"
+        let dateString = DateFormatter.shared.string(from: date)
         let attributedDate = NSAttributedString(string: dateString, attributes: dateAttributes)
         let dateStringSize = attributedDate.size()
         let dateStringRect = CGRect(
-            x: pageRect.width - dateStringSize.width - 60,
+            x: pageRect.width - dateStringSize.width - 30,
             y: dateTop,
             width: dateStringSize.width,
             height: dateStringSize.height
