@@ -121,7 +121,10 @@ final class ContractBody {
             )
             attributedService.draw(in: serviceRect)
 
-            let attributedPrice = NSAttributedString(string: "\(service.price)", attributes: serviceAttributes)
+            let attributedPrice = NSAttributedString(
+                string: "\(String(format: "%.2f", service.price))",
+                attributes: serviceAttributes
+            )
             let priceSize = attributedPrice.size()
             let priceRect = CGRect(
                 x: separatorX + (tableWidth - separatorX + 30 - priceSize.width) / 2,
@@ -175,7 +178,10 @@ final class ContractBody {
         )
         attributedTotal.draw(in: totalRect)
 
-        let attributedTotalPrice = NSAttributedString(string: "\(totalPrice)", attributes: totalAttributes)
+        let attributedTotalPrice = NSAttributedString(
+            string: "\(String(format: "%.2f", totalPrice))",
+            attributes: totalAttributes
+        )
         let totalPriceSize = attributedTotalPrice.size()
         let totalPriceRect = CGRect(
             x: separatorX + (tableWidth - separatorX + 30 - totalPriceSize.width) / 2,
@@ -227,7 +233,7 @@ private extension ContractBody {
     }
     var belowTablePart: String {
         """
-        4.5. Общая стоимость медицинских услуг, предоставляемых Пациенту составляет \(totalPrice) рублей (Одна тысяча девятьсот пятьдесят рублей, 00 копеек)
+        4.5. Общая стоимость медицинских услуг, предоставляемых Пациенту составляет \(String(format: "%.2f", totalPrice)) рублей (\(totalPriceInWords()))
         5. ПРОЧИЕ УСЛОВИЯ
         5.1. Настоящий Договор вступает в силу с момента его подписания Сторонами и действует до полного и надлежащего исполнения сторонами всех его условий.
         5.2. Условия настоящего Договора могут быть изменены по письменному соглашению Сторон.
@@ -245,5 +251,15 @@ private extension ContractBody {
         enumeratedServices.removeFirst()
 
         return enumeratedServices
+    }
+
+    func totalPriceInWords() -> String {
+        let numberValue = NSNumber(value: totalPrice)
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
+        formatter.numberStyle = .spellOut
+        let string = formatter.string(from: numberValue) ?? "\(totalPrice)"
+
+        return "\(string) рублей 00 копеек"
     }
 }
