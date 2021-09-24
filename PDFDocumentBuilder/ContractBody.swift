@@ -246,6 +246,32 @@ private extension ContractBody {
         ""
     }
 
+    var currenсyTitle: String {
+        var remainder = Int(totalPrice) % 1_000_000
+
+        if remainder > 100_000 {
+            remainder = remainder % 100_000
+        }
+        if remainder > 10_000 {
+            remainder = remainder % 10_000
+        }
+        if remainder > 1000 {
+            remainder = remainder % 1000
+        }
+        if remainder > 100 {
+            remainder = remainder % 100
+        }
+        if remainder > 19 {
+            remainder = remainder % 10
+        }
+
+        switch remainder {
+        case 1: return "рубль"
+        case 2, 3, 4: return "рубля"
+        default: return "рублей"
+        }
+    }
+
     func enumeratedServices() -> String {
         var enumeratedServices = services.map { $0.title }.reduce("") { $0 + ", " + $1 }
         enumeratedServices.removeFirst()
@@ -258,8 +284,8 @@ private extension ContractBody {
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
         formatter.numberStyle = .spellOut
-        let string = formatter.string(from: numberValue) ?? "\(totalPrice)"
+        let priceString = formatter.string(from: numberValue) ?? "\(totalPrice)"
 
-        return "\(string) рублей 00 копеек"
+        return "\(priceString) \(currenсyTitle) 00 копеек"
     }
 }
