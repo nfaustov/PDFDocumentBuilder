@@ -24,16 +24,16 @@ final class PDFPreviewViewController: UIViewController {
 //            pdfView.autoScales = true
 //        }
         let passport = PassportData(
-            name: "",
-            surname: "",
-            patronymic: "",
-            gender: "",
-            seriesNumber: "",
-            birthday: "",
-            birthplace: "",
-            issueDate: "",
-            authority: "",
-            authorityCode: ""
+            name: "Николай",
+            surname: "Фаустов",
+            patronymic: "Игоревич",
+            gender: "муж",
+            seriesNumber: "4208 464812",
+            birthday: "25.04.1988 г.",
+            birthplace: "гор. Астрахань",
+            issueDate: "31.05.2008 г.",
+            authority: "Отделом УФМС России по Липецкой области в Советском округе гор. Липецка",
+            authorityCode: "480-002"
         )
         let patient = Patient(id: UUID(), passport: passport)
         let service1 = Service(title: "ПЦР тест", price: 1950)

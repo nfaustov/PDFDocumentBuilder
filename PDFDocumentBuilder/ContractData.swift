@@ -35,7 +35,7 @@ struct Patient {
     init(id: UUID? = UUID(), passport: PassportData) {
         self.id = id
         self.passport = passport
-        name = passport.surname + passport.name + passport.patronymic
+        name = passport.surname + "" + passport.name + "" + passport.patronymic
     }
 }
 

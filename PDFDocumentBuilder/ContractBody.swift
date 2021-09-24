@@ -40,6 +40,7 @@ final class ContractBody {
         let font = UIFont.systemFont(ofSize: 9, weight: .regular)
         let attributes: [NSAttributedString.Key: Any] = [.font: font]
 
+        // above table text
         let attributedAboveTablePart = NSAttributedString(string: aboveTablePart, attributes: attributes)
         let aboveTablePartSize = attributedAboveTablePart.size()
         let aboveTablePartRect = CGRect(
@@ -50,16 +51,34 @@ final class ContractBody {
         )
         attributedAboveTablePart.draw(in: aboveTablePartRect)
 
+        // price table
         let tableBottom = drawPriceTable(drawContext, pageRect: pageRect, tableY: aboveTablePartRect.maxY + 10)
 
+        // below table text
         let attributedBelowTablePart = NSAttributedString(string: belowTablePart, attributes: attributes)
         let belowTablePartRect = CGRect(
             x: 30,
             y: tableBottom + 10,
             width: pageRect.width - 60,
-            height: pageRect.height - 60
+            height: pageRect.height - tableBottom - 620
         )
         attributedBelowTablePart.draw(in: belowTablePartRect)
+
+        // participant details
+        let detailsBottom = addParticipantDetails(
+            title: "Исполнитель",
+            details: companyDetails,
+            pageRect: pageRect,
+            titleTop: belowTablePartRect.maxY,
+            leading: 30
+        )
+        addParticipantDetails(
+            title: "Пациент",
+            details: patientDetails,
+            pageRect: pageRect,
+            titleTop: belowTablePartRect.maxY,
+            leading: pageRect.width / 2
+        )
     }
 
     private func drawPriceTable(_ drawContext: CGContext, pageRect: CGRect, tableY: CGFloat) -> CGFloat {
@@ -191,6 +210,46 @@ final class ContractBody {
         )
         attributedTotalPrice.draw(in: totalPriceRect)
     }
+
+    @discardableResult
+    private func addParticipantDetails(
+        title: String,
+        details: String,
+        pageRect: CGRect,
+        titleTop: CGFloat,
+        leading: CGFloat
+    ) -> CGFloat {
+        let titleFont = UIFont.systemFont(ofSize: 9, weight: .bold)
+        let titleAttributes: [NSAttributedString.Key: Any] = [.font: titleFont]
+
+        let attributedTitle = NSAttributedString(string: title, attributes: titleAttributes)
+        let titleSize = attributedTitle.size()
+        let titleRect = CGRect(
+            x: leading,
+            y: titleTop,
+            width: (pageRect.width - 60) / 2,
+            height: titleSize.height
+        )
+        attributedTitle.draw(in: titleRect)
+
+        let detailFont = UIFont.systemFont(ofSize: 9, weight: .light)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineBreakMode = .byWordWrapping
+        let detailAttributes: [NSAttributedString.Key: Any] = [
+            .font: detailFont,
+            .paragraphStyle: paragraphStyle
+        ]
+        let attributedDetails = NSAttributedString(string: details, attributes: detailAttributes)
+        let detailsRect = CGRect(
+            x: leading,
+            y: titleRect.maxY,
+            width: (pageRect.width - 60) / 2,
+            height: pageRect.height - titleTop - 30
+        )
+        attributedDetails.draw(in: detailsRect)
+
+        return detailsRect.maxY
+    }
 }
 
 private extension ContractBody {
@@ -239,6 +298,27 @@ private extension ContractBody {
         5.2. Условия настоящего Договора могут быть изменены по письменному соглашению Сторон.
         5.3. Споры и разногласия решаются путем переговоров, привлечения независимой экспертизы и в судебном порядке.
         6. АДРЕСА И РЕКВИЗИТЫ СТОРОН
+        """
+    }
+
+    var companyDetails: String {
+        """
+        Медицинская клиника "АртМедикс"
+        ООО "УльтраМед"
+        398000, г. Липецк, пр. Победы, 6, оф. 2
+        Телефон: (4742) 25-04-04
+        ИНН/КПП 4826072119/482401001
+        ОГРН 1104823005319
+        e-mail: artmedics.lip@yandex.ru
+        """
+    }
+
+    var patientDetails: String {
+        """
+        \(patient.name)
+        Дата рождения: \(patient.passport.birthday)
+        Серия и номер паспорта: \(patient.passport.seriesNumber)
+        Выдан: \(patient.passport.authority) \(patient.passport.issueDate)
         """
     }
 
