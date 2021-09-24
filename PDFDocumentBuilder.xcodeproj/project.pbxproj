@@ -29,6 +29,7 @@
 		8B5E433226B1912A00A7996B /* PDFDocumentBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E433126B1912A00A7996B /* PDFDocumentBuilderTests.swift */; };
 		8B5E433D26B1912A00A7996B /* PDFDocumentBuilderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E433C26B1912A00A7996B /* PDFDocumentBuilderUITests.swift */; };
 		8B5E434C26B195C400A7996B /* ContractData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E434B26B195C400A7996B /* ContractData.swift */; };
+		8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		8B5E433C26B1912A00A7996B /* PDFDocumentBuilderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFDocumentBuilderUITests.swift; sourceTree = "<group>"; };
 		8B5E433E26B1912A00A7996B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B5E434B26B195C400A7996B /* ContractData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractData.swift; sourceTree = "<group>"; };
+		8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBodyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				8B3E112626F5197F00FBE02C /* Modules */,
 				8B5E434B26B195C400A7996B /* ContractData.swift */,
 				8B3006C426B1F24800DBC3AD /* ContractBody.swift */,
+				8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */,
 				8B3006C026B1E72700DBC3AD /* PDFCreator.swift */,
 			);
 			path = PDFDocumentBuilder;
@@ -409,6 +412,7 @@
 				8B5E431D26B1912800A7996B /* SceneDelegate.swift in Sources */,
 				8B3006C126B1E72700DBC3AD /* PDFCreator.swift in Sources */,
 				8B3E112926F519C300FBE02C /* View.swift in Sources */,
+				8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */,
 				8B3E113F26F51D6F00FBE02C /* PDFPreviewPresenter.swift in Sources */,
 				8B3E114326F5210700FBE02C /* PDFPreviewCoordinator.swift in Sources */,
 				8B3E113526F51AD800FBE02C /* Coordinator.swift in Sources */,
