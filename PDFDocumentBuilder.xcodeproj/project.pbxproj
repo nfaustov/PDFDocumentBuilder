@@ -176,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				8B3006C226B1F05100DBC3AD /* PDFPreviewViewController.swift */,
+				8B3E1B6427007689008B0CE1 /* PDFCreator */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,6 +187,24 @@
 				8B3E114526F6056700FBE02C /* DateFormatterExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8B3E1B632700765C008B0CE1 /* ContractBody */ = {
+			isa = PBXGroup;
+			children = (
+				8B3006C426B1F24800DBC3AD /* ContractBody.swift */,
+				8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */,
+			);
+			path = ContractBody;
+			sourceTree = "<group>";
+		};
+		8B3E1B6427007689008B0CE1 /* PDFCreator */ = {
+			isa = PBXGroup;
+			children = (
+				8B3006C026B1E72700DBC3AD /* PDFCreator.swift */,
+				8B3E1B632700765C008B0CE1 /* ContractBody */,
+			);
+			path = PDFCreator;
 			sourceTree = "<group>";
 		};
 		8B5E430E26B1912700A7996B = {
@@ -215,9 +234,6 @@
 				8B3E113326F51ABD00FBE02C /* Coordinators */,
 				8B3E112626F5197F00FBE02C /* Modules */,
 				8B5E434B26B195C400A7996B /* ContractData.swift */,
-				8B3006C426B1F24800DBC3AD /* ContractBody.swift */,
-				8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */,
-				8B3006C026B1E72700DBC3AD /* PDFCreator.swift */,
 			);
 			path = PDFDocumentBuilder;
 			sourceTree = "<group>";
