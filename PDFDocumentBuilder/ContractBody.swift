@@ -62,33 +62,19 @@ final class ContractBody {
             titleTop: belowTableTextBottom,
             leading: pageRect.width / 2
         )
-        addParticipantSignatureField(
+        addSignatureField(
             "Директор _______________________ / Фаустов Н.И.",
             signatureTop: max(companyDetailsBottom, patientDetailsBottom) + 15,
             leading: 30,
             width: (pageRect.width - 60) / 2
         )
-        addParticipantSignatureField(
+        addSignatureField(
             "_______________________ / _______________________",
             signatureTop: max(companyDetailsBottom, patientDetailsBottom) + 15,
             leading: pageRect.width / 2,
             width: (pageRect.width - 60) / 2
         )
-
-        addFreeMedicineInforming(pageRect: pageRect)
-        addParticipantSignatureField(
-            "_______________________ / _______________________      Дата: _______________________",
-            signatureTop: pageRect.height - 250,
-            leading: 60,
-            width: pageRect.width - 60
-        )
-        addRecommendationsInforming(pageRect: pageRect)
-        addParticipantSignatureField(
-            "_______________________ / _______________________      Дата: _______________________",
-            signatureTop: pageRect.height - 100,
-            leading: 60,
-            width: pageRect.width - 60
-        )
+        addInforming(pageRect: pageRect)
     }
 }
 
@@ -265,7 +251,7 @@ private extension ContractBody {
         return detailsRect.maxY
     }
 
-    func addParticipantSignatureField(
+    func addSignatureField(
         _ signature: String,
         signatureTop: CGFloat,
         leading: CGFloat,
@@ -281,31 +267,55 @@ private extension ContractBody {
         attributedSignatureField.draw(in: signatureRect)
     }
 
-    func addFreeMedicineInforming(pageRect: CGRect) {
+    func addInforming(pageRect: CGRect) {
         let attributedFreeMedicineInforming = NSAttributedString(
             string: controller.freeMedicineInforming,
             attributes: regularFontAttributes
         )
         let freeMedicineInformingRect = CGRect(
             x: 30,
-            y: pageRect.height - 350,
+            y: pageRect.height - 300,
             width: pageRect.width - 60,
             height: pageRect.height
         )
         attributedFreeMedicineInforming.draw(in: freeMedicineInformingRect)
-    }
 
-    func addRecommendationsInforming(pageRect: CGRect) {
+        addSignatureField(
+            "_______________________ / _______________________     Дата: __________________",
+            signatureTop: pageRect.height - 210,
+            leading: 180,
+            width: pageRect.width - 60
+        )
+        addSignatureField(
+            "Лечащий врач (специалист) _______________________ / _______________________",
+            signatureTop: pageRect.height - 180,
+            leading: 180,
+            width: pageRect.width - 60
+        )
+
         let attributedRecommendationsInforming = NSAttributedString(
             string: controller.followingRecommendationsInforming,
             attributes: regularFontAttributes
         )
         let recommendationsInformingRect = CGRect(
             x: 30,
-            y: pageRect.height - 200,
+            y: pageRect.height - 150,
             width: pageRect.width - 60,
             height: pageRect.height
         )
         attributedRecommendationsInforming.draw(in: recommendationsInformingRect)
+
+        addSignatureField(
+            "_______________________ / _______________________     Дата: __________________",
+            signatureTop: pageRect.height - 80,
+            leading: 180,
+            width: pageRect.width - 60
+        )
+        addSignatureField(
+            "Лечащий врач (специалист) _______________________ / _______________________",
+            signatureTop: pageRect.height - 50,
+            leading: 180,
+            width: pageRect.width - 60
+        )
     }
 }

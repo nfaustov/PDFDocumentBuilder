@@ -37,7 +37,7 @@ final class PDFPreviewViewController: UIViewController {
         )
         let patient = Patient(id: UUID(), passport: passport)
         let service1 = Service(title: "ПЦР тест", price: 1950)
-        let service2 = Service(title: "Прием гинеколога afhasfgasgasg adga'ga'gj'ajg agaidfka b", price: 1000)
+        let service2 = Service(title: "Прием гинеколога", price: 1000)
         let contract = ContractBody(patient: patient, services: [service1, service2])
         let pdf = PDFCreator(body: contract)
         pdfView = PDFView(frame: view.frame)
