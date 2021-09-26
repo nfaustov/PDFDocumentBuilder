@@ -15,9 +15,15 @@ final class ContractBody {
         .init(patient: patient, services: services)
     }
 
-    private let regularFont = UIFont.systemFont(ofSize: 9, weight: .regular)
-    private let lightFont = UIFont.systemFont(ofSize: 9, weight: .light)
-    private let boldFont = UIFont.systemFont(ofSize: 9, weight: .bold)
+    private let regularFontAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont.systemFont(ofSize: 9, weight: .regular)
+    ]
+    private let lightFontAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont.systemFont(ofSize: 9, weight: .light)
+    ]
+    private let boldFontAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont.systemFont(ofSize: 9, weight: .bold)
+    ]
 
     init(patient: Patient, services: [Service]) {
         self.patient = patient
@@ -25,9 +31,10 @@ final class ContractBody {
     }
 
     func makeFirstPage(_ drawContext: CGContext, pageRect: CGRect, textTop: CGFloat) {
-        let attributes: [NSAttributedString.Key: Any] = [.font: regularFont]
-
-        let attributedFirstPagePart = NSAttributedString(string: controller.firstPagePart, attributes: attributes)
+        let attributedFirstPagePart = NSAttributedString(
+            string: controller.firstPagePart,
+            attributes: regularFontAttributes
+        )
         let aboveTablePartRect = CGRect(
             x: 30,
             y: textTop,
@@ -39,11 +46,8 @@ final class ContractBody {
 
     func makeSecondPage(_ drawContext: CGContext, pageRect: CGRect, textTop: CGFloat) {
         let aboveTableTextBottom = addAboveTableText(textTop: textTop)
-
         let tableBottom = drawPriceTable(drawContext, pageRect: pageRect, tableY: aboveTableTextBottom + 10)
-
         let belowTableTextBottom = addBelowTableText(pageRect: pageRect, textTop: tableBottom + 10)
-
         let companyDetailsBottom = addParticipantDetails(
             title: "Исполнитель",
             details: controller.companyDetails,
@@ -58,9 +62,8 @@ final class ContractBody {
             titleTop: belowTableTextBottom,
             leading: pageRect.width / 2
         )
-
         addParticipantSignatureField(
-            "Директор ____________________ / Фаустов Н.И.",
+            "Директор _______________________ / Фаустов Н.И.",
             signatureTop: max(companyDetailsBottom, patientDetailsBottom) + 15,
             leading: 30,
             width: (pageRect.width - 60) / 2
@@ -73,20 +76,17 @@ final class ContractBody {
         )
 
         addFreeMedicineInforming(pageRect: pageRect)
-
         addParticipantSignatureField(
             "_______________________ / _______________________      Дата: _______________________",
             signatureTop: pageRect.height - 250,
-            leading: 30,
+            leading: 60,
             width: pageRect.width - 60
         )
-
         addRecommendationsInforming(pageRect: pageRect)
-
         addParticipantSignatureField(
             "_______________________ / _______________________      Дата: _______________________",
             signatureTop: pageRect.height - 100,
-            leading: 30,
+            leading: 60,
             width: pageRect.width - 60
         )
     }
@@ -94,8 +94,10 @@ final class ContractBody {
 
 private extension ContractBody {
     func addAboveTableText(textTop: CGFloat) -> CGFloat {
-        let attributes: [NSAttributedString.Key: Any] = [.font: regularFont]
-        let attributedAboveTablePart = NSAttributedString(string: controller.aboveTablePart, attributes: attributes)
+        let attributedAboveTablePart = NSAttributedString(
+            string: controller.aboveTablePart,
+            attributes: regularFontAttributes
+        )
         let aboveTablePartSize = attributedAboveTablePart.size()
         let aboveTablePartRect = CGRect(
             x: 30,
@@ -109,8 +111,10 @@ private extension ContractBody {
     }
 
     func addBelowTableText(pageRect: CGRect, textTop: CGFloat) -> CGFloat {
-        let attributes: [NSAttributedString.Key: Any] = [.font: regularFont]
-        let attributedBelowTablePart = NSAttributedString(string: controller.belowTablePart, attributes: attributes)
+        let attributedBelowTablePart = NSAttributedString(
+            string: controller.belowTablePart,
+            attributes: regularFontAttributes
+        )
         let belowTablePartRect = CGRect(
             x: 30,
             y: textTop,
@@ -156,14 +160,8 @@ private extension ContractBody {
     }
 
     func addServicesList(tableY: CGFloat, tableWidth: CGFloat, separatorX: CGFloat) {
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineBreakMode = .byWordWrapping
-        let serviceAttributes: [NSAttributedString.Key: Any] = [
-            .font: lightFont,
-            .paragraphStyle: paragraphStyle
-        ]
         services.enumerated().forEach { index, service in
-            let attributedService = NSAttributedString(string: service.title, attributes: serviceAttributes)
+            let attributedService = NSAttributedString(string: service.title, attributes: lightFontAttributes)
             let serviceSize = attributedService.size()
             let serviceRect = CGRect(
                 x: 40,
@@ -175,7 +173,7 @@ private extension ContractBody {
 
             let attributedPrice = NSAttributedString(
                 string: "\(String(format: "%.2f", service.price))",
-                attributes: serviceAttributes
+                attributes: lightFontAttributes
             )
             let priceSize = attributedPrice.size()
             let priceRect = CGRect(
@@ -189,11 +187,9 @@ private extension ContractBody {
     }
 
     func addServicesListTitle(tableY: CGFloat, tableWidth: CGFloat, separatorX: CGFloat) {
-        let titleAttributes: [NSAttributedString.Key: Any] = [.font: regularFont]
-
         let attributedServiceTitle = NSAttributedString(
             string: "Наименование платной медицинской услуги",
-            attributes: titleAttributes
+            attributes: regularFontAttributes
         )
         let serviceTitleSize = attributedServiceTitle.size()
         let serviceTitleRect = CGRect(
@@ -204,7 +200,7 @@ private extension ContractBody {
         )
         attributedServiceTitle.draw(in: serviceTitleRect)
 
-        let attributedPriceTitle = NSAttributedString(string: "Цена (руб.)", attributes: titleAttributes)
+        let attributedPriceTitle = NSAttributedString(string: "Цена (руб.)", attributes: regularFontAttributes)
         let priceTitleSize = attributedPriceTitle.size()
         let priceTitleRect = CGRect(
             x: separatorX + (tableWidth - separatorX + 30 - priceTitleSize.width) / 2,
@@ -216,9 +212,7 @@ private extension ContractBody {
     }
 
     func addServicesListTotal(tableBottom: CGFloat, tableWidth: CGFloat, separatorX: CGFloat) {
-        let totalAttributes: [NSAttributedString.Key: Any] = [.font: boldFont]
-
-        let attributedTotal = NSAttributedString(string: "ИТОГО", attributes: totalAttributes)
+        let attributedTotal = NSAttributedString(string: "ИТОГО", attributes: boldFontAttributes)
         let totalSize = attributedTotal.size()
         let totalRect = CGRect(
             x: 40,
@@ -230,7 +224,7 @@ private extension ContractBody {
 
         let attributedTotalPrice = NSAttributedString(
             string: "\(String(format: "%.2f", controller.totalPrice))",
-            attributes: totalAttributes
+            attributes: boldFontAttributes
         )
         let totalPriceSize = attributedTotalPrice.size()
         let totalPriceRect = CGRect(
@@ -249,9 +243,7 @@ private extension ContractBody {
         titleTop: CGFloat,
         leading: CGFloat
     ) -> CGFloat {
-        let titleAttributes: [NSAttributedString.Key: Any] = [.font: boldFont]
-
-        let attributedTitle = NSAttributedString(string: title, attributes: titleAttributes)
+        let attributedTitle = NSAttributedString(string: title, attributes: boldFontAttributes)
         let titleSize = attributedTitle.size()
         let titleRect = CGRect(
             x: leading,
@@ -261,13 +253,7 @@ private extension ContractBody {
         )
         attributedTitle.draw(in: titleRect)
 
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineBreakMode = .byWordWrapping
-        let detailAttributes: [NSAttributedString.Key: Any] = [
-            .font: lightFont,
-            .paragraphStyle: paragraphStyle
-        ]
-        let attributedDetails = NSAttributedString(string: details, attributes: detailAttributes)
+        let attributedDetails = NSAttributedString(string: details, attributes: lightFontAttributes)
         let detailsRect = CGRect(
             x: leading,
             y: titleRect.maxY,
@@ -285,8 +271,7 @@ private extension ContractBody {
         leading: CGFloat,
         width: CGFloat
     ) {
-        let attributes: [NSAttributedString.Key: Any] = [.font: regularFont]
-        let attributedSignatureField = NSAttributedString(string: signature, attributes: attributes)
+        let attributedSignatureField = NSAttributedString(string: signature, attributes: regularFontAttributes)
         let signatureRect = CGRect(
             x: leading,
             y: signatureTop,
@@ -297,10 +282,9 @@ private extension ContractBody {
     }
 
     func addFreeMedicineInforming(pageRect: CGRect) {
-        let attributes: [NSAttributedString.Key: Any] = [.font: regularFont]
         let attributedFreeMedicineInforming = NSAttributedString(
             string: controller.freeMedicineInforming,
-            attributes: attributes
+            attributes: regularFontAttributes
         )
         let freeMedicineInformingRect = CGRect(
             x: 30,
@@ -312,10 +296,9 @@ private extension ContractBody {
     }
 
     func addRecommendationsInforming(pageRect: CGRect) {
-        let attributes: [NSAttributedString.Key: Any] = [.font: regularFont]
         let attributedRecommendationsInforming = NSAttributedString(
             string: controller.followingRecommendationsInforming,
-            attributes: attributes
+            attributes: regularFontAttributes
         )
         let recommendationsInformingRect = CGRect(
             x: 30,
