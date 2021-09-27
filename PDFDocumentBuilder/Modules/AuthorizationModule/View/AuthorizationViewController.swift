@@ -11,7 +11,7 @@ final class AuthorizationViewController: UIViewController {
     typealias PresenterType = AuthorizationPresentation
     var presenter: PresenterType!
 
-    let activityIndicatorView = UIActivityIndicatorView(style: .large)
+    let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     let statusLabel = UILabel()
 
     override func viewDidLoad() {
@@ -28,6 +28,8 @@ final class AuthorizationViewController: UIViewController {
     }
 
     private func configureHierarchy() {
+        view.backgroundColor = .systemBackground
+
         view.addSubview(activityIndicatorView)
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
 

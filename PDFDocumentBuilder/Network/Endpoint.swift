@@ -9,19 +9,13 @@ import Foundation
 
 struct Endpoint {
     var path: String
-    var queryItems: [URLQueryItem] = []
+    var body: [String: Any]?
 }
 
 extension Endpoint {
     var url: URL {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "passrec.ufanet.ru"
-        components.path = "/api/v0" + path
-        components.queryItems = queryItems
-
-        guard let url = components.url else {
-            preconditionFailure("Invalid URL components: \(components)")
+        guard let url = URL(string: "https://passrec.ufanet.ru/api/v0/" + path) else {
+            preconditionFailure("Invalid URL")
         }
 
         return url
@@ -34,12 +28,8 @@ extension Endpoint {
 
 extension Endpoint {
     static var token: Self {
-        Endpoint(
-            path: "/token/",
-            queryItems: [
-                URLQueryItem(name: "login", value: "demo_ultramed"),
-                URLQueryItem(name: "password", value: "nlh2MXpjFwVk")
-            ]
-        )
+        let json: [String: Any] = ["login": "demo_ultramed", "password": "nlh2MXpjFwVk"]
+
+        return Endpoint(path: "token/", body: json)
     }
 }

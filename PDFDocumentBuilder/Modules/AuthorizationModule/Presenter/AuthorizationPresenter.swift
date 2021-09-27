@@ -7,7 +7,7 @@
 
 final class AuthorizationPresenter<V, I>: PresenterInteractor<V, I>, AuthorizationModule
 where V: AuthorizationView, I: AuthorizationInteraction {
-    weak var coordinator: AuthorizationCoordinator?
+    weak var coordinator: HomeSubscription?
 
     var didFinish: (() -> Void)?
 }
@@ -25,7 +25,7 @@ extension AuthorizationPresenter: AuthorizationPresentation {
 extension AuthorizationPresenter: AuthorizationInteractorDelegate {
     func tokenDidRecieved() {
         view?.updateStatus(title: "Success", color: .systemGreen)
-        // route to home screen
+        coordinator?.routeToHome()
     }
 
     func tokenFailure(message: String) {

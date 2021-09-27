@@ -10,4 +10,5 @@ import UIKit
 protocol Modules {
     func pdfPreviewModule() -> (UIViewController, PDFPreviewModule)
     func authorizationModule() -> (UIViewController, AuthorizationModule)
+    func homeModule() -> (UIViewController, HomeModule)
 }

@@ -6,7 +6,7 @@
 //
 
 protocol HomeModule: AnyObject {
-    var coordinator: MainCoordinator? { get set }
+    var coordinator: HomeCoordinator? { get set }
     var didFinish: (() -> Void)? { get set }
 }
 

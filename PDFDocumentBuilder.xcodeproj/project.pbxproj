@@ -26,6 +26,8 @@
 		8B3E114126F51E3900FBE02C /* PDFPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E114026F51E3900FBE02C /* PDFPreviewInteractor.swift */; };
 		8B3E114326F5210700FBE02C /* PDFPreviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E114226F5210700FBE02C /* PDFPreviewCoordinator.swift */; };
 		8B3E114626F6056700FBE02C /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E114526F6056700FBE02C /* DateFormatterExtension.swift */; };
+		8B4B7527270216A80071C92A /* HomeSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B7526270216A80071C92A /* HomeSubscription.swift */; };
+		8B4B7529270219D50071C92A /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B7528270219D50071C92A /* HomeCoordinator.swift */; };
 		8B5D2F2E270191D800061322 /* HomeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F2D270191D800061322 /* HomeModule.swift */; };
 		8B5D2F332701931C00061322 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F322701931C00061322 /* HomeViewController.swift */; };
 		8B5D2F35270193C800061322 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F34270193C800061322 /* HomePresenter.swift */; };
@@ -87,6 +89,8 @@
 		8B3E114026F51E3900FBE02C /* PDFPreviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewInteractor.swift; sourceTree = "<group>"; };
 		8B3E114226F5210700FBE02C /* PDFPreviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewCoordinator.swift; sourceTree = "<group>"; };
 		8B3E114526F6056700FBE02C /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
+		8B4B7526270216A80071C92A /* HomeSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSubscription.swift; sourceTree = "<group>"; };
+		8B4B7528270219D50071C92A /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		8B5D2F2D270191D800061322 /* HomeModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModule.swift; sourceTree = "<group>"; };
 		8B5D2F322701931C00061322 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8B5D2F34270193C800061322 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -186,8 +190,10 @@
 		8B3E113326F51ABD00FBE02C /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				8B4B7525270216920071C92A /* Subscriptions */,
 				8B3E113426F51AD800FBE02C /* Coordinator.swift */,
 				8B3E113626F51AF800FBE02C /* MainCoordinator.swift */,
+				8B4B7528270219D50071C92A /* HomeCoordinator.swift */,
 				8B0B305427020FD6000D6755 /* AuthorizationCoordinator.swift */,
 				8B3E114226F5210700FBE02C /* PDFPreviewCoordinator.swift */,
 			);
@@ -254,6 +260,14 @@
 				8B3E1B632700765C008B0CE1 /* ContractBody */,
 			);
 			path = PDFCreator;
+			sourceTree = "<group>";
+		};
+		8B4B7525270216920071C92A /* Subscriptions */ = {
+			isa = PBXGroup;
+			children = (
+				8B4B7526270216A80071C92A /* HomeSubscription.swift */,
+			);
+			path = Subscriptions;
 			sourceTree = "<group>";
 		};
 		8B5D2F2C270191A400061322 /* HomeModule */ = {
@@ -572,10 +586,12 @@
 				8B3E112D26F51A0B00FBE02C /* Presenter.swift in Sources */,
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
 				8BCE5C742701E7CF00ED9A66 /* NetworkService.swift in Sources */,
+				8B4B7527270216A80071C92A /* HomeSubscription.swift in Sources */,
 				8B3E114626F6056700FBE02C /* DateFormatterExtension.swift in Sources */,
 				8B5E434C26B195C400A7996B /* ContractData.swift in Sources */,
 				8B3006C526B1F24800DBC3AD /* ContractBody.swift in Sources */,
 				8B0B305A270211D1000D6755 /* NetworkServiceDependencies.swift in Sources */,
+				8B4B7529270219D50071C92A /* HomeCoordinator.swift in Sources */,
 				8B5D2F332701931C00061322 /* HomeViewController.swift in Sources */,
 				8B5E431B26B1912800A7996B /* AppDelegate.swift in Sources */,
 				8B5E431D26B1912800A7996B /* SceneDelegate.swift in Sources */,

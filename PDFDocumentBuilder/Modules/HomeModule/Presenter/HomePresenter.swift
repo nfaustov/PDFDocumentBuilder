@@ -8,7 +8,7 @@
 import Foundation
 
 final class HomePresenter<V>: Presenter<V>, HomeModule where V: HomeView {
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: HomeCoordinator?
 
     var didFinish: (() -> Void)?
 }

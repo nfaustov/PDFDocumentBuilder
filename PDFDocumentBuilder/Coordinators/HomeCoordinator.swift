@@ -1,5 +1,5 @@
 //
-//  AuthorizationCoordinator.swift
+//  HomeCoordinator.swift
 //  PDFDocumentBuilder
 //
 //  Created by Nikolai Faustov on 27.09.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AuthorizationCoordinator: Coordinator {
+final class HomeCoordinator: Coordinator {
     weak var parentCoordinator: MainCoordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
@@ -20,15 +20,8 @@ final class AuthorizationCoordinator: Coordinator {
     }
 
     func start() {
-        let (viewController, module) = modules.authorizationModule()
+        let (viewController, module) = modules.homeModule()
         module.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
-    }
-}
-
-extension AuthorizationCoordinator: HomeSubscription {
-    func routeToHome() {
-        parentCoordinator?.childDidFinish(self)
-        parentCoordinator?.routeToHome()
     }
 }

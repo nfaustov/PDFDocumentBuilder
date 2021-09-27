@@ -4,13 +4,17 @@
 //
 //  Created by Nikolai Faustov on 27.09.2021.
 //
+
 import Foundation
+import Combine
 
 final class AuthorizationInteractor {
     typealias Delegate = AuthorizationInteractorDelegate
     weak var delegate: Delegate?
 
     var authorizationService: NetworkService?
+
+    private var subscriptions = Set<AnyCancellable>()
 }
 
 // MARK: - AuthorizationInteraction
@@ -27,11 +31,13 @@ extension AuthorizationInteractor: AuthorizationInteraction {
                 }
             }, receiveValue: { [delegate] response in
                 if let token = response.token {
+                    print(token)
                     delegate?.tokenDidRecieved()
                 } else if let errorMessage = response.errorMessage {
+                    print(errorMessage)
                     delegate?.tokenFailure(message: errorMessage)
                 }
             })
-            .cancel()
+            .store(in: &subscriptions)
     }
 }

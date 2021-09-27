@@ -22,8 +22,23 @@ final class MainCoordinator: Coordinator {
         authorizationCoordinator()
     }
 
+    func childDidFinish(_ child: Coordinator?) {
+        for (index, coordinator) in childCoordinators.enumerated() where coordinator === child {
+            childCoordinators.remove(at: index)
+        }
+    }
+
     private func authorizationCoordinator() {
         let child = AuthorizationCoordinator(navigationController: navigationController, modules: modules)
+        child.parentCoordinator = self
+        childCoordinators.append(child)
+        child.start()
+    }
+}
+
+extension MainCoordinator {
+    func routeToHome() {
+        let child = HomeCoordinator(navigationController: navigationController, modules: modules)
         child.parentCoordinator = self
         childCoordinators.append(child)
         child.start()

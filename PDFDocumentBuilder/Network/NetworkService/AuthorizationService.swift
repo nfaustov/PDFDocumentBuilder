@@ -18,6 +18,11 @@ final class AuthorizationService: NetworkService {
     func getToken() -> AnyPublisher<TokenResponse, Error> {
         let endpoint = Endpoint.token
 
-        return networkController.get(type: TokenResponse.self, url: endpoint.url, headers: endpoint.headers)
+        return networkController.get(
+            type: TokenResponse.self,
+            url: endpoint.url,
+            headers: endpoint.headers,
+            body: endpoint.body
+        )
     }
 }

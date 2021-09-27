@@ -30,4 +30,11 @@ final class ModulesFactory: Modules {
 
         return (view, presenter)
     }
+
+    func homeModule() -> (UIViewController, HomeModule) {
+        let view = HomeViewController()
+        let presenter = HomePresenter(view: view)
+
+        return (view, presenter)
+    }
 }
