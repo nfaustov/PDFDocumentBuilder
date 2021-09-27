@@ -22,6 +22,13 @@
 		8B3E114126F51E3900FBE02C /* PDFPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E114026F51E3900FBE02C /* PDFPreviewInteractor.swift */; };
 		8B3E114326F5210700FBE02C /* PDFPreviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E114226F5210700FBE02C /* PDFPreviewCoordinator.swift */; };
 		8B3E114626F6056700FBE02C /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E114526F6056700FBE02C /* DateFormatterExtension.swift */; };
+		8B5D2F2E270191D800061322 /* HomeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F2D270191D800061322 /* HomeModule.swift */; };
+		8B5D2F332701931C00061322 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F322701931C00061322 /* HomeViewController.swift */; };
+		8B5D2F35270193C800061322 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F34270193C800061322 /* HomePresenter.swift */; };
+		8B5D2F3B2701B45F00061322 /* AuthorizationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F3A2701B45F00061322 /* AuthorizationModule.swift */; };
+		8B5D2F402701B57D00061322 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F3F2701B57D00061322 /* AuthorizationViewController.swift */; };
+		8B5D2F422701C4C400061322 /* AuthorizationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F412701C4C400061322 /* AuthorizationInteractor.swift */; };
+		8B5D2F442701C55E00061322 /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F432701C55E00061322 /* AuthorizationPresenter.swift */; };
 		8B5E431B26B1912800A7996B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E431A26B1912800A7996B /* AppDelegate.swift */; };
 		8B5E431D26B1912800A7996B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E431C26B1912800A7996B /* SceneDelegate.swift */; };
 		8B5E432426B1912900A7996B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E432326B1912900A7996B /* Assets.xcassets */; };
@@ -65,6 +72,13 @@
 		8B3E114026F51E3900FBE02C /* PDFPreviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewInteractor.swift; sourceTree = "<group>"; };
 		8B3E114226F5210700FBE02C /* PDFPreviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewCoordinator.swift; sourceTree = "<group>"; };
 		8B3E114526F6056700FBE02C /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
+		8B5D2F2D270191D800061322 /* HomeModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModule.swift; sourceTree = "<group>"; };
+		8B5D2F322701931C00061322 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8B5D2F34270193C800061322 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		8B5D2F3A2701B45F00061322 /* AuthorizationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModule.swift; sourceTree = "<group>"; };
+		8B5D2F3F2701B57D00061322 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		8B5D2F412701C4C400061322 /* AuthorizationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInteractor.swift; sourceTree = "<group>"; };
+		8B5D2F432701C55E00061322 /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
 		8B5E431726B1912700A7996B /* PDFDocumentBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFDocumentBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5E431A26B1912800A7996B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B5E431C26B1912800A7996B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +125,8 @@
 			children = (
 				8B3E112726F5199500FBE02C /* Base Module */,
 				8B3E112E26F51A2E00FBE02C /* ModulesFactory */,
+				8B5D2F392701B40700061322 /* AuthorizationModule */,
+				8B5D2F2C270191A400061322 /* HomeModule */,
 				8B3E113826F51B7F00FBE02C /* PDFPreviewModule */,
 			);
 			path = Modules;
@@ -205,6 +221,67 @@
 				8B3E1B632700765C008B0CE1 /* ContractBody */,
 			);
 			path = PDFCreator;
+			sourceTree = "<group>";
+		};
+		8B5D2F2C270191A400061322 /* HomeModule */ = {
+			isa = PBXGroup;
+			children = (
+				8B5D2F2F270191E300061322 /* View */,
+				8B5D2F30270191E900061322 /* Presenter */,
+				8B5D2F2D270191D800061322 /* HomeModule.swift */,
+			);
+			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		8B5D2F2F270191E300061322 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B5D2F322701931C00061322 /* HomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8B5D2F30270191E900061322 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8B5D2F34270193C800061322 /* HomePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8B5D2F392701B40700061322 /* AuthorizationModule */ = {
+			isa = PBXGroup;
+			children = (
+				8B5D2F3E2701B56200061322 /* View */,
+				8B5D2F3D2701B55B00061322 /* Presenter */,
+				8B5D2F3C2701B55300061322 /* Interactor */,
+				8B5D2F3A2701B45F00061322 /* AuthorizationModule.swift */,
+			);
+			path = AuthorizationModule;
+			sourceTree = "<group>";
+		};
+		8B5D2F3C2701B55300061322 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8B5D2F412701C4C400061322 /* AuthorizationInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8B5D2F3D2701B55B00061322 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8B5D2F432701C55E00061322 /* AuthorizationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8B5D2F3E2701B56200061322 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B5D2F3F2701B57D00061322 /* AuthorizationViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8B5E430E26B1912700A7996B = {
@@ -424,10 +501,16 @@
 				8B3E114626F6056700FBE02C /* DateFormatterExtension.swift in Sources */,
 				8B5E434C26B195C400A7996B /* ContractData.swift in Sources */,
 				8B3006C526B1F24800DBC3AD /* ContractBody.swift in Sources */,
+				8B5D2F332701931C00061322 /* HomeViewController.swift in Sources */,
 				8B5E431B26B1912800A7996B /* AppDelegate.swift in Sources */,
 				8B5E431D26B1912800A7996B /* SceneDelegate.swift in Sources */,
+				8B5D2F442701C55E00061322 /* AuthorizationPresenter.swift in Sources */,
 				8B3006C126B1E72700DBC3AD /* PDFCreator.swift in Sources */,
+				8B5D2F3B2701B45F00061322 /* AuthorizationModule.swift in Sources */,
+				8B5D2F2E270191D800061322 /* HomeModule.swift in Sources */,
 				8B3E112926F519C300FBE02C /* View.swift in Sources */,
+				8B5D2F422701C4C400061322 /* AuthorizationInteractor.swift in Sources */,
+				8B5D2F402701B57D00061322 /* AuthorizationViewController.swift in Sources */,
 				8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */,
 				8B3E113F26F51D6F00FBE02C /* PDFPreviewPresenter.swift in Sources */,
 				8B3E114326F5210700FBE02C /* PDFPreviewCoordinator.swift in Sources */,
@@ -438,6 +521,7 @@
 				8B3E112B26F519EA00FBE02C /* Interactor.swift in Sources */,
 				8B3006C326B1F05100DBC3AD /* PDFPreviewViewController.swift in Sources */,
 				8B3E113D26F51BE700FBE02C /* PDFPreviewModule.swift in Sources */,
+				8B5D2F35270193C800061322 /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
