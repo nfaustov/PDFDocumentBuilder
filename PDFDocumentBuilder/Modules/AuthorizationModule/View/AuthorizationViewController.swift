@@ -33,7 +33,6 @@ final class AuthorizationViewController: UIViewController {
 
         view.addSubview(statusLabel)
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
-        
 
         NSLayoutConstraint.activate([
             activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),

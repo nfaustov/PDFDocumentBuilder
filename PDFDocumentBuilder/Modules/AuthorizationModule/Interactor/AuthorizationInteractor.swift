@@ -10,14 +10,14 @@ final class AuthorizationInteractor {
     typealias Delegate = AuthorizationInteractorDelegate
     weak var delegate: Delegate?
 
-    var authorizationLogicController: LogicController?
+    var authorizationService: NetworkService?
 }
 
 // MARK: - AuthorizationInteraction
 
 extension AuthorizationInteractor: AuthorizationInteraction {
     func getToken() {
-        authorizationLogicController?.getToken()
+        authorizationService?.getToken()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {

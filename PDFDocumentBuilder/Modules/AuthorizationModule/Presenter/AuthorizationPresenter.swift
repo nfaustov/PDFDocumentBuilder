@@ -7,7 +7,7 @@
 
 final class AuthorizationPresenter<V, I>: PresenterInteractor<V, I>, AuthorizationModule
 where V: AuthorizationView, I: AuthorizationInteraction {
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: AuthorizationCoordinator?
 
     var didFinish: (() -> Void)?
 }

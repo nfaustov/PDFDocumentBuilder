@@ -7,7 +7,7 @@
 import UIKit
 
 protocol AuthorizationModule: AnyObject {
-    var coordinator: MainCoordinator? { get set }
+    var coordinator: AuthorizationCoordinator? { get set }
     var didFinish: (() -> Void)? { get set }
 }
 

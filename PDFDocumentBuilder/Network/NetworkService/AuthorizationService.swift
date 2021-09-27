@@ -1,5 +1,5 @@
 //
-//  AuthorizationLogicController.swift
+//  AuthorizationService.swift
 //  PDFDocumentBuilder
 //
 //  Created by Nikolai Faustov on 27.09.2021.
@@ -8,10 +8,10 @@
 import Foundation
 import Combine
 
-final class AuthorizationLogicController: LogicController {
+final class AuthorizationService: NetworkService {
     let networkController: NetworkControllerProtocol
 
-    init(networkController: NetworkControllerProtocol) {
+    init(networkController: NetworkControllerProtocol = NetworkController()) {
         self.networkController = networkController
     }
 

@@ -19,11 +19,11 @@ final class MainCoordinator: Coordinator {
     }
 
     func start() {
-        pdfPreviewCoordinator()
+        authorizationCoordinator()
     }
 
-    private func pdfPreviewCoordinator() {
-        let child = PDFPreviewCoordinator(navigationController: navigationController, modules: modules)
+    private func authorizationCoordinator() {
+        let child = AuthorizationCoordinator(navigationController: navigationController, modules: modules)
         child.parentCoordinator = self
         childCoordinators.append(child)
         child.start()

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B0B305527020FD6000D6755 /* AuthorizationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B305427020FD6000D6755 /* AuthorizationCoordinator.swift */; };
+		8B0B30582702116E000D6755 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B30572702116E000D6755 /* DependencyContainer.swift */; };
+		8B0B305A270211D1000D6755 /* NetworkServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B3059270211D1000D6755 /* NetworkServiceDependencies.swift */; };
+		8B0B305C270211FE000D6755 /* DatabaseServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B305B270211FE000D6755 /* DatabaseServiceDependencies.swift */; };
 		8B3006C126B1E72700DBC3AD /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C026B1E72700DBC3AD /* PDFCreator.swift */; };
 		8B3006C326B1F05100DBC3AD /* PDFPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C226B1F05100DBC3AD /* PDFPreviewViewController.swift */; };
 		8B3006C526B1F24800DBC3AD /* ContractBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C426B1F24800DBC3AD /* ContractBody.swift */; };
@@ -42,8 +46,8 @@
 		8BCE5C6C2701E42600ED9A66 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6B2701E42600ED9A66 /* Credential.swift */; };
 		8BCE5C6E2701E5E300ED9A66 /* NetworkControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */; };
 		8BCE5C702701E69C00ED9A66 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */; };
-		8BCE5C742701E7CF00ED9A66 /* LogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C732701E7CF00ED9A66 /* LogicController.swift */; };
-		8BCE5C762701E83C00ED9A66 /* AuthorizationLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C752701E83C00ED9A66 /* AuthorizationLogicController.swift */; };
+		8BCE5C742701E7CF00ED9A66 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C732701E7CF00ED9A66 /* NetworkService.swift */; };
+		8BCE5C762701E83C00ED9A66 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B0B305427020FD6000D6755 /* AuthorizationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCoordinator.swift; sourceTree = "<group>"; };
+		8B0B30572702116E000D6755 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		8B0B3059270211D1000D6755 /* NetworkServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceDependencies.swift; sourceTree = "<group>"; };
+		8B0B305B270211FE000D6755 /* DatabaseServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceDependencies.swift; sourceTree = "<group>"; };
 		8B3006C026B1E72700DBC3AD /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		8B3006C226B1F05100DBC3AD /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 		8B3006C426B1F24800DBC3AD /* ContractBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBody.swift; sourceTree = "<group>"; };
@@ -105,8 +113,8 @@
 		8BCE5C6B2701E42600ED9A66 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerProtocol.swift; sourceTree = "<group>"; };
 		8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
-		8BCE5C732701E7CF00ED9A66 /* LogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicController.swift; sourceTree = "<group>"; };
-		8BCE5C752701E83C00ED9A66 /* AuthorizationLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationLogicController.swift; sourceTree = "<group>"; };
+		8BCE5C732701E7CF00ED9A66 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +142,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B0B305627021156000D6755 /* DependencyContainer */ = {
+			isa = PBXGroup;
+			children = (
+				8B0B30572702116E000D6755 /* DependencyContainer.swift */,
+				8B0B3059270211D1000D6755 /* NetworkServiceDependencies.swift */,
+				8B0B305B270211FE000D6755 /* DatabaseServiceDependencies.swift */,
+			);
+			path = DependencyContainer;
+			sourceTree = "<group>";
+		};
 		8B3E112626F5197F00FBE02C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +188,7 @@
 			children = (
 				8B3E113426F51AD800FBE02C /* Coordinator.swift */,
 				8B3E113626F51AF800FBE02C /* MainCoordinator.swift */,
+				8B0B305427020FD6000D6755 /* AuthorizationCoordinator.swift */,
 				8B3E114226F5210700FBE02C /* PDFPreviewCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -324,6 +343,7 @@
 				8B5E434A26B1916A00A7996B /* Application */,
 				8B3E113326F51ABD00FBE02C /* Coordinators */,
 				8BCE5C652701DDF000ED9A66 /* Network */,
+				8B0B305627021156000D6755 /* DependencyContainer */,
 				8B3E112626F5197F00FBE02C /* Modules */,
 				8B5E434B26B195C400A7996B /* ContractData.swift */,
 			);
@@ -367,7 +387,7 @@
 				8BCE5C662701DE7A00ED9A66 /* Models */,
 				8BCE5C692701E02F00ED9A66 /* Endpoint.swift */,
 				8BCE5C722701E79700ED9A66 /* NetworkController */,
-				8BCE5C772701F19F00ED9A66 /* LogicController */,
+				8BCE5C772701F19F00ED9A66 /* NetworkService */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -390,13 +410,13 @@
 			path = NetworkController;
 			sourceTree = "<group>";
 		};
-		8BCE5C772701F19F00ED9A66 /* LogicController */ = {
+		8BCE5C772701F19F00ED9A66 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				8BCE5C732701E7CF00ED9A66 /* LogicController.swift */,
-				8BCE5C752701E83C00ED9A66 /* AuthorizationLogicController.swift */,
+				8BCE5C732701E7CF00ED9A66 /* NetworkService.swift */,
+				8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */,
 			);
-			path = LogicController;
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -551,10 +571,11 @@
 			files = (
 				8B3E112D26F51A0B00FBE02C /* Presenter.swift in Sources */,
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
-				8BCE5C742701E7CF00ED9A66 /* LogicController.swift in Sources */,
+				8BCE5C742701E7CF00ED9A66 /* NetworkService.swift in Sources */,
 				8B3E114626F6056700FBE02C /* DateFormatterExtension.swift in Sources */,
 				8B5E434C26B195C400A7996B /* ContractData.swift in Sources */,
 				8B3006C526B1F24800DBC3AD /* ContractBody.swift in Sources */,
+				8B0B305A270211D1000D6755 /* NetworkServiceDependencies.swift in Sources */,
 				8B5D2F332701931C00061322 /* HomeViewController.swift in Sources */,
 				8B5E431B26B1912800A7996B /* AppDelegate.swift in Sources */,
 				8B5E431D26B1912800A7996B /* SceneDelegate.swift in Sources */,
@@ -567,12 +588,15 @@
 				8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */,
 				8B5D2F422701C4C400061322 /* AuthorizationInteractor.swift in Sources */,
 				8B5D2F402701B57D00061322 /* AuthorizationViewController.swift in Sources */,
+				8B0B305C270211FE000D6755 /* DatabaseServiceDependencies.swift in Sources */,
 				8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */,
-				8BCE5C762701E83C00ED9A66 /* AuthorizationLogicController.swift in Sources */,
+				8BCE5C762701E83C00ED9A66 /* AuthorizationService.swift in Sources */,
 				8B3E113F26F51D6F00FBE02C /* PDFPreviewPresenter.swift in Sources */,
+				8B0B30582702116E000D6755 /* DependencyContainer.swift in Sources */,
 				8B3E114326F5210700FBE02C /* PDFPreviewCoordinator.swift in Sources */,
 				8B3E113526F51AD800FBE02C /* Coordinator.swift in Sources */,
 				8B3E113026F51A5000FBE02C /* Modules.swift in Sources */,
+				8B0B305527020FD6000D6755 /* AuthorizationCoordinator.swift in Sources */,
 				8B3E113726F51AF800FBE02C /* MainCoordinator.swift in Sources */,
 				8BCE5C702701E69C00ED9A66 /* NetworkController.swift in Sources */,
 				8BCE5C6C2701E42600ED9A66 /* Credential.swift in Sources */,
