@@ -15,9 +15,20 @@ where V: AuthorizationView, I: AuthorizationInteraction {
 // MARK: - AuthorizationPresentation
 
 extension AuthorizationPresenter: AuthorizationPresentation {
+    func getToken() {
+        interactor.getToken()
+    }
 }
 
 // MARK: - AuthorizationInteractorDelegate
 
 extension AuthorizationPresenter: AuthorizationInteractorDelegate {
+    func tokenDidRecieved() {
+        view?.updateStatus(title: "Success", color: .systemGreen)
+        // route to home screen
+    }
+
+    func tokenFailure(message: String) {
+        view?.updateStatus(title: message, color: .systemRed)
+    }
 }

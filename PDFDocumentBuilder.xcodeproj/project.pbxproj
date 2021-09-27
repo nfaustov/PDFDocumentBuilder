@@ -37,6 +37,13 @@
 		8B5E433D26B1912A00A7996B /* PDFDocumentBuilderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E433C26B1912A00A7996B /* PDFDocumentBuilderUITests.swift */; };
 		8B5E434C26B195C400A7996B /* ContractData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E434B26B195C400A7996B /* ContractData.swift */; };
 		8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */; };
+		8BCE5C682701DE9600ED9A66 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */; };
+		8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C692701E02F00ED9A66 /* Endpoint.swift */; };
+		8BCE5C6C2701E42600ED9A66 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6B2701E42600ED9A66 /* Credential.swift */; };
+		8BCE5C6E2701E5E300ED9A66 /* NetworkControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */; };
+		8BCE5C702701E69C00ED9A66 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */; };
+		8BCE5C742701E7CF00ED9A66 /* LogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C732701E7CF00ED9A66 /* LogicController.swift */; };
+		8BCE5C762701E83C00ED9A66 /* AuthorizationLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C752701E83C00ED9A66 /* AuthorizationLogicController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +100,13 @@
 		8B5E433E26B1912A00A7996B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B5E434B26B195C400A7996B /* ContractData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractData.swift; sourceTree = "<group>"; };
 		8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBodyController.swift; sourceTree = "<group>"; };
+		8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
+		8BCE5C692701E02F00ED9A66 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		8BCE5C6B2701E42600ED9A66 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerProtocol.swift; sourceTree = "<group>"; };
+		8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		8BCE5C732701E7CF00ED9A66 /* LogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicController.swift; sourceTree = "<group>"; };
+		8BCE5C752701E83C00ED9A66 /* AuthorizationLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationLogicController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +323,7 @@
 			children = (
 				8B5E434A26B1916A00A7996B /* Application */,
 				8B3E113326F51ABD00FBE02C /* Coordinators */,
+				8BCE5C652701DDF000ED9A66 /* Network */,
 				8B3E112626F5197F00FBE02C /* Modules */,
 				8B5E434B26B195C400A7996B /* ContractData.swift */,
 			);
@@ -344,6 +359,44 @@
 				8B5E432826B1912900A7996B /* Info.plist */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		8BCE5C652701DDF000ED9A66 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8BCE5C662701DE7A00ED9A66 /* Models */,
+				8BCE5C692701E02F00ED9A66 /* Endpoint.swift */,
+				8BCE5C722701E79700ED9A66 /* NetworkController */,
+				8BCE5C772701F19F00ED9A66 /* LogicController */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8BCE5C662701DE7A00ED9A66 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */,
+				8BCE5C6B2701E42600ED9A66 /* Credential.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8BCE5C722701E79700ED9A66 /* NetworkController */ = {
+			isa = PBXGroup;
+			children = (
+				8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */,
+				8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */,
+			);
+			path = NetworkController;
+			sourceTree = "<group>";
+		};
+		8BCE5C772701F19F00ED9A66 /* LogicController */ = {
+			isa = PBXGroup;
+			children = (
+				8BCE5C732701E7CF00ED9A66 /* LogicController.swift */,
+				8BCE5C752701E83C00ED9A66 /* AuthorizationLogicController.swift */,
+			);
+			path = LogicController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,6 +551,7 @@
 			files = (
 				8B3E112D26F51A0B00FBE02C /* Presenter.swift in Sources */,
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
+				8BCE5C742701E7CF00ED9A66 /* LogicController.swift in Sources */,
 				8B3E114626F6056700FBE02C /* DateFormatterExtension.swift in Sources */,
 				8B5E434C26B195C400A7996B /* ContractData.swift in Sources */,
 				8B3006C526B1F24800DBC3AD /* ContractBody.swift in Sources */,
@@ -509,18 +563,24 @@
 				8B5D2F3B2701B45F00061322 /* AuthorizationModule.swift in Sources */,
 				8B5D2F2E270191D800061322 /* HomeModule.swift in Sources */,
 				8B3E112926F519C300FBE02C /* View.swift in Sources */,
+				8BCE5C682701DE9600ED9A66 /* TokenResponse.swift in Sources */,
+				8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */,
 				8B5D2F422701C4C400061322 /* AuthorizationInteractor.swift in Sources */,
 				8B5D2F402701B57D00061322 /* AuthorizationViewController.swift in Sources */,
 				8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */,
+				8BCE5C762701E83C00ED9A66 /* AuthorizationLogicController.swift in Sources */,
 				8B3E113F26F51D6F00FBE02C /* PDFPreviewPresenter.swift in Sources */,
 				8B3E114326F5210700FBE02C /* PDFPreviewCoordinator.swift in Sources */,
 				8B3E113526F51AD800FBE02C /* Coordinator.swift in Sources */,
 				8B3E113026F51A5000FBE02C /* Modules.swift in Sources */,
 				8B3E113726F51AF800FBE02C /* MainCoordinator.swift in Sources */,
+				8BCE5C702701E69C00ED9A66 /* NetworkController.swift in Sources */,
+				8BCE5C6C2701E42600ED9A66 /* Credential.swift in Sources */,
 				8B3E114126F51E3900FBE02C /* PDFPreviewInteractor.swift in Sources */,
 				8B3E112B26F519EA00FBE02C /* Interactor.swift in Sources */,
 				8B3006C326B1F05100DBC3AD /* PDFPreviewViewController.swift in Sources */,
 				8B3E113D26F51BE700FBE02C /* PDFPreviewModule.swift in Sources */,
+				8BCE5C6E2701E5E300ED9A66 /* NetworkControllerProtocol.swift in Sources */,
 				8B5D2F35270193C800061322 /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
