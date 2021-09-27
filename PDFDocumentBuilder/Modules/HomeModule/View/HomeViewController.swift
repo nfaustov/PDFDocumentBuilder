@@ -18,8 +18,14 @@ final class HomeViewController: UIViewController {
     }
 
     private func configureHierarchy() {
+        view.backgroundColor = .systemBackground
+
         let scanButton = UIButton(type: .custom)
         scanButton.setTitle("Сканировать паспорт", for: .normal)
+        scanButton.setTitleColor(.label, for: .normal)
+        scanButton.layer.borderWidth = 1
+        scanButton.layer.borderColor = UIColor.lightGray.cgColor
+        scanButton.layer.cornerRadius = 10
         view.addSubview(scanButton)
         scanButton.translatesAutoresizingMaskIntoConstraints = false
 

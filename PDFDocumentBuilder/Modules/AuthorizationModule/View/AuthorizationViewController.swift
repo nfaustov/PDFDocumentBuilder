@@ -33,6 +33,7 @@ final class AuthorizationViewController: UIViewController {
         view.addSubview(activityIndicatorView)
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
 
+        statusLabel.text = "Авторизация..."
         view.addSubview(statusLabel)
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -40,7 +41,7 @@ final class AuthorizationViewController: UIViewController {
             activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            statusLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 100),
+            statusLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
             statusLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }

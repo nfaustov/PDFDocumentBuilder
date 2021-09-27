@@ -24,7 +24,7 @@ extension AuthorizationPresenter: AuthorizationPresentation {
 
 extension AuthorizationPresenter: AuthorizationInteractorDelegate {
     func tokenDidRecieved() {
-        view?.updateStatus(title: "Success", color: .systemGreen)
+        view?.updateStatus(title: "Успешно!", color: .systemGreen)
         coordinator?.routeToHome()
     }
 
