@@ -32,4 +32,16 @@ extension Endpoint {
 
         return Endpoint(path: "token/", body: json)
     }
+
+    static func verifyToken(token: Token) -> Self {
+        let json: [String: Any] = ["token": token.access, "refresh": token.refresh]
+
+        return Endpoint(path: "token/verify/", body: json)
+    }
+
+    static func refreshToken(token: Token) -> Self {
+        let json: [String: Any] = ["refresh": token.refresh]
+
+        return Endpoint(path: "token/refresh/", body: json)
+    }
 }

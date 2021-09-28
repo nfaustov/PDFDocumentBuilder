@@ -6,5 +6,5 @@
 //
 
 protocol NetworkServiceDependencies {
-    var authorizationService: NetworkService { get }
+    var authorizationService: AuthService { get }
 }

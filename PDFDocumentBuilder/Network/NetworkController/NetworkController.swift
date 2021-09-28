@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class NetworkController: NetworkControllerProtocol {
-    func get<T>(type: T.Type, url: URL, headers: Headers, body: Body) -> AnyPublisher<T, Error> where T: Decodable {
+    func post<T>(type: T.Type, url: URL, headers: Headers, body: Body) -> AnyPublisher<T, Error> where T: Decodable {
         var urlRequest = URLRequest(url: url)
         let jsonData = try? JSONSerialization.data(withJSONObject: body ?? [])
         urlRequest.httpBody = jsonData

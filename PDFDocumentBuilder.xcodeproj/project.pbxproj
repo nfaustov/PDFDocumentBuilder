@@ -50,7 +50,7 @@
 		8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C692701E02F00ED9A66 /* Endpoint.swift */; };
 		8BCE5C6E2701E5E300ED9A66 /* NetworkControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */; };
 		8BCE5C702701E69C00ED9A66 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */; };
-		8BCE5C742701E7CF00ED9A66 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C732701E7CF00ED9A66 /* NetworkService.swift */; };
+		8BCE5C742701E7CF00ED9A66 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C732701E7CF00ED9A66 /* AuthService.swift */; };
 		8BCE5C762701E83C00ED9A66 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,7 +121,7 @@
 		8BCE5C692701E02F00ED9A66 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerProtocol.swift; sourceTree = "<group>"; };
 		8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
-		8BCE5C732701E7CF00ED9A66 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		8BCE5C732701E7CF00ED9A66 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -418,13 +418,22 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		8B6E4F042702F2C300373F29 /* AuthorizationService */ = {
+			isa = PBXGroup;
+			children = (
+				8BCE5C732701E7CF00ED9A66 /* AuthService.swift */,
+				8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */,
+			);
+			path = AuthorizationService;
+			sourceTree = "<group>";
+		};
 		8BCE5C652701DDF000ED9A66 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				8BCE5C662701DE7A00ED9A66 /* Models */,
 				8BCE5C692701E02F00ED9A66 /* Endpoint.swift */,
 				8BCE5C722701E79700ED9A66 /* NetworkController */,
-				8BCE5C772701F19F00ED9A66 /* NetworkService */,
+				8BCE5C772701F19F00ED9A66 /* NetworkServices */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -446,13 +455,12 @@
 			path = NetworkController;
 			sourceTree = "<group>";
 		};
-		8BCE5C772701F19F00ED9A66 /* NetworkService */ = {
+		8BCE5C772701F19F00ED9A66 /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
-				8BCE5C732701E7CF00ED9A66 /* NetworkService.swift */,
-				8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */,
+				8B6E4F042702F2C300373F29 /* AuthorizationService */,
 			);
-			path = NetworkService;
+			path = NetworkServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -608,7 +616,7 @@
 				8B1AA3732702E7AD00248D0B /* TokenDB.swift in Sources */,
 				8B3E112D26F51A0B00FBE02C /* Presenter.swift in Sources */,
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
-				8BCE5C742701E7CF00ED9A66 /* NetworkService.swift in Sources */,
+				8BCE5C742701E7CF00ED9A66 /* AuthService.swift in Sources */,
 				8B4B7527270216A80071C92A /* HomeSubscription.swift in Sources */,
 				8B3E114626F6056700FBE02C /* DateFormatterExtension.swift in Sources */,
 				8B5E434C26B195C400A7996B /* ContractData.swift in Sources */,

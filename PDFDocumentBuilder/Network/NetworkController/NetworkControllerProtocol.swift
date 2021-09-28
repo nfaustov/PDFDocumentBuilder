@@ -12,5 +12,5 @@ protocol NetworkControllerProtocol: AnyObject {
     typealias Headers = [String: Any]
     typealias Body = [String: Any]?
 
-    func get<T>(type: T.Type, url: URL, headers: Headers, body: Body) -> AnyPublisher<T, Error> where T: Decodable
+    func post<T>(type: T.Type, url: URL, headers: Headers, body: Body) -> AnyPublisher<T, Error> where T: Decodable
 }

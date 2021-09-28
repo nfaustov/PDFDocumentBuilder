@@ -12,7 +12,7 @@ final class AuthorizationInteractor {
     typealias Delegate = AuthorizationInteractorDelegate
     weak var delegate: Delegate?
 
-    var authorizationService: NetworkService?
+    var authorizationService: AuthService?
     var authorizationDatabase: TokenDB?
 
     private var subscriptions = Set<AnyCancellable>()

@@ -7,7 +7,7 @@
 
 final class DependencyContainer: NetworkServiceDependencies, DatabaseServiceDependencies {
     // MARK: - NetworkService
-    lazy var authorizationService: NetworkService = AuthorizationService()
+    lazy var authorizationService: AuthService = AuthorizationService()
 
     // MARK: - DatabaseService
     lazy var authorizationDatabase: TokenDB = TokenDatabase()
