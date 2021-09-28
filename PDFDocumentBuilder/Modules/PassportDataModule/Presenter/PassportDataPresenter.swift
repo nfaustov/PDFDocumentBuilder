@@ -16,3 +16,8 @@ where V: PassportDataView, I: PassportDataInteraction {
 
 extension PassportDataPresenter: PassportDataPresentation {
 }
+
+// MARK: - PassportDataInteractionDelegate
+
+extension PassportDataPresenter: PassportDataInteractorDelegate {
+}
