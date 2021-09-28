@@ -31,4 +31,8 @@ extension AuthorizationPresenter: AuthorizationInteractorDelegate {
     func tokenFailure(message: String) {
         view?.updateStatus(title: message, color: .systemRed)
     }
+
+    func tokenStatus(message: String) {
+        view?.updateStatus(title: message, color: .label)
+    }
 }

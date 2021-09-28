@@ -53,6 +53,7 @@ extension AuthorizationInteractor: AuthorizationInteraction {
 
 private extension AuthorizationInteractor {
     func verifyToken(token: Token) {
+        delegate?.tokenStatus(message: "Верификация...")
         authorizationService?.verifyToken(token: token)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
@@ -74,6 +75,7 @@ private extension AuthorizationInteractor {
     }
 
     func refreshToken(token: Token) {
+        delegate?.tokenStatus(message: "Обновление...")
         authorizationService?.refreshToken(token: token)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in

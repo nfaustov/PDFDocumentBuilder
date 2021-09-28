@@ -26,4 +26,5 @@ protocol AuthorizationInteraction: Interactor {
 protocol AuthorizationInteractorDelegate: AnyObject {
     func tokenDidRecieved()
     func tokenFailure(message: String)
+    func tokenStatus(message: String)
 }
