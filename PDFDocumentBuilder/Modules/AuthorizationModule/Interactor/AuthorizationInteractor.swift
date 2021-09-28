@@ -13,6 +13,7 @@ final class AuthorizationInteractor {
     weak var delegate: Delegate?
 
     var authorizationService: NetworkService?
+    var authorizationDatabase: TokenDB?
 
     private var subscriptions = Set<AnyCancellable>()
 }
@@ -26,15 +27,14 @@ extension AuthorizationInteractor: AuthorizationInteraction {
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
-                    print("Couldn't get token: \(error)")
+                    print("Couldn't get token: \(error.localizedDescription)")
                 case .finished: break
                 }
-            }, receiveValue: { [delegate] response in
+            }, receiveValue: { [delegate, authorizationDatabase] response in
                 if let token = response.token {
-                    print(token)
+                    authorizationDatabase?.saveToken(token: token)
                     delegate?.tokenDidRecieved()
                 } else if let errorMessage = response.errorMessage {
-                    print(errorMessage)
                     delegate?.tokenFailure(message: errorMessage)
                 }
             })

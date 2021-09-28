@@ -26,6 +26,7 @@ final class ModulesFactory: Modules {
         let view = AuthorizationViewController()
         let interactor = AuthorizationInteractor()
         interactor.authorizationService = dependencies.authorizationService
+        interactor.authorizationDatabase = dependencies.authorizationDatabase
         let presenter = AuthorizationPresenter(view: view, interactor: interactor)
 
         return (view, presenter)
