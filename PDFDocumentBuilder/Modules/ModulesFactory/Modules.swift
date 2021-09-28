@@ -11,4 +11,5 @@ protocol Modules {
     func pdfPreviewModule() -> (UIViewController, PDFPreviewModule)
     func authorizationModule() -> (UIViewController, AuthorizationModule)
     func homeModule() -> (UIViewController, HomeModule)
+    func passportDataModule(image: UIImage?) -> (UIViewController, PassportDataModule)
 }

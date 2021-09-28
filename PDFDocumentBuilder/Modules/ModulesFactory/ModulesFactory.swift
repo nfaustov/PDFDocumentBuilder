@@ -38,4 +38,13 @@ final class ModulesFactory: Modules {
 
         return (view, presenter)
     }
+
+    func passportDataModule(image: UIImage?) -> (UIViewController, PassportDataModule) {
+        let view = PassportDataViewController()
+        view.passportImage = image
+        let interactor = PassportDataInteractor()
+        let presenter = PassportDataPresenter(view: view, interactor: interactor)
+
+        return (view, presenter)
+    }
 }

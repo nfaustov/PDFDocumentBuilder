@@ -5,10 +5,10 @@
 //  Created by Nikolai Faustov on 27.09.2021.
 //
 
-import Foundation
+import UIKit
 
 final class HomePresenter<V>: Presenter<V>, HomeModule where V: HomeView {
-    weak var coordinator: HomeCoordinator?
+    weak var coordinator: PassportDataSubscription?
 
     var didFinish: (() -> Void)?
 }
@@ -16,4 +16,11 @@ final class HomePresenter<V>: Presenter<V>, HomeModule where V: HomeView {
 // MARK: - HomePresentation
 
 extension HomePresenter: HomePresentation {
+    func recognizePassportImage(_ image: UIImage) {
+        coordinator?.routeToPassportData(withImage: image)
+    }
+
+    func manualEnterPassportData() {
+        coordinator?.routeToPassportData(withImage: nil)
+    }
 }

@@ -14,6 +14,11 @@
 		8B1AA36E2702E3D100248D0B /* TokenDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA36D2702E3D100248D0B /* TokenDatabase.swift */; };
 		8B1AA3712702E43300248D0B /* TokenModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA36F2702E43300248D0B /* TokenModel.xcdatamodeld */; };
 		8B1AA3732702E7AD00248D0B /* TokenDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA3722702E7AD00248D0B /* TokenDB.swift */; };
+		8B21AD1027032BF900E63DBA /* PassportDataModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD0F27032BF900E63DBA /* PassportDataModule.swift */; };
+		8B21AD1327032CA500E63DBA /* PassportDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD1227032CA500E63DBA /* PassportDataViewController.swift */; };
+		8B21AD1527032CF500E63DBA /* PassportDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD1427032CF500E63DBA /* PassportDataPresenter.swift */; };
+		8B21AD1727032F5F00E63DBA /* PassportDataSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD1627032F5F00E63DBA /* PassportDataSubscription.swift */; };
+		8B21AD1A2703448000E63DBA /* PassportDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD192703448000E63DBA /* PassportDataInteractor.swift */; };
 		8B3006C126B1E72700DBC3AD /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C026B1E72700DBC3AD /* PDFCreator.swift */; };
 		8B3006C326B1F05100DBC3AD /* PDFPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C226B1F05100DBC3AD /* PDFPreviewViewController.swift */; };
 		8B3006C526B1F24800DBC3AD /* ContractBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C426B1F24800DBC3AD /* ContractBody.swift */; };
@@ -79,6 +84,11 @@
 		8B1AA36D2702E3D100248D0B /* TokenDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDatabase.swift; sourceTree = "<group>"; };
 		8B1AA3702702E43300248D0B /* TokenModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TokenModel.xcdatamodel; sourceTree = "<group>"; };
 		8B1AA3722702E7AD00248D0B /* TokenDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDB.swift; sourceTree = "<group>"; };
+		8B21AD0F27032BF900E63DBA /* PassportDataModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataModule.swift; sourceTree = "<group>"; };
+		8B21AD1227032CA500E63DBA /* PassportDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataViewController.swift; sourceTree = "<group>"; };
+		8B21AD1427032CF500E63DBA /* PassportDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataPresenter.swift; sourceTree = "<group>"; };
+		8B21AD1627032F5F00E63DBA /* PassportDataSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataSubscription.swift; sourceTree = "<group>"; };
+		8B21AD192703448000E63DBA /* PassportDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataInteractor.swift; sourceTree = "<group>"; };
 		8B3006C026B1E72700DBC3AD /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		8B3006C226B1F05100DBC3AD /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 		8B3006C426B1F24800DBC3AD /* ContractBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBody.swift; sourceTree = "<group>"; };
@@ -178,6 +188,41 @@
 			path = TokenDatabase;
 			sourceTree = "<group>";
 		};
+		8B21AD0D27032BC000E63DBA /* PassportDataModule */ = {
+			isa = PBXGroup;
+			children = (
+				8B21AD0E27032BE100E63DBA /* View */,
+				8B21AD1127032C8700E63DBA /* Presenter */,
+				8B21AD18270343D500E63DBA /* Interactor */,
+				8B21AD0F27032BF900E63DBA /* PassportDataModule.swift */,
+			);
+			path = PassportDataModule;
+			sourceTree = "<group>";
+		};
+		8B21AD0E27032BE100E63DBA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B21AD1227032CA500E63DBA /* PassportDataViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8B21AD1127032C8700E63DBA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8B21AD1427032CF500E63DBA /* PassportDataPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8B21AD18270343D500E63DBA /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8B21AD192703448000E63DBA /* PassportDataInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		8B3E112626F5197F00FBE02C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +230,7 @@
 				8B3E112E26F51A2E00FBE02C /* ModulesFactory */,
 				8B5D2F392701B40700061322 /* AuthorizationModule */,
 				8B5D2F2C270191A400061322 /* HomeModule */,
+				8B21AD0D27032BC000E63DBA /* PassportDataModule */,
 				8B3E113826F51B7F00FBE02C /* PDFPreviewModule */,
 			);
 			path = Modules;
@@ -288,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				8B4B7526270216A80071C92A /* HomeSubscription.swift */,
+				8B21AD1627032F5F00E63DBA /* PassportDataSubscription.swift */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
@@ -615,13 +662,17 @@
 			files = (
 				8B1AA3732702E7AD00248D0B /* TokenDB.swift in Sources */,
 				8B3E112D26F51A0B00FBE02C /* Presenter.swift in Sources */,
+				8B21AD1027032BF900E63DBA /* PassportDataModule.swift in Sources */,
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
 				8BCE5C742701E7CF00ED9A66 /* AuthService.swift in Sources */,
 				8B4B7527270216A80071C92A /* HomeSubscription.swift in Sources */,
 				8B3E114626F6056700FBE02C /* DateFormatterExtension.swift in Sources */,
+				8B21AD1327032CA500E63DBA /* PassportDataViewController.swift in Sources */,
 				8B5E434C26B195C400A7996B /* ContractData.swift in Sources */,
 				8B3006C526B1F24800DBC3AD /* ContractBody.swift in Sources */,
 				8B0B305A270211D1000D6755 /* NetworkServiceDependencies.swift in Sources */,
+				8B21AD1727032F5F00E63DBA /* PassportDataSubscription.swift in Sources */,
+				8B21AD1527032CF500E63DBA /* PassportDataPresenter.swift in Sources */,
 				8B4B7529270219D50071C92A /* HomeCoordinator.swift in Sources */,
 				8B5D2F332701931C00061322 /* HomeViewController.swift in Sources */,
 				8B5E431B26B1912800A7996B /* AppDelegate.swift in Sources */,
@@ -653,6 +704,7 @@
 				8B3006C326B1F05100DBC3AD /* PDFPreviewViewController.swift in Sources */,
 				8B3E113D26F51BE700FBE02C /* PDFPreviewModule.swift in Sources */,
 				8BCE5C6E2701E5E300ED9A66 /* NetworkControllerProtocol.swift in Sources */,
+				8B21AD1A2703448000E63DBA /* PassportDataInteractor.swift in Sources */,
 				8B5D2F35270193C800061322 /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

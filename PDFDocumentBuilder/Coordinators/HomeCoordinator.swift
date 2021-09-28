@@ -25,3 +25,11 @@ final class HomeCoordinator: Coordinator {
         navigationController.setViewControllers([viewController], animated: true)
     }
 }
+
+extension HomeCoordinator: PassportDataSubscription {
+    func routeToPassportData(withImage image: UIImage?) {
+        let (viewController, module) = modules.passportDataModule(image: image)
+        module.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
+    }
+}
