@@ -7,26 +7,6 @@
 
 import Foundation
 
-struct PassportData: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case name, surname, patronymic, gender, birthday, birthplace, authority
-        case seriesNumber = "series_number"
-        case issueDate = "issue_date"
-        case authorityCode = "authority_code"
-    }
-
-    let name: String
-    let surname: String
-    let patronymic: String
-    let gender: String
-    let seriesNumber: String
-    let birthday: String
-    let birthplace: String
-    let issueDate: String
-    let authority: String
-    let authorityCode: String
-}
-
 struct Patient {
     let id: UUID?
     let name: String

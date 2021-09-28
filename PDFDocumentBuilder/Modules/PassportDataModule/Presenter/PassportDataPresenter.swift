@@ -36,8 +36,6 @@ extension PassportDataPresenter: PassportDataInteractorDelegate {
     }
 
     func recognitionFailure(message: String) {
-    }
-
-    func recognitionStatus(message: String) {
+        view?.updateStatus(title: message, color: .systemRed)
     }
 }

@@ -28,5 +28,4 @@ protocol PassportDataInteraction: Interactor {
 protocol PassportDataInteractorDelegate: AnyObject {
     func passportDidRecognized(_ passportData: PassportData)
     func recognitionFailure(message: String)
-    func recognitionStatus(message: String)
 }

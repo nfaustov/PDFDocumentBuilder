@@ -44,4 +44,10 @@ extension Endpoint {
 
         return Endpoint(path: "token/refresh/", body: json)
     }
+
+    static func recognizePassport(data: String) -> Self {
+        let json: [String: Any] = ["file": data]
+
+        return Endpoint(path: "passports/recognition/", body: json)
+    }
 }

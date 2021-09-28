@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class AuthorizationService: AuthService {
+final class AuthorizationService: Authorization {
     let networkController: NetworkControllerProtocol
 
     init(networkController: NetworkControllerProtocol = NetworkController()) {

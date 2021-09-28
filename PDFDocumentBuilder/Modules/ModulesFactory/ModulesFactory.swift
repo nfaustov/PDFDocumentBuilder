@@ -43,6 +43,8 @@ final class ModulesFactory: Modules {
         let view = PassportDataViewController()
         view.passportImage = image
         let interactor = PassportDataInteractor()
+        interactor.recognitionService = dependencies.recognitionService
+        interactor.authorizationDatabase = dependencies.authorizationDatabase
         let presenter = PassportDataPresenter(view: view, interactor: interactor)
 
         return (view, presenter)
