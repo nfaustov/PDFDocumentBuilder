@@ -11,6 +11,9 @@
 		8B0B30582702116E000D6755 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B30572702116E000D6755 /* DependencyContainer.swift */; };
 		8B0B305A270211D1000D6755 /* NetworkServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B3059270211D1000D6755 /* NetworkServiceDependencies.swift */; };
 		8B0B305C270211FE000D6755 /* DatabaseServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B305B270211FE000D6755 /* DatabaseServiceDependencies.swift */; };
+		8B1AA36E2702E3D100248D0B /* TokenDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA36D2702E3D100248D0B /* TokenDatabase.swift */; };
+		8B1AA3712702E43300248D0B /* TokenModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA36F2702E43300248D0B /* TokenModel.xcdatamodeld */; };
+		8B1AA3732702E7AD00248D0B /* TokenDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA3722702E7AD00248D0B /* TokenDB.swift */; };
 		8B3006C126B1E72700DBC3AD /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C026B1E72700DBC3AD /* PDFCreator.swift */; };
 		8B3006C326B1F05100DBC3AD /* PDFPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C226B1F05100DBC3AD /* PDFPreviewViewController.swift */; };
 		8B3006C526B1F24800DBC3AD /* ContractBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C426B1F24800DBC3AD /* ContractBody.swift */; };
@@ -45,7 +48,6 @@
 		8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */; };
 		8BCE5C682701DE9600ED9A66 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */; };
 		8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C692701E02F00ED9A66 /* Endpoint.swift */; };
-		8BCE5C6C2701E42600ED9A66 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6B2701E42600ED9A66 /* Credential.swift */; };
 		8BCE5C6E2701E5E300ED9A66 /* NetworkControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */; };
 		8BCE5C702701E69C00ED9A66 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */; };
 		8BCE5C742701E7CF00ED9A66 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C732701E7CF00ED9A66 /* NetworkService.swift */; };
@@ -74,6 +76,9 @@
 		8B0B30572702116E000D6755 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		8B0B3059270211D1000D6755 /* NetworkServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceDependencies.swift; sourceTree = "<group>"; };
 		8B0B305B270211FE000D6755 /* DatabaseServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceDependencies.swift; sourceTree = "<group>"; };
+		8B1AA36D2702E3D100248D0B /* TokenDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDatabase.swift; sourceTree = "<group>"; };
+		8B1AA3702702E43300248D0B /* TokenModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TokenModel.xcdatamodel; sourceTree = "<group>"; };
+		8B1AA3722702E7AD00248D0B /* TokenDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDB.swift; sourceTree = "<group>"; };
 		8B3006C026B1E72700DBC3AD /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		8B3006C226B1F05100DBC3AD /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 		8B3006C426B1F24800DBC3AD /* ContractBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBody.swift; sourceTree = "<group>"; };
@@ -114,7 +119,6 @@
 		8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBodyController.swift; sourceTree = "<group>"; };
 		8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		8BCE5C692701E02F00ED9A66 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		8BCE5C6B2701E42600ED9A66 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerProtocol.swift; sourceTree = "<group>"; };
 		8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		8BCE5C732701E7CF00ED9A66 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -154,6 +158,24 @@
 				8B0B305B270211FE000D6755 /* DatabaseServiceDependencies.swift */,
 			);
 			path = DependencyContainer;
+			sourceTree = "<group>";
+		};
+		8B1AA36C2702E39D00248D0B /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				8B1AA3742702E7FC00248D0B /* TokenDatabase */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		8B1AA3742702E7FC00248D0B /* TokenDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				8B1AA36F2702E43300248D0B /* TokenModel.xcdatamodeld */,
+				8B1AA36D2702E3D100248D0B /* TokenDatabase.swift */,
+				8B1AA3722702E7AD00248D0B /* TokenDB.swift */,
+			);
+			path = TokenDatabase;
 			sourceTree = "<group>";
 		};
 		8B3E112626F5197F00FBE02C /* Modules */ = {
@@ -356,6 +378,7 @@
 			children = (
 				8B5E434A26B1916A00A7996B /* Application */,
 				8B3E113326F51ABD00FBE02C /* Coordinators */,
+				8B1AA36C2702E39D00248D0B /* Database */,
 				8BCE5C652701DDF000ED9A66 /* Network */,
 				8B0B305627021156000D6755 /* DependencyContainer */,
 				8B3E112626F5197F00FBE02C /* Modules */,
@@ -410,7 +433,6 @@
 			isa = PBXGroup;
 			children = (
 				8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */,
-				8BCE5C6B2701E42600ED9A66 /* Credential.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -583,6 +605,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B1AA3732702E7AD00248D0B /* TokenDB.swift in Sources */,
 				8B3E112D26F51A0B00FBE02C /* Presenter.swift in Sources */,
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
 				8BCE5C742701E7CF00ED9A66 /* NetworkService.swift in Sources */,
@@ -611,11 +634,12 @@
 				8B0B30582702116E000D6755 /* DependencyContainer.swift in Sources */,
 				8B3E114326F5210700FBE02C /* PDFPreviewCoordinator.swift in Sources */,
 				8B3E113526F51AD800FBE02C /* Coordinator.swift in Sources */,
+				8B1AA36E2702E3D100248D0B /* TokenDatabase.swift in Sources */,
 				8B3E113026F51A5000FBE02C /* Modules.swift in Sources */,
 				8B0B305527020FD6000D6755 /* AuthorizationCoordinator.swift in Sources */,
 				8B3E113726F51AF800FBE02C /* MainCoordinator.swift in Sources */,
 				8BCE5C702701E69C00ED9A66 /* NetworkController.swift in Sources */,
-				8BCE5C6C2701E42600ED9A66 /* Credential.swift in Sources */,
+				8B1AA3712702E43300248D0B /* TokenModel.xcdatamodeld in Sources */,
 				8B3E114126F51E3900FBE02C /* PDFPreviewInteractor.swift in Sources */,
 				8B3E112B26F519EA00FBE02C /* Interactor.swift in Sources */,
 				8B3006C326B1F05100DBC3AD /* PDFPreviewViewController.swift in Sources */,
@@ -948,6 +972,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8B1AA36F2702E43300248D0B /* TokenModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8B1AA3702702E43300248D0B /* TokenModel.xcdatamodel */,
+			);
+			currentVersion = 8B1AA3702702E43300248D0B /* TokenModel.xcdatamodel */;
+			path = TokenModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8B5E430F26B1912700A7996B /* Project object */;
 }

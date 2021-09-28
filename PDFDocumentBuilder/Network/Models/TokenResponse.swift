@@ -25,3 +25,10 @@ struct Token: Decodable {
     let access: String
     let refresh: String
 }
+
+extension Token {
+    init(usingEntity entity: TokenEntity) {
+        self.access = entity.access ?? ""
+        self.refresh = entity.refresh ?? ""
+    }
+}
