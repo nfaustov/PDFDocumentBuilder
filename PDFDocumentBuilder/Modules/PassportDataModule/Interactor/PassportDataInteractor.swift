@@ -15,4 +15,6 @@ final class PassportDataInteractor {
 // MARK: - PassportDataInteraction
 
 extension PassportDataInteractor: PassportDataInteraction {
+    func recognizePassport(data: String) {
+    }
 }
