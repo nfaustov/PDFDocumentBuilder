@@ -12,19 +12,17 @@ where V: PassportDataView, I: PassportDataInteraction {
     weak var coordinator: HomeCoordinator?
 
     var didFinish: (() -> Void)?
+
+    private var passportImageBase64String: String?
 }
 
 // MARK: - PassportScanPresentation
 
 extension PassportDataPresenter: PassportDataPresentation {
     func recognizePassport(image: UIImage) {
-        guard let imageData = image.jpegData(compressionQuality: 1) else {
-            print("Couldn't get jpeg data from image")
-            return
-        }
-
-        let imageDataBase64String = imageData.base64EncodedString()
-        interactor.recognizePassport(data: imageDataBase64String)
+        let imageData = image.jpegData(compressionQuality: 1)
+        passportImageBase64String = imageData?.base64EncodedString()
+        interactor.verifyToken()
     }
 }
 
@@ -35,7 +33,28 @@ extension PassportDataPresenter: PassportDataInteractorDelegate {
         view?.fillInFields(passportData: passportData)
     }
 
+    func tokenDidReceived(_ token: Token) {
+        guard let imageData = passportImageBase64String else {
+            print("Couldn't get image data")
+            return
+        }
+
+        startRecognition(imageData: imageData, token: token)
+    }
+
     func recognitionFailure(message: String) {
         view?.updateStatus(title: message, color: .systemRed)
+    }
+
+    func recognitionStatus(message: String) {
+        view?.updateStatus(title: message, color: .label)
+    }
+}
+
+// MARK: - Private extension
+
+private extension PassportDataPresenter {
+    func startRecognition(imageData: String, token: Token) {
+        interactor.recognizePassport(data: imageData, token: token)
     }
 }

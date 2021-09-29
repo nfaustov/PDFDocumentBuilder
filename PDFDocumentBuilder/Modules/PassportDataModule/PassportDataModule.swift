@@ -22,10 +22,13 @@ protocol PassportDataPresentation: AnyObject {
 }
 
 protocol PassportDataInteraction: Interactor {
-    func recognizePassport(data: String)
+    func recognizePassport(data: String, token: Token)
+    func verifyToken()
 }
 
 protocol PassportDataInteractorDelegate: AnyObject {
     func passportDidRecognized(_ passportData: PassportData)
+    func tokenDidReceived(_ token: Token)
     func recognitionFailure(message: String)
+    func recognitionStatus(message: String)
 }

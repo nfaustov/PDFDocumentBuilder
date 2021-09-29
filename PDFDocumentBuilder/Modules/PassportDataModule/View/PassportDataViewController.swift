@@ -72,7 +72,6 @@ final class PassportDataViewController: UIViewController {
         progressView.isHidden = true
         progressView.addSubview(activityIndicatorView)
         progressView.addSubview(statusLabel)
-        statusLabel.text = "Распознавание паспортных данных..."
         view.addSubview(progressView)
 
         progressView.translatesAutoresizingMaskIntoConstraints = false
