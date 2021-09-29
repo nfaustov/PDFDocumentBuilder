@@ -24,6 +24,9 @@ extension PassportDataPresenter: PassportDataPresentation {
         passportImageBase64String = imageData?.base64EncodedString()
         interactor.verifyToken()
     }
+
+    func confirmPassportData(_ passportData: PassportData) {
+    }
 }
 
 // MARK: - PassportDataInteractionDelegate
@@ -39,7 +42,7 @@ extension PassportDataPresenter: PassportDataInteractorDelegate {
             return
         }
 
-        startRecognition(imageData: imageData, token: token)
+        interactor.recognizePassport(data: imageData, token: token)
     }
 
     func recognitionFailure(message: String) {
@@ -48,13 +51,5 @@ extension PassportDataPresenter: PassportDataInteractorDelegate {
 
     func recognitionStatus(message: String) {
         view?.updateStatus(title: message, color: .label)
-    }
-}
-
-// MARK: - Private extension
-
-private extension PassportDataPresenter {
-    func startRecognition(imageData: String, token: Token) {
-        interactor.recognizePassport(data: imageData, token: token)
     }
 }

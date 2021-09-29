@@ -19,6 +19,7 @@ protocol PassportDataView: View {
 
 protocol PassportDataPresentation: AnyObject {
     func recognizePassport(image: UIImage)
+    func confirmPassportData(_ passportData: PassportData)
 }
 
 protocol PassportDataInteraction: Interactor {
