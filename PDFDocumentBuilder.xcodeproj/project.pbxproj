@@ -54,6 +54,7 @@
 		8B6ACC732703B00C00127AA6 /* RecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6ACC722703B00C00127AA6 /* RecognitionService.swift */; };
 		8B6ACC752703B47900127AA6 /* PassportDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6ACC742703B47900127AA6 /* PassportDataResponse.swift */; };
 		8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */; };
+		8BA3998A2706450A00861B8B /* servicesCatalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BA399892706450A00861B8B /* servicesCatalog.json */; };
 		8BCE5C682701DE9600ED9A66 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */; };
 		8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C692701E02F00ED9A66 /* Endpoint.swift */; };
 		8BCE5C6E2701E5E300ED9A66 /* NetworkControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */; };
@@ -133,6 +134,7 @@
 		8B6ACC722703B00C00127AA6 /* RecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionService.swift; sourceTree = "<group>"; };
 		8B6ACC742703B47900127AA6 /* PassportDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataResponse.swift; sourceTree = "<group>"; };
 		8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBodyController.swift; sourceTree = "<group>"; };
+		8BA399892706450A00861B8B /* servicesCatalog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servicesCatalog.json; sourceTree = "<group>"; };
 		8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		8BCE5C692701E02F00ED9A66 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerProtocol.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 		8B5E434A26B1916A00A7996B /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				8BA39988270644F400861B8B /* JSON */,
 				8B3E114426F6055200FBE02C /* Extensions */,
 				8B5E431A26B1912800A7996B /* AppDelegate.swift */,
 				8B5E431C26B1912800A7996B /* SceneDelegate.swift */,
@@ -487,6 +490,14 @@
 				8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */,
 			);
 			path = AuthorizationService;
+			sourceTree = "<group>";
+		};
+		8BA39988270644F400861B8B /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				8BA399892706450A00861B8B /* servicesCatalog.json */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		8BCE5C652701DDF000ED9A66 /* Network */ = {
@@ -631,6 +642,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA3998A2706450A00861B8B /* servicesCatalog.json in Resources */,
 				8B5E432726B1912900A7996B /* LaunchScreen.storyboard in Resources */,
 				8B5E432426B1912900A7996B /* Assets.xcassets in Resources */,
 			);
