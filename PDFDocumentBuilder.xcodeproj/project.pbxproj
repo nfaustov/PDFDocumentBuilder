@@ -14,6 +14,10 @@
 		8B1AA36E2702E3D100248D0B /* TokenDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA36D2702E3D100248D0B /* TokenDatabase.swift */; };
 		8B1AA3712702E43300248D0B /* TokenModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA36F2702E43300248D0B /* TokenModel.xcdatamodeld */; };
 		8B1AA3732702E7AD00248D0B /* TokenDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA3722702E7AD00248D0B /* TokenDB.swift */; };
+		8B1BCD2D27065107003F6B92 /* ServicesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BCD2C27065107003F6B92 /* ServicesModule.swift */; };
+		8B1BCD2F2706519D003F6B92 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BCD2E2706519D003F6B92 /* ServicesViewController.swift */; };
+		8B1BCD3127065209003F6B92 /* ServicesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BCD3027065209003F6B92 /* ServicesPresenter.swift */; };
+		8B1BCD35270653F4003F6B92 /* ServicesSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BCD34270653F4003F6B92 /* ServicesSubscription.swift */; };
 		8B21AD1027032BF900E63DBA /* PassportDataModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD0F27032BF900E63DBA /* PassportDataModule.swift */; };
 		8B21AD1327032CA500E63DBA /* PassportDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD1227032CA500E63DBA /* PassportDataViewController.swift */; };
 		8B21AD1527032CF500E63DBA /* PassportDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD1427032CF500E63DBA /* PassportDataPresenter.swift */; };
@@ -88,6 +92,10 @@
 		8B1AA36D2702E3D100248D0B /* TokenDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDatabase.swift; sourceTree = "<group>"; };
 		8B1AA3702702E43300248D0B /* TokenModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TokenModel.xcdatamodel; sourceTree = "<group>"; };
 		8B1AA3722702E7AD00248D0B /* TokenDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDB.swift; sourceTree = "<group>"; };
+		8B1BCD2C27065107003F6B92 /* ServicesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModule.swift; sourceTree = "<group>"; };
+		8B1BCD2E2706519D003F6B92 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		8B1BCD3027065209003F6B92 /* ServicesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesPresenter.swift; sourceTree = "<group>"; };
+		8B1BCD34270653F4003F6B92 /* ServicesSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesSubscription.swift; sourceTree = "<group>"; };
 		8B21AD0F27032BF900E63DBA /* PassportDataModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataModule.swift; sourceTree = "<group>"; };
 		8B21AD1227032CA500E63DBA /* PassportDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataViewController.swift; sourceTree = "<group>"; };
 		8B21AD1427032CF500E63DBA /* PassportDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataPresenter.swift; sourceTree = "<group>"; };
@@ -196,6 +204,32 @@
 			path = TokenDatabase;
 			sourceTree = "<group>";
 		};
+		8B1BCD29270650D2003F6B92 /* ServicesModule */ = {
+			isa = PBXGroup;
+			children = (
+				8B1BCD2B270650F5003F6B92 /* View */,
+				8B1BCD2A270650EC003F6B92 /* Presenter */,
+				8B1BCD2C27065107003F6B92 /* ServicesModule.swift */,
+			);
+			path = ServicesModule;
+			sourceTree = "<group>";
+		};
+		8B1BCD2A270650EC003F6B92 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8B1BCD3027065209003F6B92 /* ServicesPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8B1BCD2B270650F5003F6B92 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B1BCD2E2706519D003F6B92 /* ServicesViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8B21AD0D27032BC000E63DBA /* PassportDataModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +273,7 @@
 				8B5D2F392701B40700061322 /* AuthorizationModule */,
 				8B5D2F2C270191A400061322 /* HomeModule */,
 				8B21AD0D27032BC000E63DBA /* PassportDataModule */,
+				8B1BCD29270650D2003F6B92 /* ServicesModule */,
 				8B3E113826F51B7F00FBE02C /* PDFPreviewModule */,
 			);
 			path = Modules;
@@ -343,6 +378,7 @@
 			children = (
 				8B4B7526270216A80071C92A /* HomeSubscription.swift */,
 				8B21AD1627032F5F00E63DBA /* PassportDataSubscription.swift */,
+				8B1BCD34270653F4003F6B92 /* ServicesSubscription.swift */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
@@ -696,10 +732,12 @@
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
 				8BCE5C742701E7CF00ED9A66 /* Authorization.swift in Sources */,
 				8B6ACC732703B00C00127AA6 /* RecognitionService.swift in Sources */,
+				8B1BCD2D27065107003F6B92 /* ServicesModule.swift in Sources */,
 				8B4B7527270216A80071C92A /* HomeSubscription.swift in Sources */,
 				8B3E114626F6056700FBE02C /* DateFormatterExtension.swift in Sources */,
 				8B21AD1327032CA500E63DBA /* PassportDataViewController.swift in Sources */,
 				8B5E434C26B195C400A7996B /* ContractData.swift in Sources */,
+				8B1BCD35270653F4003F6B92 /* ServicesSubscription.swift in Sources */,
 				8B3006C526B1F24800DBC3AD /* ContractBody.swift in Sources */,
 				8B0B305A270211D1000D6755 /* NetworkServiceDependencies.swift in Sources */,
 				8B21AD1727032F5F00E63DBA /* PassportDataSubscription.swift in Sources */,
@@ -712,6 +750,7 @@
 				8B6ACC712703AF9C00127AA6 /* Recognition.swift in Sources */,
 				8B3006C126B1E72700DBC3AD /* PDFCreator.swift in Sources */,
 				8B5D2F3B2701B45F00061322 /* AuthorizationModule.swift in Sources */,
+				8B1BCD2F2706519D003F6B92 /* ServicesViewController.swift in Sources */,
 				8B5D2F2E270191D800061322 /* HomeModule.swift in Sources */,
 				8B3E112926F519C300FBE02C /* View.swift in Sources */,
 				8BCE5C682701DE9600ED9A66 /* TokenResponse.swift in Sources */,
@@ -725,6 +764,7 @@
 				8B0B30582702116E000D6755 /* DependencyContainer.swift in Sources */,
 				8B3E114326F5210700FBE02C /* PDFPreviewCoordinator.swift in Sources */,
 				8B3E113526F51AD800FBE02C /* Coordinator.swift in Sources */,
+				8B1BCD3127065209003F6B92 /* ServicesPresenter.swift in Sources */,
 				8B1AA36E2702E3D100248D0B /* TokenDatabase.swift in Sources */,
 				8B3E113026F51A5000FBE02C /* Modules.swift in Sources */,
 				8B0B305527020FD6000D6755 /* AuthorizationCoordinator.swift in Sources */,

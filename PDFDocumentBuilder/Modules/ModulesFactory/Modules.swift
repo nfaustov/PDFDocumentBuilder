@@ -12,4 +12,5 @@ protocol Modules {
     func authorizationModule() -> (UIViewController, AuthorizationModule)
     func homeModule() -> (UIViewController, HomeModule)
     func passportDataModule(image: UIImage?) -> (UIViewController, PassportDataModule)
+    func servicesModule(passportData: PassportData) -> (UIViewController, ServicesModule)
 }

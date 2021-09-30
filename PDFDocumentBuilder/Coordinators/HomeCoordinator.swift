@@ -33,3 +33,11 @@ extension HomeCoordinator: PassportDataSubscription {
         navigationController.pushViewController(viewController, animated: true)
     }
 }
+
+extension HomeCoordinator: ServicesSubscription {
+    func routeToServices(passportData: PassportData) {
+        let (viewController, module) = modules.servicesModule(passportData: passportData)
+        module.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
+    }
+}
