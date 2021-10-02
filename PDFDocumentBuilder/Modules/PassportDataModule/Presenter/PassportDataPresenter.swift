@@ -9,7 +9,7 @@ import UIKit
 
 final class PassportDataPresenter<V, I>: PresenterInteractor<V, I>, PassportDataModule
 where V: PassportDataView, I: PassportDataInteraction {
-    weak var coordinator: HomeCoordinator?
+    weak var coordinator: ServicesSubscription?
 
     var didFinish: (() -> Void)?
 
@@ -26,6 +26,7 @@ extension PassportDataPresenter: PassportDataPresentation {
     }
 
     func confirmPassportData(_ passportData: PassportData) {
+        coordinator?.routeToServices(passportData: passportData)
     }
 }
 
@@ -33,7 +34,7 @@ extension PassportDataPresenter: PassportDataPresentation {
 
 extension PassportDataPresenter: PassportDataInteractorDelegate {
     func passportDidRecognized(_ passportData: PassportData) {
-        view?.fillInFields(passportData: passportData)
+        view?.fillInFields(recognizedData: passportData)
     }
 
     func tokenDidReceived(_ token: Token) {

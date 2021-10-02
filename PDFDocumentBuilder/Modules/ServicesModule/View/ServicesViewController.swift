@@ -12,6 +12,12 @@ final class ServicesViewController: UIViewController {
     var presenter: PresenterType!
 
     var passportData: PassportData?
+
+    private let priceList = PriceList()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }
 
 // MARK: - ServicesView

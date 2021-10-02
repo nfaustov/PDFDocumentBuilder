@@ -8,13 +8,13 @@
 import UIKit
 
 protocol PassportDataModule: AnyObject {
-    var coordinator: HomeCoordinator? { get set }
+    var coordinator: ServicesSubscription? { get set }
     var didFinish: (() -> Void)? { get set }
 }
 
 protocol PassportDataView: View {
     func updateStatus(title: String, color: UIColor)
-    func fillInFields(passportData: PassportData)
+    func fillInFields(recognizedData: PassportData)
 }
 
 protocol PassportDataPresentation: AnyObject {

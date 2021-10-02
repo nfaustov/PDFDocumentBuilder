@@ -11,6 +11,7 @@
 		8B0B30582702116E000D6755 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B30572702116E000D6755 /* DependencyContainer.swift */; };
 		8B0B305A270211D1000D6755 /* NetworkServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B3059270211D1000D6755 /* NetworkServiceDependencies.swift */; };
 		8B0B305C270211FE000D6755 /* DatabaseServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B305B270211FE000D6755 /* DatabaseServiceDependencies.swift */; };
+		8B11DD0B27090B6F0035BC49 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11DD0A27090B6F0035BC49 /* Bundle-Decodable.swift */; };
 		8B1AA36E2702E3D100248D0B /* TokenDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA36D2702E3D100248D0B /* TokenDatabase.swift */; };
 		8B1AA3712702E43300248D0B /* TokenModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA36F2702E43300248D0B /* TokenModel.xcdatamodeld */; };
 		8B1AA3732702E7AD00248D0B /* TokenDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1AA3722702E7AD00248D0B /* TokenDB.swift */; };
@@ -89,6 +90,7 @@
 		8B0B30572702116E000D6755 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		8B0B3059270211D1000D6755 /* NetworkServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceDependencies.swift; sourceTree = "<group>"; };
 		8B0B305B270211FE000D6755 /* DatabaseServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceDependencies.swift; sourceTree = "<group>"; };
+		8B11DD0A27090B6F0035BC49 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		8B1AA36D2702E3D100248D0B /* TokenDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDatabase.swift; sourceTree = "<group>"; };
 		8B1AA3702702E43300248D0B /* TokenModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TokenModel.xcdatamodel; sourceTree = "<group>"; };
 		8B1AA3722702E7AD00248D0B /* TokenDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDB.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				8B3E114526F6056700FBE02C /* DateFormatterExtension.swift */,
+				8B11DD0A27090B6F0035BC49 /* Bundle-Decodable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -730,6 +733,7 @@
 				8B6ACC752703B47900127AA6 /* PassportDataResponse.swift in Sources */,
 				8B21AD1027032BF900E63DBA /* PassportDataModule.swift in Sources */,
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
+				8B11DD0B27090B6F0035BC49 /* Bundle-Decodable.swift in Sources */,
 				8BCE5C742701E7CF00ED9A66 /* Authorization.swift in Sources */,
 				8B6ACC732703B00C00127AA6 /* RecognitionService.swift in Sources */,
 				8B1BCD2D27065107003F6B92 /* ServicesModule.swift in Sources */,

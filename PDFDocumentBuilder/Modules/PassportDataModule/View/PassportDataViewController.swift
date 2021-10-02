@@ -12,7 +12,6 @@ final class PassportDataViewController: UIViewController {
     var presenter: PresenterType!
 
     var passportImage: UIImage?
-    var recognizedData: PassportData?
 
     private let nameTextField = UITextField()
     private let surnameTextField = UITextField()
@@ -133,11 +132,20 @@ final class PassportDataViewController: UIViewController {
     }
 
     @objc private func confirmPassportData() {
-        guard let recognizedData = recognizedData else {
-            return
-        }
+        let passport = PassportData(
+            name: nameTextField.text ?? "",
+            surname: surnameTextField.text ?? "",
+            patronymic: patronymicTextField.text ?? "",
+            gender: genderTextField.text ?? "",
+            seriesNumber: seriesNumberTextField.text ?? "",
+            birthday: birthdayTextField.text ?? "",
+            birthplace: birthplaceTextField.text ?? "",
+            issueDate: issueDateTextField.text ?? "",
+            authority: authorityTextField.text ?? "",
+            authorityCode: authorityCodeTextField.text ?? ""
+        )
 
-        presenter.confirmPassportData(recognizedData)
+        presenter.confirmPassportData(passport)
     }
 }
 
@@ -149,21 +157,19 @@ extension PassportDataViewController: PassportDataView {
         statusLabel.textColor = color
     }
 
-    func fillInFields(passportData: PassportData) {
+    func fillInFields(recognizedData: PassportData) {
         activityIndicatorView.stopAnimating()
         progressView.isHidden = true
 
-        nameTextField.text = passportData.name
-        surnameTextField.text = passportData.surname
-        patronymicTextField.text = passportData.patronymic
-        genderTextField.text = passportData.gender
-        birthdayTextField.text = passportData.birthday
-        birthplaceTextField.text = passportData.birthplace
-        seriesNumberTextField.text = passportData.seriesNumber
-        issueDateTextField.text = passportData.issueDate
-        authorityTextField.text = passportData.authority
-        authorityCodeTextField.text = passportData.authorityCode
-
-        recognizedData = passportData
+        nameTextField.text = recognizedData.name
+        surnameTextField.text = recognizedData.surname
+        patronymicTextField.text = recognizedData.patronymic
+        genderTextField.text = recognizedData.gender
+        birthdayTextField.text = recognizedData.birthday
+        birthplaceTextField.text = recognizedData.birthplace
+        seriesNumberTextField.text = recognizedData.seriesNumber
+        issueDateTextField.text = recognizedData.issueDate
+        authorityTextField.text = recognizedData.authority
+        authorityCodeTextField.text = recognizedData.authorityCode
     }
 }
