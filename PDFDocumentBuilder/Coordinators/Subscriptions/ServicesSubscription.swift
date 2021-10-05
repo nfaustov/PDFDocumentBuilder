@@ -6,5 +6,5 @@
 //
 
 protocol ServicesSubscription: AnyObject {
-    func routeToServices(passportData: PassportData)
+    func routeToServices()
 }

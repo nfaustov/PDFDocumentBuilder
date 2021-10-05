@@ -34,9 +34,17 @@ extension HomeCoordinator: PassportDataSubscription {
     }
 }
 
+extension HomeCoordinator: BillSubscription {
+    func routeToBill(patient: Patient) {
+        let (viewController, module) = modules.billModule(patient: patient)
+        module.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
+    }
+}
+
 extension HomeCoordinator: ServicesSubscription {
-    func routeToServices(passportData: PassportData) {
-        let (viewController, module) = modules.servicesModule(passportData: passportData)
+    func routeToServices() {
+        let (viewController, module) = modules.servicesModule()
         module.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }

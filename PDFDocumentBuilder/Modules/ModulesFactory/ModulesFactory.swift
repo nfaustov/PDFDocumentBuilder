@@ -51,9 +51,16 @@ final class ModulesFactory: Modules {
         return (view, presenter)
     }
 
-    func servicesModule(passportData: PassportData) -> (UIViewController, ServicesModule) {
+    func billModule(patient: Patient) -> (UIViewController, BillModule) {
+        let view = BillViewController()
+        view.patient = patient
+        let presenter = BillPresenter(view: view)
+
+        return (view, presenter)
+    }
+
+    func servicesModule() -> (UIViewController, ServicesModule) {
         let view = ServicesViewController()
-        view.passportData = passportData
         let presenter = ServicesPresenter(view: view)
 
         return (view, presenter)

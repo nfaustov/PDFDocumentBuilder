@@ -15,8 +15,6 @@ final class ServicesViewController: UIViewController {
         case main
     }
 
-    var passportData: PassportData?
-
     private let priceList = PriceList()
     private var selectedServices = [Service]()
 
