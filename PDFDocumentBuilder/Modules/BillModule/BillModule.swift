@@ -14,4 +14,5 @@ protocol BillView: View {
 }
 
 protocol BillPresentation: AnyObject {
+    func addServices()
 }

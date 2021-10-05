@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PassportDataModule: AnyObject {
-    var coordinator: ServicesSubscription? { get set }
+    var coordinator: BillSubscription? { get set }
     var didFinish: (() -> Void)? { get set }
 }
 

@@ -14,4 +14,7 @@ final class BillPresenter<V>: Presenter<V>, BillModule where V: BillView {
 // MARK: - BillPresentation
 
 extension BillPresenter: BillPresentation {
+    func addServices() {
+        coordinator?.routeToServices()
+    }
 }

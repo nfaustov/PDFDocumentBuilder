@@ -9,7 +9,7 @@ import UIKit
 
 final class PassportDataPresenter<V, I>: PresenterInteractor<V, I>, PassportDataModule
 where V: PassportDataView, I: PassportDataInteraction {
-    weak var coordinator: ServicesSubscription?
+    weak var coordinator: BillSubscription?
 
     var didFinish: (() -> Void)?
 
@@ -26,7 +26,8 @@ extension PassportDataPresenter: PassportDataPresentation {
     }
 
     func confirmPassportData(_ passportData: PassportData) {
-        coordinator?.routeToServices(passportData: passportData)
+        let patient = Patient(passport: passportData)
+        coordinator?.routeToBill(patient: patient)
     }
 }
 
