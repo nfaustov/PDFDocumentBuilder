@@ -127,7 +127,9 @@ struct ContractBodyController {
 
     func enumeratedServices() -> String {
         var enumeratedServices = services.map { $0.title }.reduce("") { $0 + ", " + $1 }
-        enumeratedServices.removeFirst()
+        if !enumeratedServices.isEmpty {
+            enumeratedServices.removeFirst()
+        }
 
         return enumeratedServices
     }

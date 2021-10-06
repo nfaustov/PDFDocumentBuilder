@@ -15,8 +15,8 @@ final class BillViewController: UIViewController {
 
     private let nameLabel = UILabel()
     private let clearButton = UIButton(type: .custom)
-    private let servicesCountView = ServicesCountView()
     private let confirmButton = UIButton(type: .custom)
+    private var servicesCountView: ServicesCountView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,10 @@ final class BillViewController: UIViewController {
         clearButton.layer.cornerRadius = 10
         clearButton.addTarget(self, action: #selector(clearServices), for: .touchUpInside)
 
+        servicesCountView = ServicesCountView(addServiceAction: { [presenter] in
+            presenter?.addServices()
+        })
+
         confirmButton.setTitle("Сформировать договор", for: .normal)
         confirmButton.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         confirmButton.setTitleColor(.white, for: .normal)
@@ -46,10 +50,12 @@ final class BillViewController: UIViewController {
         confirmButton.layer.cornerRadius = 10
         confirmButton.addTarget(self, action: #selector(createContract), for: .touchUpInside)
 
-        [nameLabel, clearButton, servicesCountView, confirmButton].forEach { subview in
-            view.addSubview(subview)
-            subview.translatesAutoresizingMaskIntoConstraints = false
-        }
+        [nameLabel, clearButton, servicesCountView, confirmButton]
+            .compactMap { $0 }
+            .forEach { subview in
+                view.addSubview(subview)
+                subview.translatesAutoresizingMaskIntoConstraints = false
+            }
 
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),

@@ -22,9 +22,11 @@ final class ServicesCountView: UIView {
         }
     }
 
+    var addServiceAction: (() -> Void)?
+
     private var discount: Double = .zero
 
-    private var addServiceAction: [ServiceCountAction] = [.addServiceAction]
+    private var serviceAction: [ServiceCountAction] = [.addServiceAction]
     private var servicesTotal: [ServiceCountTotal] = [.placeholder]
 
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>!
@@ -32,8 +34,9 @@ final class ServicesCountView: UIView {
 
     private let servicesHeaderElementKind = "services-section-header"
 
-    init() {
+    init(addServiceAction: @escaping () -> Void) {
         super.init(frame: .zero)
+        self.addServiceAction = addServiceAction
 
         backgroundColor = .systemBackground
         layer.masksToBounds = true
@@ -176,7 +179,7 @@ final class ServicesCountView: UIView {
         var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
         snapshot.appendSections([.selected, .addService, .total])
         snapshot.appendItems(services, toSection: .selected)
-        snapshot.appendItems(addServiceAction, toSection: .addService)
+        snapshot.appendItems(serviceAction, toSection: .addService)
         snapshot.appendItems(servicesTotal, toSection: .total)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
@@ -185,4 +188,10 @@ final class ServicesCountView: UIView {
 // MARK: - UICollectionViewDelegate
 
 extension ServicesCountView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let dataSource = dataSource,
+           dataSource.itemIdentifier(for: indexPath) as? ServiceCountAction != nil {
+            addServiceAction?()
+        }
+    }
 }
