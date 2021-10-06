@@ -6,7 +6,7 @@
 //
 
 final class BillPresenter<V>: Presenter<V>, BillModule where V: BillView {
-    weak var coordinator: ServicesSubscription?
+    weak var coordinator: (ServicesSubscription & PDFPreviewSubscription)?
 
     var didFinish: (() -> Void)?
 }
@@ -16,5 +16,10 @@ final class BillPresenter<V>: Presenter<V>, BillModule where V: BillView {
 extension BillPresenter: BillPresentation {
     func addServices() {
         coordinator?.routeToServices()
+    }
+
+    func createContract(patient: Patient, services: [Service]) {
+        let contractBody = ContractBody(patient: patient, services: services)
+        coordinator?.routeToPDFPreview(documentData: contractBody)
     }
 }

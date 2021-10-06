@@ -14,8 +14,9 @@ final class ModulesFactory: Modules {
         self.dependencies = dependencies
     }
 
-    func pdfPreviewModule() -> (UIViewController, PDFPreviewModule) {
+    func pdfPreviewModule(documentData: ContractBody) -> (UIViewController, PDFPreviewModule) {
         let view = PDFPreviewViewController()
+        view.documentData = documentData
         let interactor = PDFPreviewInteractor()
         let presenter = PDFPreviewPresenter(view: view, interactor: interactor)
 

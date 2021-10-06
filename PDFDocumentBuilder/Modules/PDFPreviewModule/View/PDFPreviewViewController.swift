@@ -11,7 +11,8 @@ final class PDFPreviewViewController: UIViewController {
     typealias PresenterType = PDFPreviewPresentation
     var presenter: PresenterType!
 
-    var documentData: Data?
+    var documentData: ContractBody?
+
     private var pdfView: PDFView!
 
     override func viewDidLoad() {
@@ -19,10 +20,11 @@ final class PDFPreviewViewController: UIViewController {
 
         view.backgroundColor = .systemBackground
 
-        guard let data = documentData else { return }
+        guard let documentData = documentData else { return }
 
+        let pdfCreator = PDFCreator(body: documentData)
         pdfView = PDFView(frame: view.frame)
-        pdfView.document = PDFDocument(data: data)
+        pdfView.document = PDFDocument(data: pdfCreator.createContract())
         pdfView.autoScales = true
         view.addSubview(pdfView)
     }

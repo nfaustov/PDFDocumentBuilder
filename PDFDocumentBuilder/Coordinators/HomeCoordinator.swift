@@ -49,3 +49,11 @@ extension HomeCoordinator: ServicesSubscription {
         navigationController.pushViewController(viewController, animated: true)
     }
 }
+
+extension HomeCoordinator: PDFPreviewSubscription {
+    func routeToPDFPreview(documentData: ContractBody) {
+        let (viewController, module) = modules.pdfPreviewModule(documentData: documentData)
+        module.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
+    }
+}

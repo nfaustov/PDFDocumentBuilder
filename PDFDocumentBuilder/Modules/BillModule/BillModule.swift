@@ -6,7 +6,7 @@
 //
 
 protocol BillModule: AnyObject {
-    var coordinator: ServicesSubscription? { get set }
+    var coordinator: (ServicesSubscription & PDFPreviewSubscription)? { get set }
     var didFinish: (() -> Void)? { get set }
 }
 
@@ -15,4 +15,5 @@ protocol BillView: View {
 
 protocol BillPresentation: AnyObject {
     func addServices()
+    func createContract(patient: Patient, services: [Service])
 }

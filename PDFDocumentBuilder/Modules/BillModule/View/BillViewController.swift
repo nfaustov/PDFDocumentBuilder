@@ -78,6 +78,9 @@ final class BillViewController: UIViewController {
     }
 
     @objc private func createContract() {
+        guard let patient = patient else { return }
+
+        presenter.createContract(patient: patient, services: servicesCountView.services)
     }
 }
 
