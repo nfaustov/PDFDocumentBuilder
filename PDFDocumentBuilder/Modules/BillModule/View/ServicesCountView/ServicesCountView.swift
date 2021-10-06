@@ -14,11 +14,19 @@ final class ServicesCountView: UIView {
         case total
     }
 
-    var services = [Service(title: " ", price: 0)] {
+    var services = [Service]() {
         didSet {
-            let preliminaryTotal = services.map { $0.price }.reduce(0, +)
+            var preliminaryTotal: Double
+
+            if !services.isEmpty {
+                preliminaryTotal = services.map { $0.price }.reduce(0, +)
+            } else {
+                preliminaryTotal = 0
+            }
+
             let total = ServiceCountTotal(preliminaryTotal: preliminaryTotal, discount: discount)
             servicesTotal = [total]
+            snapshot()
         }
     }
 
@@ -51,6 +59,11 @@ final class ServicesCountView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func clearServices() {
+        services.removeAll()
+        initialSnapshot()
     }
 
     private func configureHierarchy() {
@@ -87,7 +100,7 @@ final class ServicesCountView: UIView {
 
             let itemSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .fractionalHeight(1)
+                heightDimension: .estimated(40)
             )
             let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
             let layoutGroup = NSCollectionLayoutGroup.vertical(
@@ -123,7 +136,7 @@ final class ServicesCountView: UIView {
         case .selected:
             return NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(CGFloat(services.count) * 40)
+                heightDimension: .absolute(CGFloat(max(services.count, 1)) * 40)
             )
         case .addService:
             return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
@@ -176,6 +189,17 @@ final class ServicesCountView: UIView {
     }
 
     private func initialSnapshot() {
+        let service = Service(title: " ", price: 0)
+
+        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+        snapshot.appendSections([.selected, .addService, .total])
+        snapshot.appendItems([service], toSection: .selected)
+        snapshot.appendItems(serviceAction, toSection: .addService)
+        snapshot.appendItems(servicesTotal, toSection: .total)
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+
+    private func snapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
         snapshot.appendSections([.selected, .addService, .total])
         snapshot.appendItems(services, toSection: .selected)

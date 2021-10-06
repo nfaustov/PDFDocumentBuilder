@@ -80,7 +80,7 @@ final class BillViewController: UIViewController {
     }
 
     @objc private func clearServices() {
-        servicesCountView.services = []
+        servicesCountView.clearServices()
     }
 
     @objc private func createContract() {
@@ -93,4 +93,7 @@ final class BillViewController: UIViewController {
 // MARK: - BillView
 
 extension BillViewController: BillView {
+    func updateSelectedServices(_ services: [Service]) {
+        servicesCountView.services.append(contentsOf: services)
+    }
 }

@@ -43,9 +43,9 @@ extension HomeCoordinator: BillSubscription {
 }
 
 extension HomeCoordinator: ServicesSubscription {
-    func routeToServices() {
+    func routeToServices(didFinish: @escaping ([Service]) -> Void) {
         let (viewController, module) = modules.servicesModule()
-        module.coordinator = self
+        module.didFinish = didFinish
         navigationController.pushViewController(viewController, animated: true)
     }
 }

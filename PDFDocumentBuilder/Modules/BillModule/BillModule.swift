@@ -11,6 +11,7 @@ protocol BillModule: AnyObject {
 }
 
 protocol BillView: View {
+    func updateSelectedServices(_ services: [Service])
 }
 
 protocol BillPresentation: AnyObject {

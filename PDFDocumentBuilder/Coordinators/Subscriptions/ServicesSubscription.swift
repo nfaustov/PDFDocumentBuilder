@@ -6,5 +6,5 @@
 //
 
 protocol ServicesSubscription: AnyObject {
-    func routeToServices()
+    func routeToServices(didFinish: @escaping ([Service]) -> Void)
 }

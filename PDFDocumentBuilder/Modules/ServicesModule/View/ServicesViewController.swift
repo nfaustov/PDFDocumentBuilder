@@ -30,6 +30,12 @@ final class ServicesViewController: UIViewController {
         performQuery(with: nil)
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        presenter.didFinish(with: selectedServices)
+    }
+
     private func configureHierarchy() {
         view.backgroundColor = .systemBackground
 

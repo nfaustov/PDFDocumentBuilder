@@ -6,12 +6,13 @@
 //
 
 final class ServicesPresenter<V>: Presenter<V>, ServicesModule where V: ServicesView {
-    weak var coordinator: HomeCoordinator?
-
-    var didFinish: (() -> Void)?
+    var didFinish: (([Service]) -> Void)?
 }
 
 // MARK: - ServicesPresentation
 
 extension ServicesPresenter: ServicesPresentation {
+    func didFinish(with services: [Service]) {
+        didFinish?(services)
+    }
 }

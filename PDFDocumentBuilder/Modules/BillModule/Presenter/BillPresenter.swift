@@ -15,7 +15,9 @@ final class BillPresenter<V>: Presenter<V>, BillModule where V: BillView {
 
 extension BillPresenter: BillPresentation {
     func addServices() {
-        coordinator?.routeToServices()
+        coordinator?.routeToServices { services in
+            self.view?.updateSelectedServices(services)
+        }
     }
 
     func createContract(patient: Patient, services: [Service]) {

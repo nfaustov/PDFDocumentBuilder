@@ -6,12 +6,12 @@
 //
 
 protocol ServicesModule: AnyObject {
-    var coordinator: HomeCoordinator? { get set }
-    var didFinish: (() -> Void)? { get set }
+    var didFinish: (([Service]) -> Void)? { get set }
 }
 
 protocol ServicesView: View {
 }
 
 protocol ServicesPresentation: AnyObject {
+    func didFinish(with services: [Service])
 }
