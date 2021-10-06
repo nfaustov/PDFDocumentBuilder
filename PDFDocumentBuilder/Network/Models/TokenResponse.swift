@@ -25,25 +25,3 @@ struct Token: Decodable {
     let access: String
     let refresh: String
 }
-
-struct TokenVerification: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case detail
-        case errorMessage = "error_message"
-    }
-
-    let detail: TokenValidation?
-    let errorMessage: String?
-}
-
-struct TokenValidation: Decodable {
-    let valid: Bool
-    let type: String
-}
-
-extension Token {
-    init(usingEntity entity: TokenEntity) {
-        self.access = entity.access ?? ""
-        self.refresh = entity.refresh ?? ""
-    }
-}

@@ -12,6 +12,4 @@ protocol Authorization: AnyObject {
     var networkController: NetworkControllerProtocol { get }
 
     func getToken() -> AnyPublisher<TokenResponse, Error>
-    func verifyToken(token: Token) -> AnyPublisher<TokenVerification, Error>
-    func refreshToken(token: Token) -> AnyPublisher<TokenResponse, Error>
 }

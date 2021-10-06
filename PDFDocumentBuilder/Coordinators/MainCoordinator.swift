@@ -19,7 +19,7 @@ final class MainCoordinator: Coordinator {
     }
 
     func start() {
-        authorizationCoordinator()
+        homeCoordinator()
     }
 
     func childDidFinish(_ child: Coordinator?) {
@@ -28,16 +28,7 @@ final class MainCoordinator: Coordinator {
         }
     }
 
-    private func authorizationCoordinator() {
-        let child = AuthorizationCoordinator(navigationController: navigationController, modules: modules)
-        child.parentCoordinator = self
-        childCoordinators.append(child)
-        child.start()
-    }
-}
-
-extension MainCoordinator {
-    func routeToHome() {
+    func homeCoordinator() {
         let child = HomeCoordinator(navigationController: navigationController, modules: modules)
         child.parentCoordinator = self
         childCoordinators.append(child)

@@ -5,11 +5,8 @@
 //  Created by Nikolai Faustov on 27.09.2021.
 //
 
-final class DependencyContainer: NetworkServiceDependencies, DatabaseServiceDependencies {
+final class DependencyContainer: NetworkServiceDependencies {
     // MARK: - NetworkService
     lazy var authorizationService: Authorization = AuthorizationService()
     lazy var recognitionService: Recognition = RecognitionService()
-
-    // MARK: - DatabaseService
-    lazy var authorizationDatabase: TokenDB = TokenDatabase()
 }

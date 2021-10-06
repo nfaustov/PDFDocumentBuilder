@@ -24,7 +24,7 @@ protocol PassportDataPresentation: AnyObject {
 
 protocol PassportDataInteraction: Interactor {
     func recognizePassport(data: String, token: Token)
-    func verifyToken()
+    func getToken()
 }
 
 protocol PassportDataInteractorDelegate: AnyObject {

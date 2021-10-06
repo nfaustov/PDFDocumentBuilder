@@ -13,7 +13,6 @@ final class PassportDataInteractor {
     weak var delegate: Delegate?
 
     var recognitionService: Recognition?
-    var authorizationDatabase: TokenDB?
     var authorizationService: Authorization?
 
     private var subscriptions = Set<AnyCancellable>()
@@ -44,76 +43,24 @@ extension PassportDataInteractor: PassportDataInteraction {
             .store(in: &subscriptions)
     }
 
-    func verifyToken() {
-        if let tokenEntity = authorizationDatabase?.getToken() {
-            delegate?.recognitionStatus(message: "Верификация...")
+    func getToken() {
+        delegate?.recognitionStatus(message: "Авторизация...")
 
-            let token = Token(usingEntity: tokenEntity)
-            authorizationService?.verifyToken(token: token)
-                .receive(on: RunLoop.main)
-                .sink(receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error):
-                        print("Couldn't verify token: \(error.localizedDescription)")
-                    case .finished: break
-                    }
-                }, receiveValue: { [delegate, refreshToken] verification in
-                    if let valid = verification.detail?.valid {
-                        valid ? delegate?.tokenDidReceived(token) : refreshToken(token)
-                    } else if let errorMessage = verification.errorMessage {
-                        delegate?.recognitionFailure(message: errorMessage)
-                    } else {
-                        delegate?.recognitionFailure(message: "Ошибка запроса при верификации токена")
-                    }
-                })
-                .store(in: &subscriptions)
-        } else {
-            delegate?.recognitionStatus(message: "Обновление...")
-
-            authorizationService?.getToken()
-                .receive(on: RunLoop.main)
-                .sink(receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error):
-                        print("Couldn't get token: \(error.localizedDescription)")
-                    case .finished: break
-                    }
-                }, receiveValue: { [delegate, authorizationDatabase] response in
-                    if let token = response.token {
-                        authorizationDatabase?.saveToken(token: token)
-                        delegate?.tokenDidReceived(token)
-                    } else if let errorMessage = response.errorMessage {
-                        delegate?.recognitionFailure(message: errorMessage)
-                    } else {
-                        delegate?.recognitionFailure(message: "Ошибка запроса токена")
-                    }
-                })
-                .store(in: &subscriptions)
-        }
-    }
-}
-
-// MARK: - Private extension
-
-private extension PassportDataInteractor {
-    func refreshToken(token: Token) {
-        delegate?.recognitionStatus(message: "Обновление...")
-
-        authorizationService?.refreshToken(token: token)
+        authorizationService?.getToken()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
-                    print("Couldn't refresh token: \(error.localizedDescription)")
+                    print("Couldn't get token: \(error.localizedDescription)")
                 case .finished: break
                 }
-            }, receiveValue: { [delegate, authorizationDatabase] response in
+            }, receiveValue: { [delegate] response in
                 if let token = response.token {
-                    authorizationDatabase?.saveToken(token: token)
+                    delegate?.tokenDidReceived(token)
                 } else if let errorMessage = response.errorMessage {
                     delegate?.recognitionFailure(message: errorMessage)
                 } else {
-                    delegate?.recognitionFailure(message: "Ошибка за проса при обновлении токена")
+                    delegate?.recognitionFailure(message: "Ошибка запроса токена")
                 }
             })
             .store(in: &subscriptions)

@@ -22,7 +22,7 @@ extension PassportDataPresenter: PassportDataPresentation {
     func recognizePassport(image: UIImage) {
         let imageData = image.jpegData(compressionQuality: 1)
         passportImageBase64String = imageData?.base64EncodedString()
-        interactor.verifyToken()
+        interactor.getToken()
     }
 
     func confirmPassportData(_ passportData: PassportData) {
