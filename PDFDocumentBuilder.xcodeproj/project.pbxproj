@@ -216,8 +216,8 @@
 		8B1BCD2B270650F5003F6B92 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8B718AAC270A70C4006B9A9A /* CollectionView Items */,
 				8B1BCD2E2706519D003F6B92 /* ServicesViewController.swift */,
+				8B718AAC270A70C4006B9A9A /* CollectionView Items */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -396,8 +396,8 @@
 		8B4BAEDF270C414C0087AE3A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8BEC53F8270C7FFE00E53887 /* ServicesCountView */,
 				8B4BAEE0270C41660087AE3A /* BillViewController.swift */,
+				8BEC53F8270C7FFE00E53887 /* ServicesCountView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1008,7 +1008,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = qq.PDFDocumentBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1028,7 +1028,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = qq.PDFDocumentBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
