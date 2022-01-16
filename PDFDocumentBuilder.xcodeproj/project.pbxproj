@@ -576,8 +576,8 @@
 		8BEC53F8270C7FFE00E53887 /* ServicesCountView */ = {
 			isa = PBXGroup;
 			children = (
-				8BEC53FD270C86E600E53887 /* CollectionView Items */,
 				8BEC53F9270C80AE00E53887 /* ServicesCountView.swift */,
+				8BEC53FD270C86E600E53887 /* CollectionView Items */,
 			);
 			path = ServicesCountView;
 			sourceTree = "<group>";

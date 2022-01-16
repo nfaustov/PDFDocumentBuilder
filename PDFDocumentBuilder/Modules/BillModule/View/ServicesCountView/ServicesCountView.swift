@@ -205,7 +205,7 @@ final class ServicesCountView: UIView {
         snapshot.appendItems(services, toSection: .selected)
         snapshot.appendItems(serviceAction, toSection: .addService)
         snapshot.appendItems(servicesTotal, toSection: .total)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
 
