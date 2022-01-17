@@ -13,9 +13,17 @@ final class ServiceCell: UICollectionViewCell {
     let titleLabel = UILabel()
     let priceLabel = UILabel()
 
+    override var isSelected: Bool {
+        didSet {
+            contentView.layer.borderWidth = isSelected ? 1 : 0
+        }
+    }
+
     func configure(with service: Service) {
+        isSelected = false
         contentView.backgroundColor = .secondarySystemBackground
         contentView.layer.cornerRadius = 10
+        contentView.layer.borderColor = UIColor.systemBlue.cgColor
         titleLabel.font = UIFont.systemFont(ofSize: 15)
         titleLabel.numberOfLines = 0
         titleLabel.adjustsFontSizeToFitWidth = true

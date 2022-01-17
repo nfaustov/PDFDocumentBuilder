@@ -55,6 +55,7 @@
 		8B718AAE270A70FE006B9A9A /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B718AAD270A70FE006B9A9A /* ServiceCell.swift */; };
 		8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */; };
 		8B97FFAF270D8512008492B5 /* PDFPreviewSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */; };
+		8B9D4E1E279555580036FEFA /* UIBarButtonItem+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9D4E1D279555580036FEFA /* UIBarButtonItem+Badge.swift */; };
 		8BA3998A2706450A00861B8B /* servicesCatalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BA399892706450A00861B8B /* servicesCatalog.json */; };
 		8BCE5C682701DE9600ED9A66 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */; };
 		8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C692701E02F00ED9A66 /* Endpoint.swift */; };
@@ -144,6 +145,7 @@
 		8B718AAD270A70FE006B9A9A /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBodyController.swift; sourceTree = "<group>"; };
 		8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewSubscription.swift; sourceTree = "<group>"; };
+		8B9D4E1D279555580036FEFA /* UIBarButtonItem+Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Badge.swift"; sourceTree = "<group>"; };
 		8BA399892706450A00861B8B /* servicesCatalog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servicesCatalog.json; sourceTree = "<group>"; };
 		8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		8BCE5C692701E02F00ED9A66 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			children = (
 				8B3E114526F6056700FBE02C /* DateFormatterExtension.swift */,
 				8B11DD0A27090B6F0035BC49 /* Bundle-Decodable.swift */,
+				8B9D4E1D279555580036FEFA /* UIBarButtonItem+Badge.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -808,6 +811,7 @@
 				8B5CAE23270CCFEC007CB9D5 /* ServicesHeader.swift in Sources */,
 				8B5D2F2E270191D800061322 /* HomeModule.swift in Sources */,
 				8B3E112926F519C300FBE02C /* View.swift in Sources */,
+				8B9D4E1E279555580036FEFA /* UIBarButtonItem+Badge.swift in Sources */,
 				8BCE5C682701DE9600ED9A66 /* TokenResponse.swift in Sources */,
 				8BEC540B270CA1F900E53887 /* BillCell.swift in Sources */,
 				8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */,

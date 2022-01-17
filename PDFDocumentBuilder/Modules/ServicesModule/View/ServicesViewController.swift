@@ -16,14 +16,28 @@ final class ServicesViewController: UIViewController {
     }
 
     private let priceList = PriceList()
-    private var selectedServices = [Service]()
+    private var selectedServices = [Service]() {
+        didSet {
+            rightBarButtonItem.setBadge(text: " ")
+        }
+    }
 
     private let searchBar = UISearchBar()
+    private var rightBarButtonItem: UIBarButtonItem!
     private var dataSource: UICollectionViewDiffableDataSource<Section, Service>!
     private var servicesCollectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let listImage = UIImage(systemName: "list.bullet")
+        rightBarButtonItem = UIBarButtonItem(
+            image: listImage,
+            style: .plain,
+            target: self,
+            action: #selector(showSelected)
+        )
+        navigationItem.rightBarButtonItem = rightBarButtonItem
 
         configureHierarchy()
         configureDataSource()
@@ -139,6 +153,10 @@ final class ServicesViewController: UIViewController {
         snapshot.appendItems(services, toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
+
+    @objc private func showSelected() {
+        rightBarButtonItem.removeBadge()
+    }
 }
 
 // MARK: - UISearchBarDelegate
@@ -146,6 +164,10 @@ final class ServicesViewController: UIViewController {
 extension ServicesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         performQuery(with: searchText)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
 
@@ -157,6 +179,8 @@ extension ServicesViewController: UICollectionViewDelegate {
               let service = dataSource.itemIdentifier(for: indexPath) else { return }
 
         selectedServices.append(service)
+
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
 
