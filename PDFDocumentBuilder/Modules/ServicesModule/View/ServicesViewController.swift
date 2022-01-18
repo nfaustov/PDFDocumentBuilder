@@ -24,6 +24,7 @@ final class ServicesViewController: UIViewController {
 
     private let searchBar = UISearchBar()
     private var rightBarButtonItem: UIBarButtonItem!
+
     private var dataSource: UICollectionViewDiffableDataSource<Section, Service>!
     private var servicesCollectionView: UICollectionView!
 

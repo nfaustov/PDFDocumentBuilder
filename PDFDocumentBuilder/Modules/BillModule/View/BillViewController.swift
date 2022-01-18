@@ -44,7 +44,7 @@ final class BillViewController: UIViewController {
         })
 
         confirmButton.setTitle("Сформировать договор", for: .normal)
-        confirmButton.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        confirmButton.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         confirmButton.setTitleColor(.white, for: .normal)
         confirmButton.backgroundColor = .systemRed
         confirmButton.layer.cornerRadius = 10
