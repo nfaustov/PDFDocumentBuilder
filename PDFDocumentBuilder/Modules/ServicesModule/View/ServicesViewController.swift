@@ -28,8 +28,13 @@ final class ServicesViewController: UIViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Section, Service>!
     private var servicesCollectionView: UICollectionView!
 
+    let searchTitle = "Поиск услуг"
+    let selectedTitle = "Выбранные услуги"
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.title = searchTitle
 
         let listImage = UIImage(systemName: "list.bullet")
         rightBarButtonItem = UIBarButtonItem(
@@ -147,6 +152,7 @@ final class ServicesViewController: UIViewController {
     }
 
     private func performQuery(with filter: String?) {
+        navigationItem.title = searchTitle
         let services = priceList.filteredServices(with: filter)
 
         var snapshot = NSDiffableDataSourceSnapshot<Section, Service>()
@@ -157,6 +163,12 @@ final class ServicesViewController: UIViewController {
 
     @objc private func showSelected() {
         rightBarButtonItem.removeBadge()
+        navigationItem.title = selectedTitle
+
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Service>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(selectedServices, toSection: .main)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 
@@ -187,5 +199,4 @@ extension ServicesViewController: UICollectionViewDelegate {
 
 // MARK: - ServicesView
 
-extension ServicesViewController: ServicesView {
-}
+extension ServicesViewController: ServicesView { }
