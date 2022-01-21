@@ -28,8 +28,8 @@ extension Endpoint {
 
 extension Endpoint {
     static var token: Self {
-        guard let login = Bundle.main.object(forInfoDictionaryKey: "LOGIN") as? String,
-              let password = Bundle.main.object(forInfoDictionaryKey: "PASSWORD") as? String else {
+        guard let login = Bundle.main.object(forInfoDictionaryKey: "Login") as? String,
+              let password = Bundle.main.object(forInfoDictionaryKey: "Password") as? String else {
                   preconditionFailure("Cannot find login or password")
               }
 

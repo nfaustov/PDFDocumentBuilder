@@ -103,6 +103,7 @@
 		8B21AD1427032CF500E63DBA /* PassportDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataPresenter.swift; sourceTree = "<group>"; };
 		8B21AD1627032F5F00E63DBA /* PassportDataSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataSubscription.swift; sourceTree = "<group>"; };
 		8B21AD192703448000E63DBA /* PassportDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataInteractor.swift; sourceTree = "<group>"; };
+		8B2485EF279AE29500E13BC1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		8B3006C026B1E72700DBC3AD /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		8B3006C226B1F05100DBC3AD /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 		8B3006C426B1F24800DBC3AD /* ContractBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBody.swift; sourceTree = "<group>"; };
@@ -500,6 +501,7 @@
 				8B5E432326B1912900A7996B /* Assets.xcassets */,
 				8B5E432526B1912900A7996B /* LaunchScreen.storyboard */,
 				8B5E432826B1912900A7996B /* Info.plist */,
+				8B2485EF279AE29500E13BC1 /* Config.xcconfig */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -882,6 +884,7 @@
 /* Begin XCBuildConfiguration section */
 		8B5E433F26B1912A00A7996B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B2485EF279AE29500E13BC1 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -943,6 +946,7 @@
 		};
 		8B5E434026B1912A00A7996B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B2485EF279AE29500E13BC1 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
