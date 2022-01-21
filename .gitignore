@@ -48,7 +48,7 @@ playground.xcworkspace
 
 .build/
 
-/Application/Config.xcconfig
+PDFDocumentBuilder/Application/Config.xcconfig
 
 # CocoaPods
 #
