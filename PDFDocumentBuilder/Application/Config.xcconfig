@@ -1,0 +1,12 @@
+//
+//  Config.xcconfig
+//  PDFDocumentBuilder
+//
+//  Created by Nikolai Faustov on 21.01.2022.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+LOGIN = demo_ultramed
+PASSWORD = nlh2MXpjFwVk

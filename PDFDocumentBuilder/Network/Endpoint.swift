@@ -28,7 +28,12 @@ extension Endpoint {
 
 extension Endpoint {
     static var token: Self {
-        let json: [String: Any] = ["login": "demo_ultramed", "password": "nlh2MXpjFwVk"]
+        guard let login = Bundle.main.object(forInfoDictionaryKey: "LOGIN") as? String,
+              let password = Bundle.main.object(forInfoDictionaryKey: "PASSWORD") as? String else {
+                  preconditionFailure("Cannot find login or password")
+              }
+
+        let json: [String: Any] = ["login": login, "password": password]
 
         return Endpoint(path: "token/", body: json)
     }
