@@ -48,7 +48,7 @@ playground.xcworkspace
 
 .build/
 
-Application/Config.xcconfig
+/Application/Config.xcconfig
 
 # CocoaPods
 #
