@@ -74,6 +74,7 @@
 		8BEC5407270C95AD00E53887 /* TotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC5406270C95AD00E53887 /* TotalCell.swift */; };
 		8BEC5409270CA0EF00E53887 /* BillCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC5408270CA0EF00E53887 /* BillCellFactory.swift */; };
 		8BEC540B270CA1F900E53887 /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC540A270CA1F900E53887 /* BillCell.swift */; };
+		8BF119F2279C217000A6F82D /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF119F1279C217000A6F82D /* HomeInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,7 @@
 		8BEC5406270C95AD00E53887 /* TotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCell.swift; sourceTree = "<group>"; };
 		8BEC5408270CA0EF00E53887 /* BillCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCellFactory.swift; sourceTree = "<group>"; };
 		8BEC540A270CA1F900E53887 /* BillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCell.swift; sourceTree = "<group>"; };
+		8BF119F1279C217000A6F82D /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -425,6 +427,7 @@
 			children = (
 				8B5D2F2F270191E300061322 /* View */,
 				8B5D2F30270191E900061322 /* Presenter */,
+				8BF119F0279C204D00A6F82D /* Interactor */,
 				8B5D2F2D270191D800061322 /* HomeModule.swift */,
 			);
 			path = HomeModule;
@@ -643,6 +646,14 @@
 			path = Interface;
 			sourceTree = "<group>";
 		};
+		8BF119F0279C204D00A6F82D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8BF119F1279C217000A6F82D /* HomeInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -800,6 +811,7 @@
 				8B6ACC752703B47900127AA6 /* PassportDataResponse.swift in Sources */,
 				8B21AD1027032BF900E63DBA /* PassportDataModule.swift in Sources */,
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
+				8BF119F2279C217000A6F82D /* HomeInteractor.swift in Sources */,
 				8B11DD0B27090B6F0035BC49 /* Bundle-Decodable.swift in Sources */,
 				8BCE5C742701E7CF00ED9A66 /* Authorization.swift in Sources */,
 				8BEC5409270CA0EF00E53887 /* BillCellFactory.swift in Sources */,

@@ -25,7 +25,9 @@ final class ModulesFactory: Modules {
 
     func homeModule() -> (UIViewController, HomeModule) {
         let view = HomeViewController()
-        let presenter = HomePresenter(view: view)
+        let interactor = HomeInteractor()
+        interactor.counterService = dependencies.counterService
+        let presenter = HomePresenter(view: view, interactor: interactor)
 
         return (view, presenter)
     }

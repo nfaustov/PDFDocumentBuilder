@@ -8,7 +8,8 @@
 import Foundation
 
 struct CounterResponse: Decodable {
-    let detail: [Amount]
+    let detail: [Amount]?
+    let errorMessage: String?
 }
 
 struct Amount: Decodable {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomePresenter<V>: Presenter<V>, HomeModule where V: HomeView {
+final class HomePresenter<V, I>: PresenterInteractor<V, I>, HomeModule where V: HomeView, I: HomeInteraction {
     weak var coordinator: PassportDataSubscription?
 
     var didFinish: (() -> Void)?
@@ -22,5 +22,19 @@ extension HomePresenter: HomePresentation {
 
     func manualEnterPassportData() {
         coordinator?.routeToPassportData(withImage: nil)
+    }
+}
+
+// MARK: - HomeInteractorDelegate
+
+extension HomePresenter: HomeInteractorDelegate {
+    func agreementDidChecked(initial: Int, current: String) {
+    }
+
+    func tokenDidReceived(_ token: Token) {
+        interactor.checkAgreement(token: token)
+    }
+
+    func agreementCheckingFailed(message: String) {
     }
 }
