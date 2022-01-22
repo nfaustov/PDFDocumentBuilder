@@ -14,7 +14,7 @@ struct Endpoint {
 
 extension Endpoint {
     var url: URL {
-        guard let url = URL(string: "https://passrec.ufanet.ru/api/v0/" + path) else {
+        guard let url = URL(string: "https://passrec.ufanet.ru:443/api/v0/" + path) else {
             preconditionFailure("Invalid URL")
         }
 
@@ -45,6 +45,6 @@ extension Endpoint {
     }
 
     static var service: Self {
-        Endpoint(path: "/service/counters/")
+        Endpoint(path: "service/counters/")
     }
 }

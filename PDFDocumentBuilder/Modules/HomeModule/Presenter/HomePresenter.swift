@@ -16,6 +16,10 @@ final class HomePresenter<V, I>: PresenterInteractor<V, I>, HomeModule where V: 
 // MARK: - HomePresentation
 
 extension HomePresenter: HomePresentation {
+    func getAgreementStatus() {
+        interactor.getToken()
+    }
+
     func recognizePassportImage(_ image: UIImage) {
         coordinator?.routeToPassportData(withImage: image)
     }
@@ -28,13 +32,11 @@ extension HomePresenter: HomePresentation {
 // MARK: - HomeInteractorDelegate
 
 extension HomePresenter: HomeInteractorDelegate {
-    func agreementDidChecked(initial: Int, current: String) {
+    func agreementDidChecked(initial: Int, current: Int) {
+        view?.updateStatus(initial: initial, current: current)
     }
 
     func tokenDidReceived(_ token: Token) {
         interactor.checkAgreement(token: token)
-    }
-
-    func agreementCheckingFailed(message: String) {
     }
 }

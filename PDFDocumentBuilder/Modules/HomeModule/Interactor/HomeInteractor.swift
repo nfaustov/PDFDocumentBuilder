@@ -34,10 +34,6 @@ extension HomeInteractor: HomeInteraction {
             }, receiveValue: { [delegate] response in
                 if let counter = response.detail?.first {
                     delegate?.agreementDidChecked(initial: counter.initial, current: counter.current)
-                } else if let errorMessage = response.errorMessage {
-                    delegate?.agreementCheckingFailed(message: errorMessage)
-                } else {
-                    delegate?.agreementCheckingFailed(message: "Статус договора неизвестен")
                 }
             })
             .store(in: &subscriptions)
@@ -62,10 +58,6 @@ extension HomeInteractor: HomeInteraction {
                     if let token = response.token {
                         tokenDatabase?.saveToken(token: token)
                         delegate?.tokenDidReceived(token)
-                    } else if let errorMessage = response.errorMessage {
-                        delegate?.agreementCheckingFailed(message: errorMessage)
-                    } else {
-                        delegate?.agreementCheckingFailed(message: "Ошибка запроса токена")
                     }
                 })
                 .store(in: &subscriptions)

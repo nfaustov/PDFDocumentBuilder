@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol Counter: AnyObject {
-    var networkCOntroller: NetworkControllerProtocol { get }
+    var networkController: NetworkControllerProtocol { get }
 
     func countServices(token: String) -> AnyPublisher<CounterResponse, Error>
 }

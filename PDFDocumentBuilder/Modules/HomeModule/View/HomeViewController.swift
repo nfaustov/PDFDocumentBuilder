@@ -13,35 +13,50 @@ final class HomeViewController: UIViewController {
 
     var image: UIImage?
 
+    let initialLabel = UILabel()
+    let currentLabel = UILabel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureHierarchy()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        presenter.getAgreementStatus()
+    }
+
     private func configureHierarchy() {
         view.backgroundColor = .systemBackground
 
+        let stack = UIStackView(arrangedSubviews: [initialLabel, currentLabel])
+        stack.axis = .vertical
+        view.addSubview(stack)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+
         let scanButton = UIButton(type: .custom)
         scanButton.setTitle("Сканировать паспорт", for: .normal)
-        scanButton.setTitleColor(.label, for: .normal)
-        scanButton.layer.borderWidth = 1
-        scanButton.layer.borderColor = UIColor.lightGray.cgColor
-        scanButton.layer.cornerRadius = 10
-        view.addSubview(scanButton)
-        scanButton.translatesAutoresizingMaskIntoConstraints = false
 
         let manualEnterButton = UIButton(type: .custom)
         manualEnterButton.setTitle("Ввести данные вручную", for: .normal)
-        manualEnterButton.setTitleColor(.label, for: .normal)
-        manualEnterButton.layer.borderWidth = 1
-        manualEnterButton.layer.borderColor = UIColor.lightGray.cgColor
-        manualEnterButton.layer.cornerRadius = 10
-        view.addSubview(manualEnterButton)
-        manualEnterButton.translatesAutoresizingMaskIntoConstraints = false
+
+        for button in [scanButton, manualEnterButton] {
+            button.setTitleColor(.label, for: .normal)
+            button.layer.borderWidth = 1
+            button.layer.borderColor = UIColor.lightGray.cgColor
+            button.layer.cornerRadius = 10
+            view.addSubview(button)
+            button.translatesAutoresizingMaskIntoConstraints = false
+        }
 
         NSLayoutConstraint.activate([
-            scanButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25),
+            stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stack.heightAnchor.constraint(equalToConstant: 40),
+
+            scanButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 50),
             scanButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             scanButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             scanButton.heightAnchor.constraint(equalToConstant: 160),
@@ -89,4 +104,9 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
 
 // MARK: - HomeView
 
-extension HomeViewController: HomeView { }
+extension HomeViewController: HomeView {
+    func updateStatus(initial: Int, current: Int) {
+        initialLabel.text = "\(initial)"
+        currentLabel.text = "\(current)"
+    }
+}

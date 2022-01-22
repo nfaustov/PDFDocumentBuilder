@@ -12,9 +12,12 @@ protocol HomeModule: AnyObject {
     var didFinish: (() -> Void)? { get set }
 }
 
-protocol HomeView: View { }
+protocol HomeView: View {
+    func updateStatus(initial: Int, current: Int)
+}
 
 protocol HomePresentation: AnyObject {
+    func getAgreementStatus()
     func recognizePassportImage(_ image: UIImage)
     func manualEnterPassportData()
 }
@@ -25,7 +28,6 @@ protocol HomeInteraction: Interactor {
 }
 
 protocol HomeInteractorDelegate: AnyObject {
-    func agreementDidChecked(initial: Int, current: String)
+    func agreementDidChecked(initial: Int, current: Int)
     func tokenDidReceived(_ token: Token)
-    func agreementCheckingFailed(message: String)
 }

@@ -19,5 +19,5 @@ struct Amount: Decodable {
     }
 
     let initial: Int
-    let current: String
+    let current: Int
 }

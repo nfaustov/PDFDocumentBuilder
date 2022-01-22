@@ -9,10 +9,10 @@ import Foundation
 import Combine
 
 final class CounterService: Counter {
-    let networkCOntroller: NetworkControllerProtocol
+    let networkController: NetworkControllerProtocol
 
-    init(networkCOntroller: NetworkControllerProtocol = NetworkController()) {
-        self.networkCOntroller = networkCOntroller
+    init(networkController: NetworkControllerProtocol = NetworkController()) {
+        self.networkController = networkController
     }
 
     func countServices(token: String) -> AnyPublisher<CounterResponse, Error> {
@@ -23,6 +23,6 @@ final class CounterService: Counter {
             headers[key] = endpoint.headers[key]
         }
 
-        return networkCOntroller.get(type: CounterResponse.self, url: endpoint.url, headers: headers)
+        return networkController.get(type: CounterResponse.self, url: endpoint.url, headers: headers)
     }
 }
