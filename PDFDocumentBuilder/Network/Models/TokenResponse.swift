@@ -15,10 +15,6 @@ struct TokenResponse: Decodable {
 
     let token: Token?
     let errorMessage: String?
-
-    static var placeHolder: Self {
-        TokenResponse(token: nil, errorMessage: nil)
-    }
 }
 
 struct Token: Decodable {
