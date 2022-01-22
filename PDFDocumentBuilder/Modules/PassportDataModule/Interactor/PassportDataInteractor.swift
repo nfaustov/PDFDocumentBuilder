@@ -14,6 +14,7 @@ final class PassportDataInteractor {
 
     var recognitionService: Recognition?
     var authorizationService: Authorization?
+    var tokenDatabase: TokenDB?
 
     private var subscriptions = Set<AnyCancellable>()
 }
@@ -23,6 +24,7 @@ final class PassportDataInteractor {
 extension PassportDataInteractor: PassportDataInteraction {
     func recognizePassport(data: String, token: Token) {
         delegate?.recognitionStatus(message: "Распознавание паспортных данных...")
+
         recognitionService?.recognizePassport(data: data, token: token.access)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
@@ -46,23 +48,30 @@ extension PassportDataInteractor: PassportDataInteraction {
     func getToken() {
         delegate?.recognitionStatus(message: "Авторизация...")
 
-        authorizationService?.getToken()
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .failure(let error):
-                    print("Couldn't get token: \(error.localizedDescription)")
-                case .finished: break
-                }
-            }, receiveValue: { [delegate] response in
-                if let token = response.token {
-                    delegate?.tokenDidReceived(token)
-                } else if let errorMessage = response.errorMessage {
-                    delegate?.recognitionFailure(message: errorMessage)
-                } else {
-                    delegate?.recognitionFailure(message: "Ошибка запроса токена")
-                }
-            })
-            .store(in: &subscriptions)
+        if let tokenEntity = tokenDatabase?.getToken() {
+            guard let access = tokenEntity.access, let refresh = tokenEntity.refresh else { return }
+
+            let token = Token(access: access, refresh: refresh)
+            delegate?.tokenDidReceived(token)
+        } else {
+            authorizationService?.getToken()
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .failure(let error):
+                        print("Couldn't get token: \(error.localizedDescription)")
+                    case .finished: break
+                    }
+                }, receiveValue: { [delegate] response in
+                    if let token = response.token {
+                        delegate?.tokenDidReceived(token)
+                    } else if let errorMessage = response.errorMessage {
+                        delegate?.recognitionFailure(message: errorMessage)
+                    } else {
+                        delegate?.recognitionFailure(message: "Ошибка запроса токена")
+                    }
+                })
+                .store(in: &subscriptions)
+        }
     }
 }

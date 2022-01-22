@@ -14,6 +14,7 @@ final class HomeInteractor {
 
     var authorizationService: Authorization?
     var counterService: Counter?
+    var tokenDatabase: TokenDB?
 
     private var subscriptions = Set<AnyCancellable>()
 }
@@ -43,23 +44,30 @@ extension HomeInteractor: HomeInteraction {
     }
 
     func getToken() {
-        authorizationService?.getToken()
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .failure(let error):
-                    print("Couldn't get token: \(error.localizedDescription)")
-                case .finished: break
-                }
-            }, receiveValue: { [delegate] response in
-                if let token = response.token {
-                    delegate?.tokenDidReceived(token)
-                } else if let errorMessage = response.errorMessage {
-                    delegate?.agreementCheckingFailed(message: errorMessage)
-                } else {
-                    delegate?.agreementCheckingFailed(message: "Ошибка запроса токена")
-                }
-            })
-            .store(in: &subscriptions)
+        if let tokenEntity = tokenDatabase?.getToken() {
+            guard let access = tokenEntity.access, let refresh = tokenEntity.refresh else { return }
+
+            let token = Token(access: access, refresh: refresh)
+            delegate?.tokenDidReceived(token)
+        } else {
+            authorizationService?.getToken()
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .failure(let error):
+                        print("Couldn't get token: \(error.localizedDescription)")
+                    case .finished: break
+                    }
+                }, receiveValue: { [delegate] response in
+                    if let token = response.token {
+                        delegate?.tokenDidReceived(token)
+                    } else if let errorMessage = response.errorMessage {
+                        delegate?.agreementCheckingFailed(message: errorMessage)
+                    } else {
+                        delegate?.agreementCheckingFailed(message: "Ошибка запроса токена")
+                    }
+                })
+                .store(in: &subscriptions)
+        }
     }
 }

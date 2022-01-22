@@ -8,9 +8,9 @@
 import UIKit
 
 final class ModulesFactory: Modules {
-    private let dependencies: NetworkServiceDependencies
+    private let dependencies: NetworkServiceDependencies & DatabaseServiceDependencies
 
-    init(dependencies: NetworkServiceDependencies) {
+    init(dependencies: NetworkServiceDependencies & DatabaseServiceDependencies) {
         self.dependencies = dependencies
     }
 
@@ -27,6 +27,8 @@ final class ModulesFactory: Modules {
         let view = HomeViewController()
         let interactor = HomeInteractor()
         interactor.counterService = dependencies.counterService
+        interactor.authorizationService = dependencies.authorizationService
+        interactor.tokenDatabase = dependencies.tokenDatabase
         let presenter = HomePresenter(view: view, interactor: interactor)
 
         return (view, presenter)
@@ -38,6 +40,7 @@ final class ModulesFactory: Modules {
         let interactor = PassportDataInteractor()
         interactor.recognitionService = dependencies.recognitionService
         interactor.authorizationService = dependencies.authorizationService
+        interactor.tokenDatabase = dependencies.tokenDatabase
         let presenter = PassportDataPresenter(view: view, interactor: interactor)
 
         return (view, presenter)

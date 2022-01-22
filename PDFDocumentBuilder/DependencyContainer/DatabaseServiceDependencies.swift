@@ -6,5 +6,5 @@
 //
 
 protocol DatabaseServiceDependencies {
-    var authorizationDatabase: TokenDB { get }
+    var tokenDatabase: TokenDB { get }
 }

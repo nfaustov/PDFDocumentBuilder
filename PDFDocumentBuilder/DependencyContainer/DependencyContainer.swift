@@ -12,5 +12,5 @@ final class DependencyContainer: NetworkServiceDependencies, DatabaseServiceDepe
     lazy var counterService: Counter = CounterService()
 
     // MARK: - DatabaseService
-    lazy var authorizationDatabase: TokenDB = TokenDatabase()
+    lazy var tokenDatabase: TokenDB = TokenDatabase()
 }
