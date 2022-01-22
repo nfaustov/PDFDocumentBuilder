@@ -57,6 +57,9 @@
 		8B97FFAF270D8512008492B5 /* PDFPreviewSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */; };
 		8B9D4E1E279555580036FEFA /* UIBarButtonItem+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9D4E1D279555580036FEFA /* UIBarButtonItem+Badge.swift */; };
 		8BA3998A2706450A00861B8B /* servicesCatalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BA399892706450A00861B8B /* servicesCatalog.json */; };
+		8BC10469279BF93B004F56CA /* CounterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC10468279BF93B004F56CA /* CounterResponse.swift */; };
+		8BC1046C279BFD5F004F56CA /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1046B279BFD5F004F56CA /* Counter.swift */; };
+		8BC1046E279BFDEB004F56CA /* CounterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1046D279BFDEB004F56CA /* CounterService.swift */; };
 		8BCE5C682701DE9600ED9A66 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */; };
 		8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C692701E02F00ED9A66 /* Endpoint.swift */; };
 		8BCE5C6E2701E5E300ED9A66 /* NetworkControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */; };
@@ -148,6 +151,9 @@
 		8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewSubscription.swift; sourceTree = "<group>"; };
 		8B9D4E1D279555580036FEFA /* UIBarButtonItem+Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Badge.swift"; sourceTree = "<group>"; };
 		8BA399892706450A00861B8B /* servicesCatalog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servicesCatalog.json; sourceTree = "<group>"; };
+		8BC10468279BF93B004F56CA /* CounterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterResponse.swift; sourceTree = "<group>"; };
+		8BC1046B279BFD5F004F56CA /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
+		8BC1046D279BFDEB004F56CA /* CounterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterService.swift; sourceTree = "<group>"; };
 		8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		8BCE5C692701E02F00ED9A66 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		8BCE5C6D2701E5E300ED9A66 /* NetworkControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerProtocol.swift; sourceTree = "<group>"; };
@@ -540,6 +546,15 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		8BC1046A279BFD3A004F56CA /* CounterService */ = {
+			isa = PBXGroup;
+			children = (
+				8BC1046B279BFD5F004F56CA /* Counter.swift */,
+				8BC1046D279BFDEB004F56CA /* CounterService.swift */,
+			);
+			path = CounterService;
+			sourceTree = "<group>";
+		};
 		8BCE5C652701DDF000ED9A66 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,6 +571,7 @@
 			children = (
 				8BCE5C672701DE9600ED9A66 /* TokenResponse.swift */,
 				8B6ACC742703B47900127AA6 /* PassportDataResponse.swift */,
+				8BC10468279BF93B004F56CA /* CounterResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -574,6 +590,7 @@
 			children = (
 				8B6E4F042702F2C300373F29 /* AuthorizationService */,
 				8B6ACC6F2703A78300127AA6 /* RecognitionService */,
+				8BC1046A279BFD3A004F56CA /* CounterService */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -789,6 +806,7 @@
 				8B6ACC732703B00C00127AA6 /* RecognitionService.swift in Sources */,
 				8B4BAEE1270C41660087AE3A /* BillViewController.swift in Sources */,
 				8B1BCD2D27065107003F6B92 /* ServicesModule.swift in Sources */,
+				8BC1046C279BFD5F004F56CA /* Counter.swift in Sources */,
 				8B3E114626F6056700FBE02C /* DateFormatterExtension.swift in Sources */,
 				8B21AD1327032CA500E63DBA /* PassportDataViewController.swift in Sources */,
 				8B5E434C26B195C400A7996B /* ContractData.swift in Sources */,
@@ -824,6 +842,7 @@
 				8B3E113526F51AD800FBE02C /* Coordinator.swift in Sources */,
 				8B1BCD3127065209003F6B92 /* ServicesPresenter.swift in Sources */,
 				8B3E113026F51A5000FBE02C /* Modules.swift in Sources */,
+				8BC10469279BF93B004F56CA /* CounterResponse.swift in Sources */,
 				8B3E113726F51AF800FBE02C /* MainCoordinator.swift in Sources */,
 				8BCE5C702701E69C00ED9A66 /* NetworkController.swift in Sources */,
 				8B3E114126F51E3900FBE02C /* PDFPreviewInteractor.swift in Sources */,
@@ -831,6 +850,7 @@
 				8B4BAEE3270C41BD0087AE3A /* BillPresenter.swift in Sources */,
 				8BEC5400270C8A4F00E53887 /* ServiceCountAction.swift in Sources */,
 				8B3006C326B1F05100DBC3AD /* PDFPreviewViewController.swift in Sources */,
+				8BC1046E279BFDEB004F56CA /* CounterService.swift in Sources */,
 				8B3E113D26F51BE700FBE02C /* PDFPreviewModule.swift in Sources */,
 				8B4BAEDD270C40F60087AE3A /* BillModule.swift in Sources */,
 				8BCE5C6E2701E5E300ED9A66 /* NetworkControllerProtocol.swift in Sources */,

@@ -8,4 +8,5 @@
 protocol NetworkServiceDependencies {
     var authorizationService: Authorization { get }
     var recognitionService: Recognition { get }
+    var counterService: Counter { get }
 }

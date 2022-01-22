@@ -43,4 +43,8 @@ extension Endpoint {
 
         return Endpoint(path: "passports/recognition/", body: json)
     }
+
+    static var service: Self {
+        Endpoint(path: "/service/counters/")
+    }
 }

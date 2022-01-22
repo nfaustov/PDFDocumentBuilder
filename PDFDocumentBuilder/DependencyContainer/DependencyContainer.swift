@@ -9,4 +9,5 @@ final class DependencyContainer: NetworkServiceDependencies {
     // MARK: - NetworkService
     lazy var authorizationService: Authorization = AuthorizationService()
     lazy var recognitionService: Recognition = RecognitionService()
+    lazy var counterService: Counter = CounterService()
 }
