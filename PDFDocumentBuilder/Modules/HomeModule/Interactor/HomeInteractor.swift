@@ -58,8 +58,9 @@ extension HomeInteractor: HomeInteraction {
                         print("Couldn't get token: \(error.localizedDescription)")
                     case .finished: break
                     }
-                }, receiveValue: { [delegate] response in
+                }, receiveValue: { [tokenDatabase, delegate] response in
                     if let token = response.token {
+                        tokenDatabase?.saveToken(token: token)
                         delegate?.tokenDidReceived(token)
                     } else if let errorMessage = response.errorMessage {
                         delegate?.agreementCheckingFailed(message: errorMessage)
