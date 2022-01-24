@@ -27,4 +27,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator = MainCoordinator(navigationController: navigationController, modules: modules)
         coordinator?.start()
     }
+
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        let database = TokenDatabase()
+        database.saveContext()
+    }
 }

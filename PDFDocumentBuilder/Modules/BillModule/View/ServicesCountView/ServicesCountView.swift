@@ -42,8 +42,8 @@ final class ServicesCountView: UIView {
 
     private let servicesHeaderElementKind = "services-section-header"
 
-    init(addServiceAction: @escaping () -> Void) {
-        super.init(frame: .zero)
+    init(frame: CGRect, addServiceAction: @escaping () -> Void) {
+        super.init(frame: frame)
         self.addServiceAction = addServiceAction
 
         backgroundColor = .systemBackground
@@ -71,16 +71,16 @@ final class ServicesCountView: UIView {
 
         collectionView = UICollectionView(frame: bounds, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .systemBackground
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+//        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(collectionView)
 
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            collectionView.topAnchor.constraint(equalTo: topAnchor),
+//            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+//        ])
 
         collectionView.delegate = self
 

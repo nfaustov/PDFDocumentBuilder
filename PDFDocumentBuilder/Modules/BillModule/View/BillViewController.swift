@@ -39,9 +39,16 @@ final class BillViewController: UIViewController {
         clearButton.layer.cornerRadius = 10
         clearButton.addTarget(self, action: #selector(clearServices), for: .touchUpInside)
 
-        servicesCountView = ServicesCountView(addServiceAction: { [presenter] in
+        let servicesCountViewFrame = CGRect(
+            x: 0,
+            y: 225,
+            width: view.bounds.width,
+            height: view.bounds.height - 225
+        )
+        servicesCountView = ServicesCountView(frame: servicesCountViewFrame) { [presenter] in
             presenter?.addServices()
-        })
+        }
+        view.addSubview(servicesCountView)
 
         confirmButton.setTitle("Сформировать договор", for: .normal)
         confirmButton.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .bold)
@@ -50,27 +57,20 @@ final class BillViewController: UIViewController {
         confirmButton.layer.cornerRadius = 10
         confirmButton.addTarget(self, action: #selector(createContract), for: .touchUpInside)
 
-        [nameLabel, clearButton, servicesCountView, confirmButton]
-            .compactMap { $0 }
-            .forEach { subview in
-                view.addSubview(subview)
-                subview.translatesAutoresizingMaskIntoConstraints = false
-            }
+        [nameLabel, clearButton, confirmButton].forEach { subview in
+            view.addSubview(subview)
+            subview.translatesAutoresizingMaskIntoConstraints = false
+        }
 
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 25),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
 
-            clearButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20),
             clearButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             clearButton.widthAnchor.constraint(equalToConstant: 150),
             clearButton.heightAnchor.constraint(equalToConstant: 30),
-
-            servicesCountView.topAnchor.constraint(equalTo: clearButton.bottomAnchor, constant: 20),
-            servicesCountView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            servicesCountView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            servicesCountView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            clearButton.bottomAnchor.constraint(equalTo: servicesCountView.topAnchor, constant: -20),
 
             confirmButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),

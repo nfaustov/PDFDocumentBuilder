@@ -72,7 +72,7 @@ final class PassportDataViewController: UIViewController {
         progressView.isHidden = true
         progressView.addSubview(activityIndicatorView)
         progressView.addSubview(statusLabel)
-        scrollView.addSubview(progressView)
+        view.addSubview(progressView)
 
         confirmButton.setTitle("Принять", for: .normal)
         confirmButton.setTitleColor(.label, for: .normal)
@@ -88,10 +88,10 @@ final class PassportDataViewController: UIViewController {
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            progressView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            progressView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            progressView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            progressView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            progressView.topAnchor.constraint(equalTo: view.topAnchor),
+            progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            progressView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
             activityIndicatorView.centerYAnchor.constraint(equalTo: progressView.centerYAnchor),
             activityIndicatorView.centerXAnchor.constraint(equalTo: progressView.centerXAnchor),
@@ -129,14 +129,15 @@ final class PassportDataViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 12),
-            stack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 12),
-            stack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -12),
+            stack.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 12),
+            stack.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -12),
             stack.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -100)
         ])
 
         for textField in stack.arrangedSubviews {
             guard let textField = textField as? UITextField else { return }
 
+            textField.adjustsFontSizeToFitWidth = true
             textField.delegate = self
         }
 

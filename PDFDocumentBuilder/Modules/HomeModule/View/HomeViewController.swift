@@ -31,6 +31,8 @@ final class HomeViewController: UIViewController {
     private func configureHierarchy() {
         view.backgroundColor = .systemBackground
 
+        initialLabel.font = UIFont.systemFont(ofSize: 15)
+        currentLabel.font = UIFont.systemFont(ofSize: 15)
         let stack = UIStackView(arrangedSubviews: [initialLabel, currentLabel])
         stack.axis = .vertical
         view.addSubview(stack)
@@ -52,11 +54,11 @@ final class HomeViewController: UIViewController {
         }
 
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25),
-            stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stack.heightAnchor.constraint(equalToConstant: 40),
 
-            scanButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 50),
+            scanButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 30),
             scanButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             scanButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             scanButton.heightAnchor.constraint(equalToConstant: 160),
@@ -106,7 +108,7 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
 
 extension HomeViewController: HomeView {
     func updateStatus(initial: Int, current: Int) {
-        initialLabel.text = "\(initial)"
-        currentLabel.text = "\(current)"
+        initialLabel.text = "Доступно распознаваний: \(initial)"
+        currentLabel.text = "Текущее количество распознаваний: \(current)"
     }
 }

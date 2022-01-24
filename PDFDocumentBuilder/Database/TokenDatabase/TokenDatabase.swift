@@ -51,10 +51,7 @@ extension TokenDatabase: TokenDB {
     func getToken() -> TokenEntity? {
         let request: NSFetchRequest = TokenEntity.fetchRequest()
 
-        guard let token = try? context.fetch(request).first else {
-            print("There is no token in database")
-            return nil
-        }
+        guard let token = try? context.fetch(request).first else { return nil }
 
         return token
     }
