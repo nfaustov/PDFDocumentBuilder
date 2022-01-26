@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ServiceCell: UICollectionViewCell {
+final class ServiceCell: UICollectionViewCell, SelfConfiguredCell {
     static let reuseIdentifier = "ServiceCell"
 
     let titleLabel = UILabel()
@@ -37,11 +37,10 @@ final class ServiceCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: priceLabel.leadingAnchor, constant: -12),
+            titleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.78),
 
             priceLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            priceLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.2)
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
 
         titleLabel.text = service.title

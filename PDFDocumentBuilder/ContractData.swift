@@ -39,13 +39,29 @@ final class PriceList {
         return subcategoriesServices
     }
 
+    var allCategories: [ServicesCategory] {
+        categories
+    }
+
     func filteredServices(with filter: String? = nil) -> [Service] {
         allServices.filter { $0.contains(filter) }
     }
+
+    func categoryServices(_ category: ServicesCategory) -> [Service] {
+        categories
+            .filter { $0.title == category.title }
+            .compactMap { $0.services }
+            .flatMap { $0 }
+    }
 }
 
-final class ServicesCategory: Decodable {
-    let category: String
+struct ServicesCategory: Decodable, Hashable {
+    enum CodingKeys: String, CodingKey {
+        case title = "category"
+        case subcategories, services
+    }
+
+    let title: String
     let subcategories: [ServicesCategory]?
     let services: [Service]?
 }

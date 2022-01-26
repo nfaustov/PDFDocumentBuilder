@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TotalCell: UICollectionViewCell, BillCell {
+class TotalCell: UICollectionViewCell, SelfConfiguredCell {
     static let reuseIdentifier = "TotalCell"
 
     private let preliminaryTitleLabel = UILabel()

@@ -7,14 +7,8 @@
 
 import UIKit
 
-final class BillCellFactory {
-    private let collectionView: UICollectionView
-
-    init(collectionView: UICollectionView) {
-        self.collectionView = collectionView
-    }
-
-    func getCell(with model: AnyHashable, for indexPath: IndexPath) -> UICollectionViewCell {
+final class BillCellFactory: CellFactory {
+     override func makeCell(with model: AnyHashable, for indexPath: IndexPath) -> UICollectionViewCell {
         if let service = model as? Service {
             return configureCell(BillServiceCell.self, with: service, for: indexPath)
         } else if let action = model as? ServiceCountAction {
@@ -24,22 +18,5 @@ final class BillCellFactory {
         } else {
             fatalError("Unknown model type.")
         }
-    }
-
-    private func configureCell<T>(
-        _ cellType: T.Type,
-        with model: T.Model,
-        for indexPath: IndexPath
-    ) -> T where T: BillCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: cellType.reuseIdentifier,
-            for: indexPath
-        ) as? T else {
-            fatalError("Unable to dequeue cell.")
-        }
-
-        cell.configure(with: model)
-
-        return cell
     }
 }

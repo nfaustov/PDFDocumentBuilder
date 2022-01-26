@@ -71,16 +71,8 @@ final class ServicesCountView: UIView {
 
         collectionView = UICollectionView(frame: bounds, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .systemBackground
-//        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(collectionView)
-
-//        NSLayoutConstraint.activate([
-//            collectionView.topAnchor.constraint(equalTo: topAnchor),
-//            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
-//        ])
 
         collectionView.delegate = self
 
@@ -150,7 +142,7 @@ final class ServicesCountView: UIView {
             collectionView: collectionView
         ) { collectionView, indexPath, itemIdentifier in
             let factory = BillCellFactory(collectionView: collectionView)
-            let cell = factory.getCell(with: itemIdentifier, for: indexPath)
+            let cell = factory.makeCell(with: itemIdentifier, for: indexPath)
 
             return cell
         }

@@ -51,6 +51,9 @@
 		8B5E433226B1912A00A7996B /* PDFDocumentBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E433126B1912A00A7996B /* PDFDocumentBuilderTests.swift */; };
 		8B5E433D26B1912A00A7996B /* PDFDocumentBuilderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E433C26B1912A00A7996B /* PDFDocumentBuilderUITests.swift */; };
 		8B5E434C26B195C400A7996B /* ContractData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E434B26B195C400A7996B /* ContractData.swift */; };
+		8B5E754D27A1461E009FCC28 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E754C27A1461E009FCC28 /* CategoryCell.swift */; };
+		8B5E755027A14C4F009FCC28 /* CellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E754F27A14C4F009FCC28 /* CellFactory.swift */; };
+		8B5E755327A14FEC009FCC28 /* ServicesCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E755227A14FEC009FCC28 /* ServicesCellFactory.swift */; };
 		8B6ACC712703AF9C00127AA6 /* Recognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6ACC702703AF9C00127AA6 /* Recognition.swift */; };
 		8B6ACC732703B00C00127AA6 /* RecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6ACC722703B00C00127AA6 /* RecognitionService.swift */; };
 		8B6ACC752703B47900127AA6 /* PassportDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6ACC742703B47900127AA6 /* PassportDataResponse.swift */; };
@@ -75,7 +78,6 @@
 		8BEC5405270C8F3000E53887 /* ServiceCountTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC5404270C8F3000E53887 /* ServiceCountTotal.swift */; };
 		8BEC5407270C95AD00E53887 /* TotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC5406270C95AD00E53887 /* TotalCell.swift */; };
 		8BEC5409270CA0EF00E53887 /* BillCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC5408270CA0EF00E53887 /* BillCellFactory.swift */; };
-		8BEC540B270CA1F900E53887 /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC540A270CA1F900E53887 /* BillCell.swift */; };
 		8BF119F2279C217000A6F82D /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF119F1279C217000A6F82D /* HomeInteractor.swift */; };
 		8BF6C219279C30200072D959 /* DatabaseServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF6C218279C30200072D959 /* DatabaseServiceDependencies.swift */; };
 		8BF6C21B279C305F0072D959 /* TokenDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF6C21A279C305F0072D959 /* TokenDB.swift */; };
@@ -150,6 +152,9 @@
 		8B5E433C26B1912A00A7996B /* PDFDocumentBuilderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFDocumentBuilderUITests.swift; sourceTree = "<group>"; };
 		8B5E433E26B1912A00A7996B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B5E434B26B195C400A7996B /* ContractData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractData.swift; sourceTree = "<group>"; };
+		8B5E754C27A1461E009FCC28 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		8B5E754F27A14C4F009FCC28 /* CellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFactory.swift; sourceTree = "<group>"; };
+		8B5E755227A14FEC009FCC28 /* ServicesCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCellFactory.swift; sourceTree = "<group>"; };
 		8B6ACC702703AF9C00127AA6 /* Recognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recognition.swift; sourceTree = "<group>"; };
 		8B6ACC722703B00C00127AA6 /* RecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionService.swift; sourceTree = "<group>"; };
 		8B6ACC742703B47900127AA6 /* PassportDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataResponse.swift; sourceTree = "<group>"; };
@@ -174,7 +179,6 @@
 		8BEC5404270C8F3000E53887 /* ServiceCountTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCountTotal.swift; sourceTree = "<group>"; };
 		8BEC5406270C95AD00E53887 /* TotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCell.swift; sourceTree = "<group>"; };
 		8BEC5408270CA0EF00E53887 /* BillCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCellFactory.swift; sourceTree = "<group>"; };
-		8BEC540A270CA1F900E53887 /* BillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCell.swift; sourceTree = "<group>"; };
 		8BF119F1279C217000A6F82D /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		8BF6C218279C30200072D959 /* DatabaseServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceDependencies.swift; sourceTree = "<group>"; };
 		8BF6C21A279C305F0072D959 /* TokenDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDB.swift; sourceTree = "<group>"; };
@@ -499,6 +503,7 @@
 		8B5E431926B1912700A7996B /* PDFDocumentBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				8B5E754E27A14C3F009FCC28 /* Components */,
 				8B5E434A26B1916A00A7996B /* Application */,
 				8B3E113326F51ABD00FBE02C /* Coordinators */,
 				8BCE5C652701DDF000ED9A66 /* Network */,
@@ -543,6 +548,23 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		8B5E754E27A14C3F009FCC28 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E754F27A14C4F009FCC28 /* CellFactory.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8B5E755127A14FB0009FCC28 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8B718AAD270A70FE006B9A9A /* ServiceCell.swift */,
+				8B5E754C27A1461E009FCC28 /* CategoryCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		8B6ACC6F2703A78300127AA6 /* RecognitionService */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,7 +586,8 @@
 		8B718AAC270A70C4006B9A9A /* CollectionView Items */ = {
 			isa = PBXGroup;
 			children = (
-				8B718AAD270A70FE006B9A9A /* ServiceCell.swift */,
+				8B5E755127A14FB0009FCC28 /* Cells */,
+				8B5E755227A14FEC009FCC28 /* ServicesCellFactory.swift */,
 			);
 			path = "CollectionView Items";
 			sourceTree = "<group>";
@@ -658,20 +681,11 @@
 		8BEC5401270C8B8C00E53887 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				8BEC540C270CA23800E53887 /* Interface */,
 				8BEC53FB270C867100E53887 /* BillServiceCell.swift */,
 				8BEC5402270C8BB800E53887 /* AddServiceCell.swift */,
 				8BEC5406270C95AD00E53887 /* TotalCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		8BEC540C270CA23800E53887 /* Interface */ = {
-			isa = PBXGroup;
-			children = (
-				8BEC540A270CA1F900E53887 /* BillCell.swift */,
-			);
-			path = Interface;
 			sourceTree = "<group>";
 		};
 		8BF119F0279C204D00A6F82D /* Interactor */ = {
@@ -841,6 +855,7 @@
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
 				8BF119F2279C217000A6F82D /* HomeInteractor.swift in Sources */,
 				8B11DD0B27090B6F0035BC49 /* Bundle-Decodable.swift in Sources */,
+				8B5E755027A14C4F009FCC28 /* CellFactory.swift in Sources */,
 				8BCE5C742701E7CF00ED9A66 /* Authorization.swift in Sources */,
 				8BEC5409270CA0EF00E53887 /* BillCellFactory.swift in Sources */,
 				8B6ACC732703B00C00127AA6 /* RecognitionService.swift in Sources */,
@@ -871,12 +886,12 @@
 				8B3006C126B1E72700DBC3AD /* PDFCreator.swift in Sources */,
 				8B1BCD2F2706519D003F6B92 /* ServicesViewController.swift in Sources */,
 				8BEC5403270C8BB800E53887 /* AddServiceCell.swift in Sources */,
+				8B5E755327A14FEC009FCC28 /* ServicesCellFactory.swift in Sources */,
 				8B5CAE23270CCFEC007CB9D5 /* ServicesHeader.swift in Sources */,
 				8B5D2F2E270191D800061322 /* HomeModule.swift in Sources */,
 				8B3E112926F519C300FBE02C /* View.swift in Sources */,
 				8B9D4E1E279555580036FEFA /* UIBarButtonItem+Badge.swift in Sources */,
 				8BCE5C682701DE9600ED9A66 /* TokenResponse.swift in Sources */,
-				8BEC540B270CA1F900E53887 /* BillCell.swift in Sources */,
 				8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */,
 				8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */,
 				8B11942E279C2D990027DE93 /* Token.xcdatamodeld in Sources */,
@@ -884,6 +899,7 @@
 				8B3E113F26F51D6F00FBE02C /* PDFPreviewPresenter.swift in Sources */,
 				8B0B30582702116E000D6755 /* DependencyContainer.swift in Sources */,
 				8B3E113526F51AD800FBE02C /* Coordinator.swift in Sources */,
+				8B5E754D27A1461E009FCC28 /* CategoryCell.swift in Sources */,
 				8B1BCD3127065209003F6B92 /* ServicesPresenter.swift in Sources */,
 				8B3E113026F51A5000FBE02C /* Modules.swift in Sources */,
 				8BC10469279BF93B004F56CA /* CounterResponse.swift in Sources */,

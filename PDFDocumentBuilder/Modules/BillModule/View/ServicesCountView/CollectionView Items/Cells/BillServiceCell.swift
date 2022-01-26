@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BillServiceCell: UICollectionViewCell, BillCell {
+class BillServiceCell: UICollectionViewCell, SelfConfiguredCell {
     static let reuseIdentifier = "BillServiceCell"
 
     private let titleLabel = UILabel()
