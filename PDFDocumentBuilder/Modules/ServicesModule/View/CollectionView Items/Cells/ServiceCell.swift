@@ -19,8 +19,9 @@ final class ServiceCell: UICollectionViewCell, SelfConfiguredCell {
         }
     }
 
-    func configure(with service: Service) {
-        isSelected = false
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
         contentView.backgroundColor = .secondarySystemBackground
         contentView.layer.cornerRadius = 10
         contentView.layer.borderColor = UIColor.systemBlue.cgColor
@@ -42,7 +43,14 @@ final class ServiceCell: UICollectionViewCell, SelfConfiguredCell {
             priceLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
+    }
 
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func configure(with service: Service) {
+        isSelected = false
         titleLabel.text = service.title
         priceLabel.text = "\(Int(service.price)) ₽"
     }

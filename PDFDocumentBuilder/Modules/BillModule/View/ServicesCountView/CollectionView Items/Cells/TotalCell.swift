@@ -16,17 +16,17 @@ class TotalCell: UICollectionViewCell, SelfConfiguredCell {
     private let discountLabel = UILabel()
     private let imageView = UIImageView()
 
-    func configure(with model: ServiceCountTotal) {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
         preliminaryTitleLabel.text = "Промежуточный итог:"
         preliminaryTitleLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
 
-        preliminaryLabel.text = "\(model.preliminaryTotal) ₽"
         preliminaryLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
 
         discountTitleLabel.text = "Скидка:"
         discountTitleLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
 
-        discountLabel.text = "\(model.discount) ₽"
         discountLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
 
         imageView.image = UIImage(systemName: "chevron.right")?.withTintColor(.label, renderingMode: .alwaysOriginal)
@@ -55,5 +55,14 @@ class TotalCell: UICollectionViewCell, SelfConfiguredCell {
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 16)
         ])
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func configure(with model: ServiceCountTotal) {
+        preliminaryLabel.text = "\(model.preliminaryTotal) ₽"
+        discountLabel.text = "\(model.discount) ₽"
     }
 }

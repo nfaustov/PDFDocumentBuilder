@@ -13,18 +13,16 @@ class AddServiceCell: UICollectionViewCell, SelfConfiguredCell {
     private let titleLabel = UILabel()
     private let imageView = UIImageView()
 
-    func configure(with model: ServiceCountAction) {
-        titleLabel.text = model.title
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
         titleLabel.textColor = .systemRed
         titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        if let icon = model.icon {
-            imageView.image = icon.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
-            contentView.addSubview(imageView)
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-        }
+        contentView.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -35,5 +33,17 @@ class AddServiceCell: UICollectionViewCell, SelfConfiguredCell {
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 16)
         ])
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func configure(with model: ServiceCountAction) {
+        titleLabel.text = model.title
+
+        guard let icon = model.icon else { return }
+
+        imageView.image = icon.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
     }
 }

@@ -92,7 +92,7 @@ final class ServicesCountView: UIView {
 
             let itemSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .estimated(40)
+                heightDimension: .fractionalHeight(1)
             )
             let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
             let layoutGroup = NSCollectionLayoutGroup.vertical(
@@ -126,12 +126,9 @@ final class ServicesCountView: UIView {
 
         switch section {
         case .selected:
-            return NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(CGFloat(max(services.count, 1)) * 40)
-            )
+            return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(70))
         case .addService:
-            return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
+            return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
         case .total:
             return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(85))
         }

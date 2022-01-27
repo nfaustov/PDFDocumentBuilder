@@ -14,13 +14,16 @@ class BillServiceCell: UICollectionViewCell, SelfConfiguredCell {
     private let priceLabel = UILabel()
     private let separator = UIView()
 
-    func configure(with model: Service) {
-        titleLabel.text = model.title
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
         titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         titleLabel.numberOfLines = 0
-        priceLabel.text = "\(Int(model.price)) ₽"
+        titleLabel.adjustsFontSizeToFitWidth = true
+
         priceLabel.font = UIFont.systemFont(ofSize: 17, weight: .light)
         priceLabel.textAlignment = .right
+
         separator.backgroundColor = .systemGray5
 
         [titleLabel, priceLabel, separator].forEach { view in
@@ -42,5 +45,14 @@ class BillServiceCell: UICollectionViewCell, SelfConfiguredCell {
             separator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             separator.heightAnchor.constraint(equalToConstant: 1)
         ])
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func configure(with model: Service) {
+        titleLabel.text = model.title
+        priceLabel.text = "\(Int(model.price)) ₽"
     }
 }
