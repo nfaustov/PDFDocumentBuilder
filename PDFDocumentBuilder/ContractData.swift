@@ -43,15 +43,16 @@ final class PriceList {
         categories
     }
 
-    func filteredServices(with filter: String? = nil) -> [Service] {
-        allServices.filter { $0.contains(filter) }
-    }
-
-    func categoryServices(_ category: ServicesCategory) -> [Service] {
-        categories
-            .filter { $0.title == category.title }
-            .compactMap { $0.services }
-            .flatMap { $0 }
+    func filteredServices(withFilterText filterText: String? = nil, category: ServicesCategory? = nil) -> [Service] {
+        if let category = category {
+            return categories
+                .filter { $0.title == category.title }
+                .compactMap { $0.services }
+                .flatMap { $0 }
+                .filter { $0.contains(filterText) }
+        } else {
+            return allServices.filter { $0.contains(filterText) }
+        }
     }
 }
 

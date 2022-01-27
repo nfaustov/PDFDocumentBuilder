@@ -17,6 +17,7 @@ final class ServicesViewController: UIViewController {
     }
 
     private let priceList = PriceList()
+
     private var selectedServices = [Service]() {
         didSet {
             rightBarButtonItem.setBadge(text: " ")
@@ -62,10 +63,11 @@ final class ServicesViewController: UIViewController {
         view.backgroundColor = .systemBackground
 
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .systemBackground
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.tintColor = .label
         view.addSubview(collectionView)
         view.addSubview(searchBar)
 
@@ -125,7 +127,7 @@ final class ServicesViewController: UIViewController {
                 )
                 let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
                 let layoutGroupSize = NSCollectionLayoutSize(
-                    widthDimension: .absolute(135),
+                    widthDimension: .absolute(140),
                     heightDimension: .absolute(70)
                 )
                 let layoutGroup = NSCollectionLayoutGroup.horizontal(
@@ -178,14 +180,14 @@ final class ServicesViewController: UIViewController {
 
     private func performQuery(with filter: String?) {
         navigationItem.title = searchTitle
-        let services = priceList.filteredServices(with: filter)
-        searchingSnapshot(services)
-    }
+        let services = priceList.filteredServices(withFilterText: filter, category: selectedCategory)
+        let categories = priceList.allCategories
 
-    private func filterByCategory(_ category: ServicesCategory) {
-        let services = priceList.categoryServices(category)
-        searchingSnapshot(services)
-        selectedCategory = category
+        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+        snapshot.appendSections([.category, .service])
+        snapshot.appendItems(services, toSection: .service)
+        snapshot.appendItems(categories, toSection: .category)
+        dataSource.apply(snapshot)
     }
 
     @objc private func showSelected() {
@@ -202,31 +204,29 @@ final class ServicesViewController: UIViewController {
         snapshot.appendItems(selectedServices, toSection: .service)
         dataSource.apply(snapshot)
     }
-
-    private func searchingSnapshot(_ services: [Service]) {
-        let categories = priceList.allCategories
-
-        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
-        snapshot.appendSections([.category, .service])
-        snapshot.appendItems(services, toSection: .service)
-        snapshot.appendItems(categories, toSection: .category)
-        dataSource.apply(snapshot)
-    }
 }
 
 // MARK: - UISearchBarDelegate
 
 extension ServicesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let indexPath = dataSource.indexPath(for: selectedCategory) {
-            servicesCollectionView.deselectItem(at: indexPath, animated: false)
-            selectedCategory = nil
-        }
         performQuery(with: searchText)
     }
 
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
         searchBar.resignFirstResponder()
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
+        performQuery(with: nil)
     }
 }
 
@@ -240,7 +240,13 @@ extension ServicesViewController: UICollectionViewDelegate {
             selectedServices.append(service)
             collectionView.deselectItem(at: indexPath, animated: true)
         } else if let category = dataSource.itemIdentifier(for: indexPath) as? ServicesCategory {
-            filterByCategory(category)
+            if category == selectedCategory {
+                collectionView.deselectItem(at: indexPath, animated: true)
+                selectedCategory = nil
+            } else {
+                selectedCategory = category
+            }
+            performQuery(with: searchBar.text)
         }
     }
 }
