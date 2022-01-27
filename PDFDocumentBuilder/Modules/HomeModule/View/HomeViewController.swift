@@ -11,8 +11,6 @@ final class HomeViewController: UIViewController {
     typealias PresenterType = HomePresentation
     var presenter: PresenterType!
 
-    var image: UIImage?
-
     let initialLabel = UILabel()
     let currentLabel = UILabel()
 

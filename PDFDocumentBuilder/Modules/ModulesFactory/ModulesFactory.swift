@@ -60,4 +60,12 @@ final class ModulesFactory: Modules {
 
         return (view, presenter)
     }
+
+    func selectionModule(selectedServices: [Service]) -> (UIViewController, SelectionModule) {
+        let view = SelectionViewController()
+        view.services = selectedServices
+        let presenter = SelectionPresenter(view: view)
+
+        return (view, presenter)
+    }
 }

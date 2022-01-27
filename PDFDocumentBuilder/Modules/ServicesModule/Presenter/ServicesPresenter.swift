@@ -6,6 +6,7 @@
 //
 
 final class ServicesPresenter<V>: Presenter<V>, ServicesModule where V: ServicesView {
+    var coordinator: SelectionSubscription?
     var didFinish: (([Service]) -> Void)?
 }
 
@@ -14,5 +15,11 @@ final class ServicesPresenter<V>: Presenter<V>, ServicesModule where V: Services
 extension ServicesPresenter: ServicesPresentation {
     func didFinish(with services: [Service]) {
         didFinish?(services)
+    }
+
+    func showSelectedServices(_ selectedServices: [Service]) {
+        coordinator?.routeToSelection(selectedServices: selectedServices) { services in
+            self.view?.selectedServices = services
+        }
     }
 }

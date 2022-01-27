@@ -13,4 +13,5 @@ protocol Modules {
     func passportDataModule(image: UIImage?) -> (UIViewController, PassportDataModule)
     func servicesModule() -> (UIViewController, ServicesModule)
     func billModule(patient: Patient) -> (UIViewController, BillModule)
+    func selectionModule(selectedServices: [Service]) -> (UIViewController, SelectionModule)
 }
