@@ -18,7 +18,7 @@ final class ServicesViewController: UIViewController {
 
     private let priceList = PriceList()
 
-    private var selectedServices = [Service]() {
+    var selectedServices = [Service]() {
         didSet {
             rightBarButtonItem.setBadge(text: " ")
         }
