@@ -31,13 +31,10 @@ final class ServicesViewController: UIViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>!
     private var servicesCollectionView: UICollectionView!
 
-    let searchTitle = "Поиск услуг"
-    let selectedTitle = "Выбранные услуги"
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = searchTitle
+        navigationItem.title = "Поиск услуг"
 
         let listImage = UIImage(systemName: "list.bullet")
         rightBarButtonItem = UIBarButtonItem(
@@ -179,7 +176,6 @@ final class ServicesViewController: UIViewController {
     }
 
     private func performQuery(with filter: String?) {
-        navigationItem.title = searchTitle
         let services = priceList.filteredServices(withFilterText: filter, category: selectedCategory)
         let categories = priceList.allCategories
 
@@ -192,17 +188,7 @@ final class ServicesViewController: UIViewController {
 
     @objc private func showSelected() {
         rightBarButtonItem.removeBadge()
-        navigationItem.title = selectedTitle
-        UIView.animate(
-            withDuration: 0.2,
-            animations: { self.searchBar.transform = CGAffineTransform(scaleX: 1, y: 0.01) },
-            completion: { _ in self.searchBar.isHidden = true }
-        )
-
-        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
-        snapshot.appendSections([.category, .service])
-        snapshot.appendItems(selectedServices, toSection: .service)
-        dataSource.apply(snapshot)
+        presenter.showSelectedServices(selectedServices)
     }
 }
 
