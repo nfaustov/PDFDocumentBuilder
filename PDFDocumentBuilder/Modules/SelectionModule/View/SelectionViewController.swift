@@ -17,6 +17,10 @@ final class SelectionViewController: UIViewController {
 
     var services = [Service]()
 
+    var bottomConstraint = NSLayoutConstraint()
+
+    private let confirmationView = UIView()
+
     private var dataSource: UITableViewDiffableDataSource<Section, Service>!
     private var tableView: UITableView!
 
@@ -35,6 +39,31 @@ final class SelectionViewController: UIViewController {
         tableView.backgroundColor = .systemBackground
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(tableView)
+
+        confirmationView.backgroundColor = .systemBackground
+        view.addSubview(confirmationView)
+        let button = UIButton(type: .custom)
+        button.backgroundColor = .systemYellow
+        button.setTitle("Добавить в счёт", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
+        confirmationView.addSubview(button)
+        confirmationView.translatesAutoresizingMaskIntoConstraints = false
+        button.translatesAutoresizingMaskIntoConstraints = false
+
+        bottomConstraint = confirmationView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+
+        NSLayoutConstraint.activate([
+            confirmationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            confirmationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            confirmationView.heightAnchor.constraint(equalToConstant: 60),
+            bottomConstraint,
+
+            button.centerXAnchor.constraint(equalTo: confirmationView.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: confirmationView.centerYAnchor),
+            button.widthAnchor.constraint(equalTo: confirmationView.widthAnchor, multiplier: 0.6),
+            button.heightAnchor.constraint(equalTo: confirmationView.heightAnchor, constant: -10)
+        ])
 
         tableView.register(
             SelectionServiceCell.self,
@@ -64,6 +93,10 @@ final class SelectionViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(services, toSection: .main)
         dataSource.apply(snapshot)
+    }
+
+    @objc private func confirm() {
+        presenter.didFinish(with: services)
     }
 }
 
