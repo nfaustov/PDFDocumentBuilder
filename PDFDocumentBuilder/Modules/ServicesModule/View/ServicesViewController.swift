@@ -20,13 +20,26 @@ final class ServicesViewController: UIViewController {
 
     var selectedServices = [Service]() {
         didSet {
-            rightBarButtonItem.setBadge(text: " ")
+            if selectedServices.isEmpty {
+                UIView.animate(withDuration: 0.2) {
+                    self.buttonViewBottomConstraint.constant = 60
+                    self.view.layoutIfNeeded()
+                }
+            } else {
+                UIView.animate(withDuration: 0.2) {
+                    self.buttonViewBottomConstraint.constant = 0
+                    self.view.layoutIfNeeded()
+                }
+            }
         }
     }
     private var selectedCategory: ServicesCategory?
 
     private let searchBar = UISearchBar()
-    private var rightBarButtonItem: UIBarButtonItem!
+    private let buttonView = UIView()
+
+    private var buttonViewBottomConstraint = NSLayoutConstraint()
+//    private var rightBarButtonItem: UIBarButtonItem!
 
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>!
     private var servicesCollectionView: UICollectionView!
@@ -36,17 +49,18 @@ final class ServicesViewController: UIViewController {
 
         navigationItem.title = "Поиск услуг"
 
-        let listImage = UIImage(systemName: "list.bullet")
-        rightBarButtonItem = UIBarButtonItem(
-            image: listImage,
-            style: .plain,
-            target: self,
-            action: #selector(showSelected)
-        )
-        navigationItem.rightBarButtonItem = rightBarButtonItem
+//        let listImage = UIImage(systemName: "list.bullet")
+//        rightBarButtonItem = UIBarButtonItem(
+//            image: listImage,
+//            style: .plain,
+//            target: self,
+//            action: #selector(showSelected)
+//        )
+//        navigationItem.rightBarButtonItem = rightBarButtonItem
 
         configureHierarchy()
         configureDataSource()
+        configureButtonView()
         performQuery(with: nil)
     }
 
@@ -169,6 +183,37 @@ final class ServicesViewController: UIViewController {
         }
     }
 
+    private func configureButtonView() {
+        buttonView.backgroundColor = .systemBackground
+        view.addSubview(buttonView)
+        buttonView.translatesAutoresizingMaskIntoConstraints = false
+        let button = UIButton(type: .custom)
+        button.backgroundColor = .systemYellow
+        button.layer.cornerRadius = 10
+        button.setTitle("Показать выбранные", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(showSelected), for: .touchUpInside)
+        buttonView.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+
+        buttonViewBottomConstraint = buttonView.bottomAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+            constant: 60
+        )
+
+        NSLayoutConstraint.activate([
+            buttonView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            buttonView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            buttonView.heightAnchor.constraint(equalToConstant: 60),
+            buttonViewBottomConstraint,
+
+            button.centerXAnchor.constraint(equalTo: buttonView.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
+            button.widthAnchor.constraint(equalTo: buttonView.widthAnchor, multiplier: 0.6),
+            button.heightAnchor.constraint(equalTo: buttonView.heightAnchor, constant: -10)
+        ])
+    }
+
     private func performQuery(with filter: String?) {
         let services = priceList.filteredServices(withFilterText: filter, category: selectedCategory)
         let categories = priceList.allCategories
@@ -181,7 +226,6 @@ final class ServicesViewController: UIViewController {
     }
 
     @objc private func showSelected() {
-        rightBarButtonItem.removeBadge()
         presenter.showSelectedServices(selectedServices)
     }
 }
