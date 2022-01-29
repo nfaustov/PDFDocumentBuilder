@@ -44,6 +44,7 @@ final class SelectionViewController: UIViewController {
         view.addSubview(confirmationView)
         let button = UIButton(type: .custom)
         button.backgroundColor = .systemYellow
+        button.layer.cornerRadius = 10
         button.setTitle("Добавить в счёт", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
@@ -51,13 +52,11 @@ final class SelectionViewController: UIViewController {
         confirmationView.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
 
-        bottomConstraint = confirmationView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-
         NSLayoutConstraint.activate([
             confirmationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             confirmationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             confirmationView.heightAnchor.constraint(equalToConstant: 60),
-            bottomConstraint,
+            confirmationView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
             button.centerXAnchor.constraint(equalTo: confirmationView.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: confirmationView.centerYAnchor),
@@ -114,6 +113,10 @@ extension SelectionViewController: UITableViewDelegate {
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
 
         return swipeActions
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        view.bounds.height / 7
     }
 }
 

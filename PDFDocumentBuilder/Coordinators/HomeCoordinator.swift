@@ -46,7 +46,10 @@ extension HomeCoordinator: ServicesSubscription {
     func routeToServices(didFinish: @escaping ([Service]) -> Void) {
         let (viewController, module) = modules.servicesModule()
         module.coordinator = self
-        module.didFinish = didFinish
+        module.didFinish = { [navigationController] services in
+            navigationController.popViewController(animated: true)
+            didFinish(services)
+        }
         navigationController.pushViewController(viewController, animated: true)
     }
 }
@@ -62,7 +65,10 @@ extension HomeCoordinator: PDFPreviewSubscription {
 extension HomeCoordinator: SelectionSubscription {
     func routeToSelection(selectedServices: [Service], didFinish: @escaping ([Service]) -> Void) {
         let (viewController, module) = modules.selectionModule(selectedServices: selectedServices)
-        module.didFinish = didFinish
+        module.didFinish = { [navigationController] services in
+            navigationController.popViewController(animated: true)
+            didFinish(services)
+        }
         navigationController.pushViewController(viewController, animated: true)
     }
 }

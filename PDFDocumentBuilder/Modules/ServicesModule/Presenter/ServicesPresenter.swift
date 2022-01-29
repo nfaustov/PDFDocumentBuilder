@@ -19,7 +19,10 @@ extension ServicesPresenter: ServicesPresentation {
 
     func showSelectedServices(_ selectedServices: [Service]) {
         coordinator?.routeToSelection(selectedServices: selectedServices) { services in
+            guard !services.isEmpty else { return }
+
             self.view?.selectedServices = services
+            self.didFinish(with: services)
         }
     }
 }
