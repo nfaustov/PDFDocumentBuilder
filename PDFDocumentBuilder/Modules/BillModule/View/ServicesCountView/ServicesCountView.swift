@@ -89,7 +89,7 @@ final class ServicesCountView: UIView {
         dataSource = UITableViewDiffableDataSource<Section, AnyHashable>(
             tableView: tableView
         ) { tableView, indexPath, item in
-            let factory = BillCellFactory(tableView: tableView)
+            let factory = BillCellFactory(forView: tableView)
             let cell = factory.makeCell(with: item, for: indexPath)
             cell.selectionStyle = .none
 

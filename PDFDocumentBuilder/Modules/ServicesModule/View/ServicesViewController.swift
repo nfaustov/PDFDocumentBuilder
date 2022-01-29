@@ -166,7 +166,7 @@ final class ServicesViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>(
             collectionView: servicesCollectionView
         ) { collectionView, indexPath, itemIdentifier in
-            let factory = ServicesCellFactory(collectionView: collectionView)
+            let factory = ServicesCellFactory(forView: collectionView)
             let cell = factory.makeCell(with: itemIdentifier, for: indexPath)
 
             return cell

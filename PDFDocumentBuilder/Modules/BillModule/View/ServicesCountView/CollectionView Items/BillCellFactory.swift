@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BillCellFactory: TableViewCellFactory {
+final class BillCellFactory: CellFactory<UITableView> {
      override func makeCell(with model: AnyHashable, for indexPath: IndexPath) -> UITableViewCell {
         if let service = model as? Service {
             return configureCell(BillServiceCell.self, with: service, for: indexPath)

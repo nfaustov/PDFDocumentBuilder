@@ -74,6 +74,10 @@
 		8BCE5C702701E69C00ED9A66 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */; };
 		8BCE5C742701E7CF00ED9A66 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C732701E7CF00ED9A66 /* Authorization.swift */; };
 		8BCE5C762701E83C00ED9A66 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */; };
+		8BD4EFB327A5BF270034DC98 /* UITableView+Dequeueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4EFB227A5BF270034DC98 /* UITableView+Dequeueable.swift */; };
+		8BD4EFB627A5BF660034DC98 /* Dequeueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4EFB527A5BF660034DC98 /* Dequeueable.swift */; };
+		8BD4EFB827A5C0FE0034DC98 /* SelfConfiguredCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4EFB727A5C0FE0034DC98 /* SelfConfiguredCell.swift */; };
+		8BD4EFBA27A5C20B0034DC98 /* UICollectionView+Dequeueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4EFB927A5C20B0034DC98 /* UICollectionView+Dequeueable.swift */; };
 		8BEC53FA270C80AE00E53887 /* ServicesCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC53F9270C80AE00E53887 /* ServicesCountView.swift */; };
 		8BEC53FC270C867100E53887 /* BillServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC53FB270C867100E53887 /* BillServiceCell.swift */; };
 		8BEC5400270C8A4F00E53887 /* ServiceCountAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC53FF270C8A4F00E53887 /* ServiceCountAction.swift */; };
@@ -178,6 +182,10 @@
 		8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		8BCE5C732701E7CF00ED9A66 /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
+		8BD4EFB227A5BF270034DC98 /* UITableView+Dequeueable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueable.swift"; sourceTree = "<group>"; };
+		8BD4EFB527A5BF660034DC98 /* Dequeueable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dequeueable.swift; sourceTree = "<group>"; };
+		8BD4EFB727A5C0FE0034DC98 /* SelfConfiguredCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguredCell.swift; sourceTree = "<group>"; };
+		8BD4EFB927A5C20B0034DC98 /* UICollectionView+Dequeueable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeueable.swift"; sourceTree = "<group>"; };
 		8BEC53F9270C80AE00E53887 /* ServicesCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCountView.swift; sourceTree = "<group>"; };
 		8BEC53FB270C867100E53887 /* BillServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillServiceCell.swift; sourceTree = "<group>"; };
 		8BEC53FF270C8A4F00E53887 /* ServiceCountAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCountAction.swift; sourceTree = "<group>"; };
@@ -418,6 +426,8 @@
 			children = (
 				8B3E114526F6056700FBE02C /* DateFormatterExtension.swift */,
 				8B11DD0A27090B6F0035BC49 /* Bundle-Decodable.swift */,
+				8BD4EFB227A5BF270034DC98 /* UITableView+Dequeueable.swift */,
+				8BD4EFB927A5C20B0034DC98 /* UICollectionView+Dequeueable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -577,7 +587,7 @@
 		8B5E754E27A14C3F009FCC28 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				8B5E754F27A14C4F009FCC28 /* CellFactory.swift */,
+				8BD4EFB427A5BF4B0034DC98 /* CellFactory */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -681,6 +691,16 @@
 				8BC1046A279BFD3A004F56CA /* CounterService */,
 			);
 			path = NetworkServices;
+			sourceTree = "<group>";
+		};
+		8BD4EFB427A5BF4B0034DC98 /* CellFactory */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E754F27A14C4F009FCC28 /* CellFactory.swift */,
+				8BD4EFB527A5BF660034DC98 /* Dequeueable.swift */,
+				8BD4EFB727A5C0FE0034DC98 /* SelfConfiguredCell.swift */,
+			);
+			path = CellFactory;
 			sourceTree = "<group>";
 		};
 		8BEC53F8270C7FFE00E53887 /* ServicesCountView */ = {
@@ -887,6 +907,7 @@
 				8B6ACC752703B47900127AA6 /* PassportDataResponse.swift in Sources */,
 				8B21AD1027032BF900E63DBA /* PassportDataModule.swift in Sources */,
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
+				8BD4EFBA27A5C20B0034DC98 /* UICollectionView+Dequeueable.swift in Sources */,
 				8BF119F2279C217000A6F82D /* HomeInteractor.swift in Sources */,
 				8B11DD0B27090B6F0035BC49 /* Bundle-Decodable.swift in Sources */,
 				8B3E035327A322A80085A807 /* SelectionViewController.swift in Sources */,
@@ -910,6 +931,7 @@
 				8B21AD1727032F5F00E63DBA /* PassportDataSubscription.swift in Sources */,
 				8B119430279C2E230027DE93 /* TokenDatabase.swift in Sources */,
 				8B718AAE270A70FE006B9A9A /* ServiceCell.swift in Sources */,
+				8BD4EFB627A5BF660034DC98 /* Dequeueable.swift in Sources */,
 				8B21AD1527032CF500E63DBA /* PassportDataPresenter.swift in Sources */,
 				8B4B7529270219D50071C92A /* HomeCoordinator.swift in Sources */,
 				8B5D2F332701931C00061322 /* HomeViewController.swift in Sources */,
@@ -921,6 +943,7 @@
 				8B6ACC712703AF9C00127AA6 /* Recognition.swift in Sources */,
 				8B3006C126B1E72700DBC3AD /* PDFCreator.swift in Sources */,
 				8B1BCD2F2706519D003F6B92 /* ServicesViewController.swift in Sources */,
+				8BD4EFB827A5C0FE0034DC98 /* SelfConfiguredCell.swift in Sources */,
 				8BEC5403270C8BB800E53887 /* AddServiceCell.swift in Sources */,
 				8B5E755327A14FEC009FCC28 /* ServicesCellFactory.swift in Sources */,
 				8B5D2F2E270191D800061322 /* HomeModule.swift in Sources */,
@@ -928,6 +951,7 @@
 				8BCE5C682701DE9600ED9A66 /* TokenResponse.swift in Sources */,
 				8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */,
 				8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */,
+				8BD4EFB327A5BF270034DC98 /* UITableView+Dequeueable.swift in Sources */,
 				8B3E035527A323080085A807 /* SelectionPresenter.swift in Sources */,
 				8B11942E279C2D990027DE93 /* Token.xcdatamodeld in Sources */,
 				8BCE5C762701E83C00ED9A66 /* AuthorizationService.swift in Sources */,
