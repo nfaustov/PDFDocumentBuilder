@@ -27,6 +27,8 @@ final class SelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = "Выбранные услуги"
+
         configureHierarchy()
         configureDataSource()
         snapshot()

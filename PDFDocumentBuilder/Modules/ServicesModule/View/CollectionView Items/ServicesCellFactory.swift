@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ServicesCellFactory: CellFactory {
+final class ServicesCellFactory: CollectionViewCellFactory {
     override func makeCell(with model: AnyHashable, for indexPath: IndexPath) -> UICollectionViewCell {
         if let service = model as? Service {
             return configureCell(ServiceCell.self, with: service, for: indexPath)

@@ -44,7 +44,6 @@
 		8B4BAEE1270C41660087AE3A /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BAEE0270C41660087AE3A /* BillViewController.swift */; };
 		8B4BAEE3270C41BD0087AE3A /* BillPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BAEE2270C41BD0087AE3A /* BillPresenter.swift */; };
 		8B4BAEE5270C43450087AE3A /* BillSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BAEE4270C43450087AE3A /* BillSubscription.swift */; };
-		8B5CAE23270CCFEC007CB9D5 /* ServicesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5CAE22270CCFEC007CB9D5 /* ServicesHeader.swift */; };
 		8B5D2F2E270191D800061322 /* HomeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F2D270191D800061322 /* HomeModule.swift */; };
 		8B5D2F332701931C00061322 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F322701931C00061322 /* HomeViewController.swift */; };
 		8B5D2F35270193C800061322 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D2F34270193C800061322 /* HomePresenter.swift */; };
@@ -65,7 +64,6 @@
 		8B718AAE270A70FE006B9A9A /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B718AAD270A70FE006B9A9A /* ServiceCell.swift */; };
 		8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */; };
 		8B97FFAF270D8512008492B5 /* PDFPreviewSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */; };
-		8B9D4E1E279555580036FEFA /* UIBarButtonItem+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9D4E1D279555580036FEFA /* UIBarButtonItem+Badge.swift */; };
 		8BA3998A2706450A00861B8B /* servicesCatalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BA399892706450A00861B8B /* servicesCatalog.json */; };
 		8BC10469279BF93B004F56CA /* CounterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC10468279BF93B004F56CA /* CounterResponse.swift */; };
 		8BC1046C279BFD5F004F56CA /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1046B279BFD5F004F56CA /* Counter.swift */; };
@@ -144,7 +142,6 @@
 		8B4BAEE0270C41660087AE3A /* BillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillViewController.swift; sourceTree = "<group>"; };
 		8B4BAEE2270C41BD0087AE3A /* BillPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillPresenter.swift; sourceTree = "<group>"; };
 		8B4BAEE4270C43450087AE3A /* BillSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillSubscription.swift; sourceTree = "<group>"; };
-		8B5CAE22270CCFEC007CB9D5 /* ServicesHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesHeader.swift; sourceTree = "<group>"; };
 		8B5D2F2D270191D800061322 /* HomeModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModule.swift; sourceTree = "<group>"; };
 		8B5D2F322701931C00061322 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8B5D2F34270193C800061322 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -171,7 +168,6 @@
 		8B718AAD270A70FE006B9A9A /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBodyController.swift; sourceTree = "<group>"; };
 		8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewSubscription.swift; sourceTree = "<group>"; };
-		8B9D4E1D279555580036FEFA /* UIBarButtonItem+Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Badge.swift"; sourceTree = "<group>"; };
 		8BA399892706450A00861B8B /* servicesCatalog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servicesCatalog.json; sourceTree = "<group>"; };
 		8BC10468279BF93B004F56CA /* CounterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterResponse.swift; sourceTree = "<group>"; };
 		8BC1046B279BFD5F004F56CA /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
@@ -422,7 +418,6 @@
 			children = (
 				8B3E114526F6056700FBE02C /* DateFormatterExtension.swift */,
 				8B11DD0A27090B6F0035BC49 /* Bundle-Decodable.swift */,
-				8B9D4E1D279555580036FEFA /* UIBarButtonItem+Badge.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -482,14 +477,6 @@
 				8BEC53F8270C7FFE00E53887 /* ServicesCountView */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		8B5CAE21270CCFB1007CB9D5 /* Supplementaries */ = {
-			isa = PBXGroup;
-			children = (
-				8B5CAE22270CCFEC007CB9D5 /* ServicesHeader.swift */,
-			);
-			path = Supplementaries;
 			sourceTree = "<group>";
 		};
 		8B5D2F2C270191A400061322 /* HomeModule */ = {
@@ -708,7 +695,6 @@
 		8BEC53FD270C86E600E53887 /* CollectionView Items */ = {
 			isa = PBXGroup;
 			children = (
-				8B5CAE21270CCFB1007CB9D5 /* Supplementaries */,
 				8BEC5401270C8B8C00E53887 /* Cells */,
 				8BEC53FE270C8A3800E53887 /* Models */,
 				8BEC5408270CA0EF00E53887 /* BillCellFactory.swift */,
@@ -937,10 +923,8 @@
 				8B1BCD2F2706519D003F6B92 /* ServicesViewController.swift in Sources */,
 				8BEC5403270C8BB800E53887 /* AddServiceCell.swift in Sources */,
 				8B5E755327A14FEC009FCC28 /* ServicesCellFactory.swift in Sources */,
-				8B5CAE23270CCFEC007CB9D5 /* ServicesHeader.swift in Sources */,
 				8B5D2F2E270191D800061322 /* HomeModule.swift in Sources */,
 				8B3E112926F519C300FBE02C /* View.swift in Sources */,
-				8B9D4E1E279555580036FEFA /* UIBarButtonItem+Badge.swift in Sources */,
 				8BCE5C682701DE9600ED9A66 /* TokenResponse.swift in Sources */,
 				8BCE5C6A2701E02F00ED9A66 /* Endpoint.swift in Sources */,
 				8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */,
@@ -1066,7 +1050,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1122,7 +1106,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1140,7 +1124,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WQ6FU7ZZ8T;
 				INFOPLIST_FILE = PDFDocumentBuilder/Application/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1160,7 +1144,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WQ6FU7ZZ8T;
 				INFOPLIST_FILE = PDFDocumentBuilder/Application/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

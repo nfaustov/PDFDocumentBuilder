@@ -7,15 +7,15 @@
 
 import UIKit
 
-class BillServiceCell: UICollectionViewCell, SelfConfiguredCell {
+class BillServiceCell: UITableViewCell, SelfConfiguredCell {
     static let reuseIdentifier = "BillServiceCell"
 
     private let titleLabel = UILabel()
     private let priceLabel = UILabel()
     private let separator = UIView()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         titleLabel.numberOfLines = 0

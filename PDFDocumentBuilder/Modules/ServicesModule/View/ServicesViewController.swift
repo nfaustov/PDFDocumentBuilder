@@ -39,7 +39,6 @@ final class ServicesViewController: UIViewController {
     private let buttonView = UIView()
 
     private var buttonViewBottomConstraint = NSLayoutConstraint()
-//    private var rightBarButtonItem: UIBarButtonItem!
 
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>!
     private var servicesCollectionView: UICollectionView!
@@ -48,15 +47,6 @@ final class ServicesViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.title = "Поиск услуг"
-
-//        let listImage = UIImage(systemName: "list.bullet")
-//        rightBarButtonItem = UIBarButtonItem(
-//            image: listImage,
-//            style: .plain,
-//            target: self,
-//            action: #selector(showSelected)
-//        )
-//        navigationItem.rightBarButtonItem = rightBarButtonItem
 
         configureHierarchy()
         configureDataSource()
