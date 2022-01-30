@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8B0B30582702116E000D6755 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B30572702116E000D6755 /* DependencyContainer.swift */; };
 		8B0B305A270211D1000D6755 /* NetworkServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B3059270211D1000D6755 /* NetworkServiceDependencies.swift */; };
-		8B0C524127A70420002A090F /* CellFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 8B0C524027A70420002A090F /* CellFactory */; };
 		8B11942E279C2D990027DE93 /* Token.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B11942C279C2D990027DE93 /* Token.xcdatamodeld */; };
 		8B119430279C2E230027DE93 /* TokenDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11942F279C2E230027DE93 /* TokenDatabase.swift */; };
 		8B11DD0B27090B6F0035BC49 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11DD0A27090B6F0035BC49 /* Bundle-Decodable.swift */; };
@@ -40,6 +39,7 @@
 		8B3E113F26F51D6F00FBE02C /* PDFPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E113E26F51D6F00FBE02C /* PDFPreviewPresenter.swift */; };
 		8B3E114126F51E3900FBE02C /* PDFPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E114026F51E3900FBE02C /* PDFPreviewInteractor.swift */; };
 		8B3E114626F6056700FBE02C /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E114526F6056700FBE02C /* DateFormatterExtension.swift */; };
+		8B452CB327A7183D0032503D /* CellFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 8B452CB227A7183D0032503D /* CellFactory */; };
 		8B4B7529270219D50071C92A /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B7528270219D50071C92A /* HomeCoordinator.swift */; };
 		8B4BAEDD270C40F60087AE3A /* BillModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BAEDC270C40F60087AE3A /* BillModule.swift */; };
 		8B4BAEE1270C41660087AE3A /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BAEE0270C41660087AE3A /* BillViewController.swift */; };
@@ -194,7 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B0C524127A70420002A090F /* CellFactory in Frameworks */,
+				8B452CB327A7183D0032503D /* CellFactory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,7 +738,7 @@
 			);
 			name = PDFDocumentBuilder;
 			packageProductDependencies = (
-				8B0C524027A70420002A090F /* CellFactory */,
+				8B452CB227A7183D0032503D /* CellFactory */,
 			);
 			productName = PDFDocumentBuilder;
 			productReference = 8B5E431726B1912700A7996B /* PDFDocumentBuilder.app */;
@@ -812,7 +812,7 @@
 			);
 			mainGroup = 8B5E430E26B1912700A7996B;
 			packageReferences = (
-				8B0C523F27A70420002A090F /* XCRemoteSwiftPackageReference "CellFactory" */,
+				8B452CB127A7183D0032503D /* XCRemoteSwiftPackageReference "CellFactory" */,
 			);
 			productRefGroup = 8B5E431826B1912700A7996B /* Products */;
 			projectDirPath = "";
@@ -1278,20 +1278,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8B0C523F27A70420002A090F /* XCRemoteSwiftPackageReference "CellFactory" */ = {
+		8B452CB127A7183D0032503D /* XCRemoteSwiftPackageReference "CellFactory" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nfaustov/CellFactory.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8B0C524027A70420002A090F /* CellFactory */ = {
+		8B452CB227A7183D0032503D /* CellFactory */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8B0C523F27A70420002A090F /* XCRemoteSwiftPackageReference "CellFactory" */;
+			package = 8B452CB127A7183D0032503D /* XCRemoteSwiftPackageReference "CellFactory" */;
 			productName = CellFactory;
 		};
 /* End XCSwiftPackageProductDependency section */
