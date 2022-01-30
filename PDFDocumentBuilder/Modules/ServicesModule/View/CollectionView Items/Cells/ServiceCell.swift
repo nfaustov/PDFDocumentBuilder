@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CellFactory
 
 final class ServiceCell: UICollectionViewCell, SelfConfiguredCell {
     static let reuseIdentifier = "ServiceCell"

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CellFactory
 
 final class TotalCell: UITableViewCell, SelfConfiguredCell {
     static let reuseIdentifier = "TotalCell"

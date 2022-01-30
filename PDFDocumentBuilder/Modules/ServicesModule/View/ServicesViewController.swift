@@ -167,7 +167,7 @@ final class ServicesViewController: UIViewController {
             collectionView: servicesCollectionView
         ) { collectionView, indexPath, itemIdentifier in
             let factory = ServicesCellFactory(forView: collectionView)
-            let cell = factory.makeCell(with: itemIdentifier, for: indexPath)
+            let cell = factory.makeCell(withModel: itemIdentifier, for: indexPath)
 
             return cell
         }

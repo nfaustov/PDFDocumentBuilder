@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CellFactory
 
 class AddServiceCell: UITableViewCell, SelfConfiguredCell {
     static let reuseIdentifier = "AddServiceCell"

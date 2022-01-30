@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CellFactory",
+        "repositoryURL": "https://github.com/nfaustov/CellFactory.git",
+        "state": {
+          "branch": "main",
+          "revision": "947b0903073678417d4351fd8822dcd8eae08c8a",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CellFactory
 
 final class CategoryCell: UICollectionViewCell, SelfConfiguredCell {
     static let reuseIdentifier = "CategoryCell"

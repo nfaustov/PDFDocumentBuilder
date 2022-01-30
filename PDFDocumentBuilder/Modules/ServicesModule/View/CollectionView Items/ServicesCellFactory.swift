@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import CellFactory
 
 final class ServicesCellFactory: CellFactory<UICollectionView> {
-    override func makeCell(with model: AnyHashable, for indexPath: IndexPath) -> UICollectionViewCell {
+    override func makeCell(withModel model: AnyHashable, for indexPath: IndexPath) -> UICollectionViewCell {
         if let service = model as? Service {
             return configureCell(ServiceCell.self, with: service, for: indexPath)
         } else if let category = model as? ServicesCategory {

@@ -91,7 +91,7 @@ final class ServicesCountView: UIView {
             tableView: tableView
         ) { tableView, indexPath, item in
             let factory = BillCellFactory(forView: tableView)
-            let cell = factory.makeCell(with: item, for: indexPath)
+            let cell = factory.makeCell(withModel: item, for: indexPath)
             cell.selectionStyle = .none
 
             return cell
