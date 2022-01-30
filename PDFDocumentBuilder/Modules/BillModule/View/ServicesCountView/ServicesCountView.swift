@@ -140,6 +140,7 @@ extension ServicesCountView: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
+        view.backgroundColor = .systemBackground
         let titleLabel = UILabel()
         titleLabel.text = "Выбранные услуги"
         titleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
