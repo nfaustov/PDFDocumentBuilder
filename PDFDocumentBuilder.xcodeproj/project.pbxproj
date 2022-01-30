@@ -327,7 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				8B3E035227A322A80085A807 /* SelectionViewController.swift */,
-				8B6D532327A4041D00CE9C66 /* CollectionView Items */,
+				8B6D532327A4041D00CE9C66 /* TableView Items */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -610,12 +610,12 @@
 			path = RecognitionService;
 			sourceTree = "<group>";
 		};
-		8B6D532327A4041D00CE9C66 /* CollectionView Items */ = {
+		8B6D532327A4041D00CE9C66 /* TableView Items */ = {
 			isa = PBXGroup;
 			children = (
 				8B6D532427A4043500CE9C66 /* SelectionServiceCell.swift */,
 			);
-			path = "CollectionView Items";
+			path = "TableView Items";
 			sourceTree = "<group>";
 		};
 		8B6E4F042702F2C300373F29 /* AuthorizationService */ = {
@@ -707,19 +707,19 @@
 			isa = PBXGroup;
 			children = (
 				8BEC53F9270C80AE00E53887 /* ServicesCountView.swift */,
-				8BEC53FD270C86E600E53887 /* CollectionView Items */,
+				8BEC53FD270C86E600E53887 /* TableView Items */,
 			);
 			path = ServicesCountView;
 			sourceTree = "<group>";
 		};
-		8BEC53FD270C86E600E53887 /* CollectionView Items */ = {
+		8BEC53FD270C86E600E53887 /* TableView Items */ = {
 			isa = PBXGroup;
 			children = (
 				8BEC5401270C8B8C00E53887 /* Cells */,
 				8BEC53FE270C8A3800E53887 /* Models */,
 				8BEC5408270CA0EF00E53887 /* BillCellFactory.swift */,
 			);
-			path = "CollectionView Items";
+			path = "TableView Items";
 			sourceTree = "<group>";
 		};
 		8BEC53FE270C8A3800E53887 /* Models */ = {

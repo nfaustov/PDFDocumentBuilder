@@ -27,37 +27,27 @@ final class BillViewController: UIViewController {
     private func configureHierarchy() {
         view.backgroundColor = .secondarySystemBackground
 
-        nameLabel.numberOfLines = 2
-        nameLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
-        nameLabel.adjustsFontSizeToFitWidth = true
-        nameLabel.textColor = .systemGray3
-        nameLabel.text = patient?.name
-
-        clearButton.setTitle("ОЧИСТИТЬ", for: .normal)
-        clearButton.setTitleColor(.white, for: .normal)
-        clearButton.backgroundColor = .systemBrown
-        clearButton.layer.cornerRadius = 10
-        clearButton.addTarget(self, action: #selector(clearServices), for: .touchUpInside)
+        configureNameLabel()
+        configureClearButton()
 
         let servicesCountViewFrame = CGRect(
             x: 0,
             y: 225,
             width: view.bounds.width,
-            height: view.bounds.height - 225
+            height: view.bounds.height - 225 - 75
         )
         servicesCountView = ServicesCountView(frame: servicesCountViewFrame) { [presenter] in
             presenter?.addServices()
         }
         view.addSubview(servicesCountView)
 
-        confirmButton.setTitle("Сформировать договор", for: .normal)
-        confirmButton.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-        confirmButton.setTitleColor(.white, for: .normal)
-        confirmButton.backgroundColor = .systemRed
-        confirmButton.layer.cornerRadius = 10
-        confirmButton.addTarget(self, action: #selector(createContract), for: .touchUpInside)
+        configureConfirmButton()
 
-        [nameLabel, clearButton, confirmButton].forEach { subview in
+        let confirmButtonView = UIView()
+        confirmButtonView.backgroundColor = .systemBackground
+        confirmButtonView.addSubview(confirmButton)
+
+        [nameLabel, clearButton, confirmButtonView].forEach { subview in
             view.addSubview(subview)
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -72,11 +62,42 @@ final class BillViewController: UIViewController {
             clearButton.heightAnchor.constraint(equalToConstant: 30),
             clearButton.bottomAnchor.constraint(equalTo: servicesCountView.topAnchor, constant: -20),
 
-            confirmButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            confirmButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
+            confirmButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            confirmButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            confirmButtonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            confirmButtonView.heightAnchor.constraint(equalToConstant: 75),
+
+            confirmButton.leadingAnchor.constraint(equalTo: confirmButtonView.leadingAnchor, constant: 20),
+            confirmButton.trailingAnchor.constraint(equalTo: confirmButtonView.trailingAnchor, constant: -20),
+            confirmButton.bottomAnchor.constraint(equalTo: confirmButtonView.bottomAnchor, constant: -25),
             confirmButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+
+    private func configureNameLabel() {
+        nameLabel.numberOfLines = 2
+        nameLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        nameLabel.adjustsFontSizeToFitWidth = true
+        nameLabel.textColor = .systemGray3
+        nameLabel.text = patient?.name
+    }
+
+    private func configureClearButton() {
+        clearButton.setTitle("ОЧИСТИТЬ", for: .normal)
+        clearButton.setTitleColor(.white, for: .normal)
+        clearButton.backgroundColor = .systemBrown
+        clearButton.layer.cornerRadius = 10
+        clearButton.addTarget(self, action: #selector(clearServices), for: .touchUpInside)
+    }
+
+    private func configureConfirmButton() {
+        confirmButton.setTitle("Сформировать договор", for: .normal)
+        confirmButton.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        confirmButton.setTitleColor(.white, for: .normal)
+        confirmButton.backgroundColor = .systemRed
+        confirmButton.layer.cornerRadius = 10
+        confirmButton.addTarget(self, action: #selector(createContract), for: .touchUpInside)
+        confirmButton.translatesAutoresizingMaskIntoConstraints = false
     }
 
     @objc private func clearServices() {

@@ -69,6 +69,7 @@ final class ServicesCountView: UIView {
         backgroundColor = .systemBackground
 
         tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
         addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -105,7 +106,7 @@ final class ServicesCountView: UIView {
         snapshot.appendItems(services.isEmpty ? [service] : services, toSection: .selected)
         snapshot.appendItems(serviceAction, toSection: .addService)
         snapshot.appendItems(servicesTotal, toSection: .total)
-        dataSource.apply(snapshot, animatingDifferences: false)
+        dataSource.apply(snapshot)
     }
 }
 
