@@ -65,10 +65,12 @@ extension HomeCoordinator: PDFPreviewSubscription {
 extension HomeCoordinator: SelectionSubscription {
     func routeToSelection(selectedServices: [Service], didFinish: @escaping ([Service]) -> Void) {
         let (viewController, module) = modules.selectionModule(selectedServices: selectedServices)
-        module.didFinish = { [navigationController] services in
-            navigationController.popViewController(animated: true)
+        module.didFinish = { services in
+            viewController.dismiss(animated: true)
             didFinish(services)
         }
-        navigationController.pushViewController(viewController, animated: true)
+        viewController.transitioningDelegate = viewController as? UIViewControllerTransitioningDelegate
+        viewController.modalPresentationStyle = .custom
+        navigationController.present(viewController, animated: true)
     }
 }

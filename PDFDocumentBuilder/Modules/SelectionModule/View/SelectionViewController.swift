@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SelectionViewController: UIViewController {
+final class SelectionViewController: UITableViewController {
     typealias PresenterType = SelectionPresentation
     var presenter: PresenterType!
 
@@ -17,17 +17,12 @@ final class SelectionViewController: UIViewController {
 
     var services = [Service]()
 
-    var bottomConstraint = NSLayoutConstraint()
-
     private let confirmationView = UIView()
 
     private var dataSource: UITableViewDiffableDataSource<Section, Service>!
-    private var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationItem.title = "Выбранные услуги"
 
         configureHierarchy()
         configureDataSource()
@@ -35,18 +30,15 @@ final class SelectionViewController: UIViewController {
     }
 
     private func configureHierarchy() {
-        view.backgroundColor = .secondarySystemBackground
+        tableView.layer.cornerRadius = 20
+        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        tableView.bounces = false
+        tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 20, right: 0)
 
-        tableView = UITableView(frame: view.bounds, style: .insetGrouped)
-        tableView.backgroundColor = .systemBackground
-        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(tableView)
-
-        confirmationView.backgroundColor = .systemBackground
-        view.addSubview(confirmationView)
+        tableView.addSubview(confirmationView)
         let button = UIButton(type: .custom)
-        button.backgroundColor = .systemYellow
-        button.layer.cornerRadius = 10
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 20
         button.setTitle("Добавить в счёт", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
@@ -56,22 +48,20 @@ final class SelectionViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             confirmationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            confirmationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            confirmationView.heightAnchor.constraint(equalToConstant: 60),
+            confirmationView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            confirmationView.heightAnchor.constraint(equalToConstant: 80),
             confirmationView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
             button.centerXAnchor.constraint(equalTo: confirmationView.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: confirmationView.centerYAnchor),
             button.widthAnchor.constraint(equalTo: confirmationView.widthAnchor, multiplier: 0.6),
-            button.heightAnchor.constraint(equalTo: confirmationView.heightAnchor, constant: -10)
+            button.heightAnchor.constraint(equalTo: confirmationView.heightAnchor, constant: -20)
         ])
 
         tableView.register(
             SelectionServiceCell.self,
             forCellReuseIdentifier: SelectionServiceCell.reuseIdentifier
         )
-
-        tableView.delegate = self
     }
 
     private func configureDataSource() {
@@ -99,12 +89,16 @@ final class SelectionViewController: UIViewController {
     @objc private func confirm() {
         presenter.didFinish(with: services)
     }
+
+    @objc private func close() {
+        presenter.didFinish(with: services)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 
-extension SelectionViewController: UITableViewDelegate {
-    func tableView(
+extension SelectionViewController {
+    override func tableView(
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
@@ -117,12 +111,23 @@ extension SelectionViewController: UITableViewDelegate {
         return swipeActions
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         view.bounds.height / 7
+    }
+}
+
+// MARK: - UIViewControllerTransitioningDelegate
+
+extension SelectionViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController?,
+        source: UIViewController
+    ) -> UIPresentationController? {
+        CustomPrentationController(presentedViewController: presented, presenting: presenting ?? source)
     }
 }
 
 // MARK: - SelectionView
 
-extension SelectionViewController: SelectionView {
-}
+extension SelectionViewController: SelectionView { }

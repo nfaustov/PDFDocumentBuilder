@@ -12,6 +12,7 @@
 		8B11942E279C2D990027DE93 /* Token.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B11942C279C2D990027DE93 /* Token.xcdatamodeld */; };
 		8B119430279C2E230027DE93 /* TokenDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11942F279C2E230027DE93 /* TokenDatabase.swift */; };
 		8B11DD0B27090B6F0035BC49 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11DD0A27090B6F0035BC49 /* Bundle-Decodable.swift */; };
+		8B125A4C27A7C31C005FEABA /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B125A4B27A7C31C005FEABA /* CustomPresentationController.swift */; };
 		8B1BCD2D27065107003F6B92 /* ServicesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BCD2C27065107003F6B92 /* ServicesModule.swift */; };
 		8B1BCD2F2706519D003F6B92 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BCD2E2706519D003F6B92 /* ServicesViewController.swift */; };
 		8B1BCD3127065209003F6B92 /* ServicesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BCD3027065209003F6B92 /* ServicesPresenter.swift */; };
@@ -109,6 +110,7 @@
 		8B11942D279C2D990027DE93 /* Token.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Token.xcdatamodel; sourceTree = "<group>"; };
 		8B11942F279C2E230027DE93 /* TokenDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDatabase.swift; sourceTree = "<group>"; };
 		8B11DD0A27090B6F0035BC49 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		8B125A4B27A7C31C005FEABA /* CustomPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
 		8B1BCD2C27065107003F6B92 /* ServicesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModule.swift; sourceTree = "<group>"; };
 		8B1BCD2E2706519D003F6B92 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		8B1BCD3027065209003F6B92 /* ServicesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesPresenter.swift; sourceTree = "<group>"; };
@@ -243,6 +245,14 @@
 			path = TokenDatabase;
 			sourceTree = "<group>";
 		};
+		8B125A4A27A7C2F9005FEABA /* CustomPresentationController */ = {
+			isa = PBXGroup;
+			children = (
+				8B125A4B27A7C31C005FEABA /* CustomPresentationController.swift */,
+			);
+			path = CustomPresentationController;
+			sourceTree = "<group>";
+		};
 		8B1BCD29270650D2003F6B92 /* ServicesModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +330,7 @@
 			children = (
 				8B3E035227A322A80085A807 /* SelectionViewController.swift */,
 				8B6D532327A4041D00CE9C66 /* TableView Items */,
+				8B125A4A27A7C2F9005FEABA /* CustomPresentationController */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -933,6 +944,7 @@
 				8B5E754D27A1461E009FCC28 /* CategoryCell.swift in Sources */,
 				8B1BCD3127065209003F6B92 /* ServicesPresenter.swift in Sources */,
 				8B6D532527A4043500CE9C66 /* SelectionServiceCell.swift in Sources */,
+				8B125A4C27A7C31C005FEABA /* CustomPresentationController.swift in Sources */,
 				8B3E113026F51A5000FBE02C /* Modules.swift in Sources */,
 				8BC10469279BF93B004F56CA /* CounterResponse.swift in Sources */,
 				8B3E113726F51AF800FBE02C /* MainCoordinator.swift in Sources */,
