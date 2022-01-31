@@ -10,6 +10,7 @@ import Foundation
 struct ContractBodyController {
     let patient: Patient
     let services: [Service]
+    let discount: Double
 
     var totalPrice: Double {
         services

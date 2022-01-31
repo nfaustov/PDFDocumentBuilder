@@ -29,10 +29,18 @@ final class ServicesCountView: UIView {
             snapshot()
         }
     }
+    var discount: Double = .zero {
+        didSet {
+            guard let total = servicesTotal.first else { return }
 
-    var addServiceAction: (() -> Void)?
+            let newTotal = ServiceCountTotal(preliminaryTotal: total.preliminaryTotal, discount: discount)
+            servicesTotal = [newTotal]
+            snapshot()
+        }
+    }
 
-    private var discount: Double = .zero
+    private var addServiceAction: (() -> Void)?
+    private var discountAction: (() -> Void)?
 
     private var serviceAction: [ServiceCountAction] = [.addServiceAction]
     private var servicesTotal: [ServiceCountTotal] = [.placeholder]
@@ -42,9 +50,10 @@ final class ServicesCountView: UIView {
 
     private let servicesHeaderElementKind = "services-section-header"
 
-    init(frame: CGRect, addServiceAction: @escaping () -> Void) {
+    init(frame: CGRect, addServiceAction: @escaping () -> Void, discountAction: @escaping () -> Void) {
         super.init(frame: frame)
         self.addServiceAction = addServiceAction
+        self.discountAction = discountAction
 
         backgroundColor = .systemBackground
         layer.masksToBounds = true
@@ -114,9 +123,12 @@ final class ServicesCountView: UIView {
 
 extension ServicesCountView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let dataSource = dataSource,
-           dataSource.itemIdentifier(for: indexPath) as? ServiceCountAction != nil {
+        guard let dataSource = dataSource else { return }
+
+        if dataSource.itemIdentifier(for: indexPath) as? ServiceCountAction != nil {
             addServiceAction?()
+        } else if dataSource.itemIdentifier(for: indexPath) as? ServiceCountTotal != nil {
+            discountAction?()
         }
     }
 

@@ -10,9 +10,10 @@ import PDFKit
 final class ContractBody {
     private let patient: Patient
     private let services: [Service]
+    private let discount: Double
 
     private var controller: ContractBodyController {
-        .init(patient: patient, services: services)
+        .init(patient: patient, services: services, discount: discount)
     }
 
     private let regularFontAttributes: [NSAttributedString.Key: Any] = [
@@ -25,9 +26,10 @@ final class ContractBody {
         .font: UIFont.systemFont(ofSize: 9, weight: .bold)
     ]
 
-    init(patient: Patient, services: [Service]) {
+    init(patient: Patient, services: [Service], discount: Double) {
         self.patient = patient
         self.services = services
+        self.discount = discount
     }
 
     func makeFirstPage(_ drawContext: CGContext, pageRect: CGRect, textTop: CGFloat) {

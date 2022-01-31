@@ -16,5 +16,5 @@ protocol BillView: View {
 
 protocol BillPresentation: AnyObject {
     func addServices()
-    func createContract(patient: Patient, services: [Service])
+    func createContract(patient: Patient, services: [Service], discount: Double)
 }

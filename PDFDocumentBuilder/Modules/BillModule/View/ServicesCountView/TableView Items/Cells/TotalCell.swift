@@ -71,6 +71,6 @@ final class TotalCell: UITableViewCell, SelfConfiguredCell {
 
     func configure(with model: ServiceCountTotal) {
         preliminaryLabel.text = "\(model.preliminaryTotal) ₽"
-        discountLabel.text = "\(model.discount) ₽"
+        discountLabel.text = "\(model.preliminaryTotal * model.discount) ₽"
     }
 }

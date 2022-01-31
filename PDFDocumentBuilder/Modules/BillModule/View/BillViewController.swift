@@ -13,6 +13,12 @@ final class BillViewController: UIViewController {
 
     var patient: Patient?
 
+    private var discount: Double = .zero {
+        didSet {
+            servicesCountView.discount = discount
+        }
+    }
+
     private let nameLabel = UILabel()
     private let clearButton = UIButton(type: .custom)
     private let confirmButton = UIButton(type: .custom)
@@ -36,9 +42,14 @@ final class BillViewController: UIViewController {
             width: view.bounds.width,
             height: view.bounds.height - 225 - 75
         )
-        servicesCountView = ServicesCountView(frame: servicesCountViewFrame) { [presenter] in
-            presenter?.addServices()
-        }
+        servicesCountView = ServicesCountView(
+            frame: servicesCountViewFrame,
+            addServiceAction: {
+                self.presenter.addServices()
+            }, discountAction: {
+                self.showDiscountAlert()
+            }
+        )
         view.addSubview(servicesCountView)
 
         configureConfirmButton()
@@ -100,6 +111,34 @@ final class BillViewController: UIViewController {
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    private func showDiscountAlert() {
+        let alertController = UIAlertController(
+            title: "Добавление скидки",
+            message: "Укажите размер скидки.",
+            preferredStyle: .actionSheet
+        )
+        let threePercent = UIAlertAction(title: "3%", style: .default) { _ in
+            alertController.dismiss(animated: true) {
+                self.discount = 0.03
+            }
+        }
+        let fivePercent = UIAlertAction(title: "5%", style: .default) { _ in
+            alertController.dismiss(animated: true) {
+                self.discount = 0.05
+            }
+        }
+        let tenPercent = UIAlertAction(title: "10%", style: .default) { _ in
+            alertController.dismiss(animated: true) {
+                self.discount = 0.1
+            }
+        }
+        alertController.addAction(tenPercent)
+        alertController.addAction(fivePercent)
+        alertController.addAction(threePercent)
+
+        present(alertController, animated: true)
+    }
+
     @objc private func clearServices() {
         servicesCountView.clearServices()
     }
@@ -107,7 +146,7 @@ final class BillViewController: UIViewController {
     @objc private func createContract() {
         guard let patient = patient else { return }
 
-        presenter.createContract(patient: patient, services: servicesCountView.services)
+        presenter.createContract(patient: patient, services: servicesCountView.services, discount: discount)
     }
 }
 
