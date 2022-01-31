@@ -13,5 +13,5 @@ protocol SelectionView: View {
 }
 
 protocol SelectionPresentation: AnyObject {
-    func didFinish(with services: [Service], routeToBill: Bool)
+    func didFinish(with services: [Service], isRouteToBill: Bool)
 }

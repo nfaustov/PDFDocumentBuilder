@@ -14,7 +14,7 @@ final class SelectionPresenter<V>: Presenter<V>, SelectionModule where V: Select
 // MARK: - SelectionPresentation
 
 extension SelectionPresenter: SelectionPresentation {
-    func didFinish(with services: [Service], routeToBill: Bool) {
-        didFinish?(services, routeToBill)
+    func didFinish(with services: [Service], isRouteToBill: Bool) {
+        didFinish?(services, isRouteToBill)
     }
 }

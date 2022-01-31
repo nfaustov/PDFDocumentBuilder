@@ -19,8 +19,6 @@ extension ServicesPresenter: ServicesPresentation {
 
     func showSelectedServices(_ selectedServices: [Service]) {
         coordinator?.routeToSelection(selectedServices: selectedServices) { services, routeToBill in
-            guard !services.isEmpty else { return }
-
             self.view?.selectedServices = services
             if routeToBill { self.didFinish(with: services) }
         }

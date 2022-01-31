@@ -15,9 +15,15 @@ final class SelectionViewController: UITableViewController {
         case main
     }
 
-    var services = [Service]()
+    var services = [Service]() {
+        didSet {
+            confirmButton.isEnabled = !services.isEmpty
+            confirmButton.alpha = confirmButton.isEnabled ? 1 : 0.2
+        }
+    }
 
     private let confirmationView = UIView()
+    private let confirmButton = UIButton(type: .custom)
     private let closeButton = UIButton(type: .custom)
 
     private var dataSource: UITableViewDiffableDataSource<Section, Service>!
@@ -38,15 +44,14 @@ final class SelectionViewController: UITableViewController {
         tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 20, right: 0)
 
         view.addSubview(confirmationView)
-        let button = UIButton(type: .custom)
-        button.backgroundColor = .black
-        button.layer.cornerRadius = 20
-        button.setTitle("Добавить в счёт", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
-        confirmationView.addSubview(button)
+        confirmButton.backgroundColor = .black
+        confirmButton.layer.cornerRadius = 20
+        confirmButton.setTitle("Добавить в счёт", for: .normal)
+        confirmButton.setTitleColor(.white, for: .normal)
+        confirmButton.addTarget(self, action: #selector(confirm), for: .touchUpInside)
+        confirmationView.addSubview(confirmButton)
         confirmationView.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
+        confirmButton.translatesAutoresizingMaskIntoConstraints = false
 
         configureCloseButton()
 
@@ -56,10 +61,10 @@ final class SelectionViewController: UITableViewController {
             confirmationView.heightAnchor.constraint(equalToConstant: 80),
             confirmationView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
-            button.centerXAnchor.constraint(equalTo: confirmationView.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: confirmationView.centerYAnchor),
-            button.widthAnchor.constraint(equalTo: confirmationView.widthAnchor, multiplier: 0.6),
-            button.heightAnchor.constraint(equalTo: confirmationView.heightAnchor, constant: -20)
+            confirmButton.centerXAnchor.constraint(equalTo: confirmationView.centerXAnchor),
+            confirmButton.centerYAnchor.constraint(equalTo: confirmationView.centerYAnchor),
+            confirmButton.widthAnchor.constraint(equalTo: confirmationView.widthAnchor, multiplier: 0.6),
+            confirmButton.heightAnchor.constraint(equalTo: confirmationView.heightAnchor, constant: -20)
         ])
 
         tableView.register(
@@ -112,11 +117,11 @@ final class SelectionViewController: UITableViewController {
     }
 
     @objc private func confirm() {
-        presenter.didFinish(with: services, routeToBill: true)
+        presenter.didFinish(with: services, isRouteToBill: true)
     }
 
     @objc private func close() {
-        presenter.didFinish(with: services, routeToBill: false)
+        presenter.didFinish(with: services, isRouteToBill: false)
     }
 }
 
