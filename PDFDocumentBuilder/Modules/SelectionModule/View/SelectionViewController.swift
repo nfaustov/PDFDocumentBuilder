@@ -18,6 +18,7 @@ final class SelectionViewController: UITableViewController {
     var services = [Service]()
 
     private let confirmationView = UIView()
+    private let closeButton = UIButton(type: .custom)
 
     private var dataSource: UITableViewDiffableDataSource<Section, Service>!
 
@@ -30,12 +31,13 @@ final class SelectionViewController: UITableViewController {
     }
 
     private func configureHierarchy() {
+        view.clipsToBounds = false
         tableView.layer.cornerRadius = 20
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tableView.bounces = false
         tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 20, right: 0)
 
-        tableView.addSubview(confirmationView)
+        view.addSubview(confirmationView)
         let button = UIButton(type: .custom)
         button.backgroundColor = .black
         button.layer.cornerRadius = 20
@@ -46,11 +48,13 @@ final class SelectionViewController: UITableViewController {
         confirmationView.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
 
+        configureCloseButton()
+
         NSLayoutConstraint.activate([
-            confirmationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            confirmationView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            confirmationView.heightAnchor.constraint(equalToConstant: 80),
-            confirmationView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            closeButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: -40),
+            closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            closeButton.heightAnchor.constraint(equalToConstant: 40),
+            closeButton.widthAnchor.constraint(equalToConstant: 40),
 
             button.centerXAnchor.constraint(equalTo: confirmationView.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: confirmationView.centerYAnchor),
@@ -86,12 +90,33 @@ final class SelectionViewController: UITableViewController {
         dataSource.apply(snapshot)
     }
 
+    private func configureCloseButton() {
+        closeButton.backgroundColor = .systemBackground
+        closeButton.layer.cornerRadius = 20
+        closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        closeButton.tintColor = .black
+        closeButton.layer.shadowColor = UIColor.black.cgColor
+        closeButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        closeButton.layer.shadowRadius = 8
+        closeButton.layer.shadowOpacity = 0.15
+        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        view.addSubview(closeButton)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            confirmationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            confirmationView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            confirmationView.heightAnchor.constraint(equalToConstant: 80),
+            confirmationView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+
     @objc private func confirm() {
-        presenter.didFinish(with: services)
+        presenter.didFinish(with: services, routeToBill: true)
     }
 
     @objc private func close() {
-        presenter.didFinish(with: services)
+        presenter.didFinish(with: services, routeToBill: false)
     }
 }
 

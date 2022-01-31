@@ -6,12 +6,12 @@
 //
 
 protocol SelectionModule: AnyObject {
-    var didFinish: (([Service]) -> Void)? { get set }
+    var didFinish: (([Service], Bool) -> Void)? { get set }
 }
 
 protocol SelectionView: View {
 }
 
 protocol SelectionPresentation: AnyObject {
-    func didFinish(with services: [Service])
+    func didFinish(with services: [Service], routeToBill: Bool)
 }

@@ -63,11 +63,11 @@ extension HomeCoordinator: PDFPreviewSubscription {
 }
 
 extension HomeCoordinator: SelectionSubscription {
-    func routeToSelection(selectedServices: [Service], didFinish: @escaping ([Service]) -> Void) {
+    func routeToSelection(selectedServices: [Service], didFinish: @escaping ([Service], Bool) -> Void) {
         let (viewController, module) = modules.selectionModule(selectedServices: selectedServices)
-        module.didFinish = { services in
+        module.didFinish = { services, routeToBill in
             viewController.dismiss(animated: true)
-            didFinish(services)
+            didFinish(services, routeToBill)
         }
         viewController.transitioningDelegate = viewController as? UIViewControllerTransitioningDelegate
         viewController.modalPresentationStyle = .custom

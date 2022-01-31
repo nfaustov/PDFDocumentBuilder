@@ -18,11 +18,11 @@ extension ServicesPresenter: ServicesPresentation {
     }
 
     func showSelectedServices(_ selectedServices: [Service]) {
-        coordinator?.routeToSelection(selectedServices: selectedServices) { services in
+        coordinator?.routeToSelection(selectedServices: selectedServices) { services, routeToBill in
             guard !services.isEmpty else { return }
 
             self.view?.selectedServices = services
-            self.didFinish(with: services)
+            if routeToBill { self.didFinish(with: services) }
         }
     }
 }

@@ -8,13 +8,13 @@
 import Foundation
 
 final class SelectionPresenter<V>: Presenter<V>, SelectionModule where V: SelectionView {
-    var didFinish: (([Service]) -> Void)?
+    var didFinish: (([Service], Bool) -> Void)?
 }
 
 // MARK: - SelectionPresentation
 
 extension SelectionPresenter: SelectionPresentation {
-    func didFinish(with services: [Service]) {
-        didFinish?(services)
+    func didFinish(with services: [Service], routeToBill: Bool) {
+        didFinish?(services, routeToBill)
     }
 }

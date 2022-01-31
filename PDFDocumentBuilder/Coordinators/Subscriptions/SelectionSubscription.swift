@@ -6,5 +6,5 @@
 //
 
 protocol SelectionSubscription: AnyObject {
-    func routeToSelection(selectedServices: [Service], didFinish: @escaping ([Service]) -> Void)
+    func routeToSelection(selectedServices: [Service], didFinish: @escaping ([Service], Bool) -> Void)
 }
