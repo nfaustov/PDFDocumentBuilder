@@ -22,7 +22,7 @@ final class ServicesViewController: UIViewController {
         didSet {
             if selectedServices.isEmpty {
                 UIView.animate(withDuration: 0.2) {
-                    self.buttonViewBottomConstraint.constant = 60
+                    self.buttonViewBottomConstraint.constant = 70
                     self.view.layoutIfNeeded()
                 }
             } else {
@@ -178,8 +178,8 @@ final class ServicesViewController: UIViewController {
         view.addSubview(buttonView)
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         let button = UIButton(type: .custom)
-        button.backgroundColor = .systemYellow
-        button.layer.cornerRadius = 10
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 20
         button.setTitle("Показать выбранные", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(showSelected), for: .touchUpInside)
@@ -188,13 +188,13 @@ final class ServicesViewController: UIViewController {
 
         buttonViewBottomConstraint = buttonView.bottomAnchor.constraint(
             equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-            constant: 60
+            constant: 70
         )
 
         NSLayoutConstraint.activate([
             buttonView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             buttonView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            buttonView.heightAnchor.constraint(equalToConstant: 60),
+            buttonView.heightAnchor.constraint(equalToConstant: 70),
             buttonViewBottomConstraint,
 
             button.centerXAnchor.constraint(equalTo: buttonView.centerXAnchor),

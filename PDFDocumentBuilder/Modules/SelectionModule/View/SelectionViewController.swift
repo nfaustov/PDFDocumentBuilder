@@ -51,10 +51,10 @@ final class SelectionViewController: UITableViewController {
         configureCloseButton()
 
         NSLayoutConstraint.activate([
-            closeButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: -40),
-            closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            closeButton.heightAnchor.constraint(equalToConstant: 40),
-            closeButton.widthAnchor.constraint(equalToConstant: 40),
+            confirmationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            confirmationView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            confirmationView.heightAnchor.constraint(equalToConstant: 80),
+            confirmationView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
             button.centerXAnchor.constraint(equalTo: confirmationView.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: confirmationView.centerYAnchor),
@@ -104,10 +104,10 @@ final class SelectionViewController: UITableViewController {
         closeButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            confirmationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            confirmationView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            confirmationView.heightAnchor.constraint(equalToConstant: 80),
-            confirmationView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            closeButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: -40),
+            closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            closeButton.heightAnchor.constraint(equalToConstant: 40),
+            closeButton.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
 
