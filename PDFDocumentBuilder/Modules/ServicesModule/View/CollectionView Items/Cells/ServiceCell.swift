@@ -16,7 +16,9 @@ final class ServiceCell: UICollectionViewCell, SelfConfiguredCell {
 
     override var isSelected: Bool {
         didSet {
-            contentView.layer.borderWidth = isSelected ? 1 : 0
+            UIView.animate(withDuration: 0.2) {
+                self.contentView.layer.borderWidth = self.isSelected ? 1 : 0
+            }
         }
     }
 
