@@ -41,9 +41,9 @@ final class ContractBody {
         let tableBottom = drawPriceTable(
             drawContext,
             pageRect: pageRect,
-            tableY: aboveTableTextBottom + Size.tabletextEdgeInset
+            tableY: aboveTableTextBottom + Size.tableYOffset
         )
-        let belowTableTextBottom = addBelowTableText(pageRect: pageRect, textTop: tableBottom + Size.tabletextEdgeInset)
+        let belowTableTextBottom = addBelowTableText(pageRect: pageRect, textTop: tableBottom + Size.tableYOffset)
         let companyDetailsBottom = addParticipantDetails(
             title: "Исполнитель",
             details: controller.companyDetails,
@@ -60,13 +60,13 @@ final class ContractBody {
         )
         addSignatureField(
             "Директор _______________________ / Фаустов Н.И.",
-            signatureTop: max(companyDetailsBottom, patientDetailsBottom) + 15,
+            signatureTop: max(companyDetailsBottom, patientDetailsBottom) + Size.signatureTopOffset,
             leading: Size.textEdgeInset,
             width: (pageRect.width - Size.textEdgeInset * 2) / 2
         )
         addSignatureField(
             "_______________________ / _______________________",
-            signatureTop: max(companyDetailsBottom, patientDetailsBottom) + 15,
+            signatureTop: max(companyDetailsBottom, patientDetailsBottom) + Size.signatureTopOffset,
             leading: (pageRect.width + Size.textEdgeInset) / 2,
             width: (pageRect.width - Size.textEdgeInset * 2) / 2
         )
@@ -101,7 +101,7 @@ private extension ContractBody {
             x: Size.textEdgeInset,
             y: textTop,
             width: pageRect.width - Size.textEdgeInset * 2,
-            height: pageRect.height - textTop - 610
+            height: 97
         )
         attributedBelowTablePart.draw(in: belowTablePartRect)
 
@@ -243,18 +243,19 @@ private extension ContractBody {
         let titleSize = attributedTitle.size()
         let titleRect = CGRect(
             x: leading,
-            y: titleTop,
+            y: titleTop + 5,
             width: (pageRect.width - Size.textEdgeInset * 2) / 2,
             height: titleSize.height
         )
         attributedTitle.draw(in: titleRect)
 
         let attributedDetails = NSAttributedString(string: details, attributes: Attributes.lightFont)
+        let detailsSize = attributedDetails.size()
         let detailsRect = CGRect(
             x: leading,
             y: titleRect.maxY,
             width: (pageRect.width - Size.textEdgeInset * 2) / 2,
-            height: pageRect.height - titleTop - 520
+            height: detailsSize.height
         )
         attributedDetails.draw(in: detailsRect)
 
@@ -293,13 +294,13 @@ private extension ContractBody {
         addSignatureField(
             "_______________________ / _______________________     Дата: __________________",
             signatureTop: pageRect.height - 210,
-            leading: Size.signatureLeading,
+            leading: Size.signatureLeadingOffset,
             width: pageRect.width - Size.textEdgeInset * 2
         )
         addSignatureField(
             "Лечащий врач (специалист) _______________________ / _______________________",
             signatureTop: pageRect.height - 180,
-            leading: Size.signatureLeading,
+            leading: Size.signatureLeadingOffset,
             width: pageRect.width - Size.textEdgeInset * 2
         )
 
@@ -318,13 +319,13 @@ private extension ContractBody {
         addSignatureField(
             "_______________________ / _______________________     Дата: __________________",
             signatureTop: pageRect.height - 80,
-            leading: Size.signatureLeading,
+            leading: Size.signatureLeadingOffset,
             width: pageRect.width - Size.textEdgeInset * 2
         )
         addSignatureField(
             "Лечащий врач (специалист) _______________________ / _______________________",
             signatureTop: pageRect.height - 50,
-            leading: Size.signatureLeading,
+            leading: Size.signatureLeadingOffset,
             width: pageRect.width - Size.textEdgeInset * 2
         )
     }
@@ -336,8 +337,10 @@ private extension ContractBody {
         static let tabletextEdgeInset: CGFloat = 10
         static let tableTitleRectHeight: CGFloat = 16
         static let servicesSpacing: CGFloat = 5
-        static let signatureLeading: CGFloat = 180
+        static let signatureLeadingOffset: CGFloat = 180
         static let informingHeight: CGFloat = 150
+        static let signatureTopOffset: CGFloat = 20
+        static let tableYOffset: CGFloat = 10
     }
 
     enum Attributes {
