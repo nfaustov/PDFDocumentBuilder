@@ -16,16 +16,6 @@ final class ContractBody {
         .init(patient: patient, services: services, discount: discount)
     }
 
-    private let regularFontAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.systemFont(ofSize: 9, weight: .regular)
-    ]
-    private let lightFontAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.systemFont(ofSize: 9, weight: .light)
-    ]
-    private let boldFontAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.systemFont(ofSize: 9, weight: .bold)
-    ]
-
     init(patient: Patient, services: [Service], discount: Double) {
         self.patient = patient
         self.services = services
@@ -35,7 +25,7 @@ final class ContractBody {
     func makeFirstPage(_ drawContext: CGContext, pageRect: CGRect, textTop: CGFloat) {
         let attributedFirstPagePart = NSAttributedString(
             string: controller.firstPagePart,
-            attributes: regularFontAttributes
+            attributes: Attributes.regularFont
         )
         let aboveTablePartRect = CGRect(
             x: Size.textEdgeInset,
@@ -88,7 +78,7 @@ private extension ContractBody {
     func addAboveTableText(textTop: CGFloat) -> CGFloat {
         let attributedAboveTablePart = NSAttributedString(
             string: controller.aboveTablePart,
-            attributes: regularFontAttributes
+            attributes: Attributes.regularFont
         )
         let aboveTablePartSize = attributedAboveTablePart.size()
         let aboveTablePartRect = CGRect(
@@ -105,7 +95,7 @@ private extension ContractBody {
     func addBelowTableText(pageRect: CGRect, textTop: CGFloat) -> CGFloat {
         let attributedBelowTablePart = NSAttributedString(
             string: controller.belowTablePart,
-            attributes: regularFontAttributes
+            attributes: Attributes.regularFont
         )
         let belowTablePartRect = CGRect(
             x: Size.textEdgeInset,
@@ -160,7 +150,7 @@ private extension ContractBody {
         services.forEach { service in
             let attributedService = NSAttributedString(
                 string: service.title,
-                attributes: lightFontAttributes
+                attributes: Attributes.lightFont
             )
             let serviceWidth = separatorX - Size.textEdgeInset - Size.tabletextEdgeInset * 2
             let numberOfLines = ceil(attributedService.size().width / serviceWidth)
@@ -175,7 +165,7 @@ private extension ContractBody {
 
             let attributedPrice = NSAttributedString(
                 string: "\(String(format: "%.2f", service.price))",
-                attributes: lightFontAttributes
+                attributes: Attributes.lightFont
             )
             let priceSize = attributedPrice.size()
             let priceRect = CGRect(
@@ -195,7 +185,7 @@ private extension ContractBody {
     func addServicesListTitle(tableY: CGFloat, tableWidth: CGFloat, separatorX: CGFloat) {
         let attributedServiceTitle = NSAttributedString(
             string: "Наименование платной медицинской услуги",
-            attributes: regularFontAttributes
+            attributes: Attributes.regularFont
         )
         let serviceTitleSize = attributedServiceTitle.size()
         let serviceTitleRect = CGRect(
@@ -206,7 +196,7 @@ private extension ContractBody {
         )
         attributedServiceTitle.draw(in: serviceTitleRect)
 
-        let attributedPriceTitle = NSAttributedString(string: "Цена (руб.)", attributes: regularFontAttributes)
+        let attributedPriceTitle = NSAttributedString(string: "Цена (руб.)", attributes: Attributes.regularFont)
         let priceTitleSize = attributedPriceTitle.size()
         let priceTitleRect = CGRect(
             x: separatorX + (tableWidth - separatorX + Size.textEdgeInset - priceTitleSize.width) / 2,
@@ -218,7 +208,7 @@ private extension ContractBody {
     }
 
     func addServicesListTotal(tableBottom: CGFloat, tableWidth: CGFloat, separatorX: CGFloat) {
-        let attributedTotal = NSAttributedString(string: "ИТОГО", attributes: boldFontAttributes)
+        let attributedTotal = NSAttributedString(string: "ИТОГО", attributes: Attributes.boldFont)
         let totalSize = attributedTotal.size()
         let totalRect = CGRect(
             x: Size.textEdgeInset + Size.tabletextEdgeInset,
@@ -230,7 +220,7 @@ private extension ContractBody {
 
         let attributedTotalPrice = NSAttributedString(
             string: "\(String(format: "%.2f", controller.totalPrice))",
-            attributes: boldFontAttributes
+            attributes: Attributes.boldFont
         )
         let totalPriceSize = attributedTotalPrice.size()
         let totalPriceRect = CGRect(
@@ -249,7 +239,7 @@ private extension ContractBody {
         titleTop: CGFloat,
         leading: CGFloat
     ) -> CGFloat {
-        let attributedTitle = NSAttributedString(string: title, attributes: boldFontAttributes)
+        let attributedTitle = NSAttributedString(string: title, attributes: Attributes.boldFont)
         let titleSize = attributedTitle.size()
         let titleRect = CGRect(
             x: leading,
@@ -259,7 +249,7 @@ private extension ContractBody {
         )
         attributedTitle.draw(in: titleRect)
 
-        let attributedDetails = NSAttributedString(string: details, attributes: lightFontAttributes)
+        let attributedDetails = NSAttributedString(string: details, attributes: Attributes.lightFont)
         let detailsRect = CGRect(
             x: leading,
             y: titleRect.maxY,
@@ -277,7 +267,7 @@ private extension ContractBody {
         leading: CGFloat,
         width: CGFloat
     ) {
-        let attributedSignatureField = NSAttributedString(string: signature, attributes: regularFontAttributes)
+        let attributedSignatureField = NSAttributedString(string: signature, attributes: Attributes.regularFont)
         let signatureRect = CGRect(
             x: leading,
             y: signatureTop,
@@ -290,7 +280,7 @@ private extension ContractBody {
     func addInforming(pageRect: CGRect) {
         let attributedFreeMedicineInforming = NSAttributedString(
             string: controller.freeMedicineInforming,
-            attributes: regularFontAttributes
+            attributes: Attributes.regularFont
         )
         let freeMedicineInformingRect = CGRect(
             x: Size.textEdgeInset,
@@ -315,7 +305,7 @@ private extension ContractBody {
 
         let attributedRecommendationsInforming = NSAttributedString(
             string: controller.followingRecommendationsInforming,
-            attributes: regularFontAttributes
+            attributes: Attributes.regularFont
         )
         let recommendationsInformingRect = CGRect(
             x: Size.textEdgeInset,
@@ -340,7 +330,7 @@ private extension ContractBody {
     }
 }
 
-extension ContractBody {
+private extension ContractBody {
     enum Size {
         static let textEdgeInset: CGFloat = 30
         static let tabletextEdgeInset: CGFloat = 10
@@ -348,5 +338,17 @@ extension ContractBody {
         static let servicesSpacing: CGFloat = 5
         static let signatureLeading: CGFloat = 180
         static let informingHeight: CGFloat = 150
+    }
+
+    enum Attributes {
+        static let regularFont: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 9, weight: .regular)
+        ]
+        static let lightFont: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 9, weight: .light)
+        ]
+        static let boldFont: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 9, weight: .bold)
+        ]
     }
 }
