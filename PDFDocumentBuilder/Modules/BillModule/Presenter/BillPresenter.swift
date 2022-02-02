@@ -23,7 +23,7 @@ extension BillPresenter: BillPresentation {
     }
 
     func createContract(patient: Patient, services: [Service], discount: Double) {
-        let contractBody = ContractBody(patient: patient, services: services, discount: discount)
+        let contractBody = ContractBody(patient: patient, services: services, discountRate: discount)
         coordinator?.routeToPDFPreview(documentData: contractBody)
     }
 }

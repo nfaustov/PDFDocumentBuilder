@@ -10,13 +10,7 @@ import Foundation
 struct ContractBodyController {
     let patient: Patient
     let services: [Service]
-    let discount: Double
-
-    var totalPrice: Double {
-        services
-            .map { $0.price }
-            .reduce(0, +)
-    }
+    let totalCost: Double
 
     // swiftlint:disable line_length
     var firstPagePart: String {
@@ -58,7 +52,7 @@ struct ContractBodyController {
     }
     var belowTablePart: String {
         """
-        4.5. Общая стоимость медицинских услуг, предоставляемых Пациенту составляет \(String(format: "%.2f", totalPrice)) рублей (\(totalPriceInWords())).
+        4.5. Общая стоимость медицинских услуг, предоставляемых Пациенту составляет \(String(format: "%.2f", totalCost)) рублей (\(totalCostInWords())).
         5. ПРОЧИЕ УСЛОВИЯ
         5.1. Настоящий Договор вступает в силу с момента его подписания Сторонами и действует до полного и надлежащего исполнения сторонами всех его условий.
         5.2. Условия настоящего Договора могут быть изменены по письменному соглашению Сторон.
@@ -102,7 +96,7 @@ struct ContractBodyController {
 
     // swiftlint:enable line_length
     var currenсyTitle: String {
-        var remainder = Int(totalPrice) % 1_000_000
+        var remainder = Int(totalCost) % 1_000_000
 
         if remainder > 100_000 {
             remainder = remainder % 100_000
@@ -136,12 +130,12 @@ struct ContractBodyController {
         return enumeratedServices
     }
 
-    func totalPriceInWords() -> String {
-        let numberValue = NSNumber(value: totalPrice)
+    func totalCostInWords() -> String {
+        let numberValue = NSNumber(value: totalCost)
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
         formatter.numberStyle = .spellOut
-        let priceString = formatter.string(from: numberValue) ?? "\(totalPrice)"
+        let priceString = formatter.string(from: numberValue) ?? "\(totalCost)"
 
         return "\(priceString) \(currenсyTitle) 00 копеек"
     }

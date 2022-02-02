@@ -10,16 +10,26 @@ import PDFKit
 final class ContractBody {
     private let patient: Patient
     private let services: [Service]
-    private let discount: Double
+    private let discountRate: Double
 
     private var controller: ContractBodyController {
-        .init(patient: patient, services: services, discount: discount)
+        .init(patient: patient, services: services, totalCost: totalCost - discount)
     }
 
-    init(patient: Patient, services: [Service], discount: Double) {
+    private var totalCost: Double {
+        services
+            .map { $0.price }
+            .reduce(0, +)
+    }
+
+    private var discount: Double {
+        totalCost * discountRate
+    }
+
+    init(patient: Patient, services: [Service], discountRate: Double) {
         self.patient = patient
         self.services = services
-        self.discount = discount
+        self.discountRate = discountRate
     }
 
     func makeFirstPage(_ drawContext: CGContext, pageRect: CGRect, textTop: CGFloat) {
@@ -114,7 +124,8 @@ private extension ContractBody {
 
         addServicesListTitle(tableY: tableY, tableWidth: tableWidth, separatorX: separatorX)
         let servicesListHeight = addServicesList(tableY: tableY, tableWidth: tableWidth, separatorX: separatorX)
-        let tableBottom: CGFloat = tableY + Size.tableTitleRectHeight * 2 + servicesListHeight
+        let titleMultiplier: CGFloat = discountRate == 0 ? 2 : 3
+        let tableBottom = tableY + Size.tableTitleRectHeight * titleMultiplier + servicesListHeight
         addServicesListTotal(tableBottom: tableBottom, tableWidth: tableWidth, separatorX: separatorX)
 
         drawContext.saveGState()
@@ -129,10 +140,13 @@ private extension ContractBody {
         drawContext.move(to: CGPoint(x: Size.textEdgeInset, y: tableY + Size.tableTitleRectHeight))
         drawContext.addLine(to: CGPoint(x: pageRect.width - Size.textEdgeInset, y: tableY + Size.tableTitleRectHeight))
         // draw total rectangle
-        drawContext.move(to: CGPoint(x: Size.textEdgeInset, y: tableBottom - Size.tableTitleRectHeight))
+        drawContext.move(to: CGPoint(
+            x: Size.textEdgeInset,
+            y: tableBottom - Size.tableTitleRectHeight * (titleMultiplier - 1)
+        ))
         drawContext.addLine(to: CGPoint(
             x: pageRect.width - Size.textEdgeInset,
-            y: tableBottom - Size.tableTitleRectHeight
+            y: tableBottom - Size.tableTitleRectHeight * (titleMultiplier - 1)
         ))
         // draw vertical separator
         drawContext.move(to: CGPoint(x: separatorX, y: tableY))
@@ -208,24 +222,43 @@ private extension ContractBody {
     }
 
     func addServicesListTotal(tableBottom: CGFloat, tableWidth: CGFloat, separatorX: CGFloat) {
-        let attributedTotal = NSAttributedString(string: "ИТОГО", attributes: Attributes.boldFont)
+        let titleMultiplier: CGFloat = discountRate == 0 ? 1 : 2
+        let totalRectHeight = Size.tableTitleRectHeight * titleMultiplier
+        let totalTitle = discountRate == 0 ? "ИТОГО" : "Скидка\nИТОГО"
+        let discountTotal =
+        """
+        \(String(format: "%.2f", discount))
+        \(String(format: "%.2f", totalCost - discount))
+        """
+        let total = String(format: "%.2f", totalCost)
+        let totalPrice = discountRate == 0 ? total : discountTotal
+
+        let attributedTotal = NSAttributedString(
+            string: totalTitle,
+            attributes: Attributes.boldFont
+        )
         let totalSize = attributedTotal.size()
         let totalRect = CGRect(
             x: Size.textEdgeInset + Size.tabletextEdgeInset,
-            y: tableBottom - Size.tableTitleRectHeight + (Size.tableTitleRectHeight - totalSize.height) / 2,
+            y: tableBottom - totalRectHeight + (totalRectHeight - totalSize.height) / 2,
             width: totalSize.width,
             height: totalSize.height
         )
         attributedTotal.draw(in: totalRect)
 
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let attributes = [.paragraphStyle: paragraphStyle].merging(Attributes.regularFont) { current, _ in
+            current
+        }
         let attributedTotalPrice = NSAttributedString(
-            string: "\(String(format: "%.2f", controller.totalPrice))",
-            attributes: Attributes.boldFont
+            string: totalPrice,
+            attributes: attributes
         )
         let totalPriceSize = attributedTotalPrice.size()
         let totalPriceRect = CGRect(
             x: separatorX + (tableWidth - separatorX + Size.textEdgeInset - totalPriceSize.width) / 2,
-            y: tableBottom - Size.tableTitleRectHeight + (Size.tableTitleRectHeight - totalPriceSize.height) / 2,
+            y: tableBottom - totalRectHeight + (totalRectHeight - totalPriceSize.height) / 2,
             width: totalPriceSize.width,
             height: totalPriceSize.height
         )
