@@ -38,43 +38,47 @@ final class ContractBody {
             attributes: regularFontAttributes
         )
         let aboveTablePartRect = CGRect(
-            x: 30,
+            x: Size.textEdgeInset,
             y: textTop,
-            width: pageRect.width - 60,
-            height: pageRect.height - 60
+            width: pageRect.width - Size.textEdgeInset * 2,
+            height: pageRect.height - Size.textEdgeInset * 2
         )
         attributedFirstPagePart.draw(in: aboveTablePartRect)
     }
 
     func makeSecondPage(_ drawContext: CGContext, pageRect: CGRect, textTop: CGFloat) {
         let aboveTableTextBottom = addAboveTableText(textTop: textTop)
-        let tableBottom = drawPriceTable(drawContext, pageRect: pageRect, tableY: aboveTableTextBottom + 10)
-        let belowTableTextBottom = addBelowTableText(pageRect: pageRect, textTop: tableBottom + 10)
+        let tableBottom = drawPriceTable(
+            drawContext,
+            pageRect: pageRect,
+            tableY: aboveTableTextBottom + Size.tabletextEdgeInset
+        )
+        let belowTableTextBottom = addBelowTableText(pageRect: pageRect, textTop: tableBottom + Size.tabletextEdgeInset)
         let companyDetailsBottom = addParticipantDetails(
             title: "Исполнитель",
             details: controller.companyDetails,
             pageRect: pageRect,
             titleTop: belowTableTextBottom,
-            leading: 30
+            leading: Size.textEdgeInset
         )
         let patientDetailsBottom = addParticipantDetails(
             title: "Пациент",
             details: controller.patientDetails,
             pageRect: pageRect,
             titleTop: belowTableTextBottom,
-            leading: pageRect.width / 2
+            leading: (pageRect.width + Size.textEdgeInset) / 2
         )
         addSignatureField(
             "Директор _______________________ / Фаустов Н.И.",
             signatureTop: max(companyDetailsBottom, patientDetailsBottom) + 15,
-            leading: 30,
-            width: (pageRect.width - 60) / 2
+            leading: Size.textEdgeInset,
+            width: (pageRect.width - Size.textEdgeInset * 2) / 2
         )
         addSignatureField(
             "_______________________ / _______________________",
             signatureTop: max(companyDetailsBottom, patientDetailsBottom) + 15,
-            leading: pageRect.width / 2,
-            width: (pageRect.width - 60) / 2
+            leading: (pageRect.width + Size.textEdgeInset) / 2,
+            width: (pageRect.width - Size.textEdgeInset * 2) / 2
         )
         addInforming(pageRect: pageRect)
     }
@@ -88,7 +92,7 @@ private extension ContractBody {
         )
         let aboveTablePartSize = attributedAboveTablePart.size()
         let aboveTablePartRect = CGRect(
-            x: 30,
+            x: Size.textEdgeInset,
             y: textTop,
             width: aboveTablePartSize.width,
             height: aboveTablePartSize.height
@@ -104,9 +108,9 @@ private extension ContractBody {
             attributes: regularFontAttributes
         )
         let belowTablePartRect = CGRect(
-            x: 30,
+            x: Size.textEdgeInset,
             y: textTop,
-            width: pageRect.width - 60,
+            width: pageRect.width - Size.textEdgeInset * 2,
             height: pageRect.height - textTop - 610
         )
         attributedBelowTablePart.draw(in: belowTablePartRect)
@@ -115,47 +119,57 @@ private extension ContractBody {
     }
 
     func drawPriceTable(_ drawContext: CGContext, pageRect: CGRect, tableY: CGFloat) -> CGFloat {
-        let titleHeight: CGFloat = 16
-        let tableBottom: CGFloat = tableY + titleHeight + CGFloat(20 * services.count) + titleHeight
-        let tableWidth: CGFloat = pageRect.width - 60
-        let separatorX: CGFloat = 30 + pageRect.width / 1.5
+        let tableWidth: CGFloat = pageRect.width - Size.textEdgeInset * 2
+        let separatorX: CGFloat = Size.textEdgeInset + pageRect.width / 1.5
+
+        addServicesListTitle(tableY: tableY, tableWidth: tableWidth, separatorX: separatorX)
+        let servicesListHeight = addServicesList(tableY: tableY, tableWidth: tableWidth, separatorX: separatorX)
+        let tableBottom: CGFloat = tableY + Size.tableTitleRectHeight * 2 + servicesListHeight
+        addServicesListTotal(tableBottom: tableBottom, tableWidth: tableWidth, separatorX: separatorX)
 
         drawContext.saveGState()
         drawContext.setLineWidth(0.5)
         // draw main rectangle
-        drawContext.move(to: CGPoint(x: 30, y: tableY))
-        drawContext.addLine(to: CGPoint(x: pageRect.width - 30, y: tableY))
-        drawContext.addLine(to: CGPoint(x: pageRect.width - 30, y: tableBottom))
-        drawContext.addLine(to: CGPoint(x: 30, y: tableBottom))
-        drawContext.addLine(to: CGPoint(x: 30, y: tableY))
+        drawContext.move(to: CGPoint(x: Size.textEdgeInset, y: tableY))
+        drawContext.addLine(to: CGPoint(x: pageRect.width - Size.textEdgeInset, y: tableY))
+        drawContext.addLine(to: CGPoint(x: pageRect.width - Size.textEdgeInset, y: tableBottom))
+        drawContext.addLine(to: CGPoint(x: Size.textEdgeInset, y: tableBottom))
+        drawContext.addLine(to: CGPoint(x: Size.textEdgeInset, y: tableY))
         // draw title rectangle
-        drawContext.move(to: CGPoint(x: 30, y: tableY + titleHeight))
-        drawContext.addLine(to: CGPoint(x: pageRect.width - 30, y: tableY + titleHeight))
+        drawContext.move(to: CGPoint(x: Size.textEdgeInset, y: tableY + Size.tableTitleRectHeight))
+        drawContext.addLine(to: CGPoint(x: pageRect.width - Size.textEdgeInset, y: tableY + Size.tableTitleRectHeight))
         // draw total rectangle
-        drawContext.move(to: CGPoint(x: 30, y: tableBottom - titleHeight))
-        drawContext.addLine(to: CGPoint(x: pageRect.width - 30, y: tableBottom - titleHeight))
+        drawContext.move(to: CGPoint(x: Size.textEdgeInset, y: tableBottom - Size.tableTitleRectHeight))
+        drawContext.addLine(to: CGPoint(
+            x: pageRect.width - Size.textEdgeInset,
+            y: tableBottom - Size.tableTitleRectHeight
+        ))
         // draw vertical separator
         drawContext.move(to: CGPoint(x: separatorX, y: tableY))
         drawContext.addLine(to: CGPoint(x: separatorX, y: tableBottom))
+
         drawContext.strokePath()
         drawContext.restoreGState()
-
-        addServicesListTitle(tableY: tableY, tableWidth: tableWidth, separatorX: separatorX)
-        addServicesList(tableY: tableY, tableWidth: tableWidth, separatorX: separatorX)
-        addServicesListTotal(tableBottom: tableBottom, tableWidth: tableWidth, separatorX: separatorX)
 
         return tableBottom
     }
 
-    func addServicesList(tableY: CGFloat, tableWidth: CGFloat, separatorX: CGFloat) {
-        services.enumerated().forEach { index, service in
-            let attributedService = NSAttributedString(string: service.title, attributes: lightFontAttributes)
-            let serviceSize = attributedService.size()
+    func addServicesList(tableY: CGFloat, tableWidth: CGFloat, separatorX: CGFloat) -> CGFloat {
+        var listHeight: CGFloat = 0
+
+        services.forEach { service in
+            let attributedService = NSAttributedString(
+                string: service.title,
+                attributes: lightFontAttributes
+            )
+            let serviceWidth = separatorX - Size.textEdgeInset - Size.tabletextEdgeInset * 2
+            let numberOfLines = ceil(attributedService.size().width / serviceWidth)
+            let serviceHeight = attributedService.size().height * numberOfLines
             let serviceRect = CGRect(
-                x: 40,
-                y: tableY + 16 + (20 * CGFloat(1 + index) - serviceSize.height) / 2,
-                width: tableWidth / 1.5 - 20,
-                height: serviceSize.height
+                x: Size.textEdgeInset + Size.tabletextEdgeInset,
+                y: tableY + Size.tableTitleRectHeight + listHeight + Size.servicesSpacing,
+                width: serviceWidth,
+                height: serviceHeight + Size.servicesSpacing
             )
             attributedService.draw(in: serviceRect)
 
@@ -165,13 +179,17 @@ private extension ContractBody {
             )
             let priceSize = attributedPrice.size()
             let priceRect = CGRect(
-                x: separatorX + (tableWidth - separatorX + 30 - priceSize.width) / 2,
-                y: tableY + 16 + (20 * CGFloat(1 + index) - serviceSize.height) / 2,
-                width: tableWidth - tableWidth / 1.5 - 20,
-                height: serviceSize.height
+                x: separatorX + (tableWidth - separatorX + Size.textEdgeInset - priceSize.width) / 2,
+                y: serviceRect.origin.y + ((serviceHeight - priceSize.height) / 2),
+                width: priceSize.width,
+                height: priceSize.height
             )
             attributedPrice.draw(in: priceRect)
+
+            listHeight += serviceRect.height
         }
+
+        return listHeight + Size.servicesSpacing
     }
 
     func addServicesListTitle(tableY: CGFloat, tableWidth: CGFloat, separatorX: CGFloat) {
@@ -181,8 +199,8 @@ private extension ContractBody {
         )
         let serviceTitleSize = attributedServiceTitle.size()
         let serviceTitleRect = CGRect(
-            x: (separatorX - 30 - serviceTitleSize.width) / 2,
-            y: tableY + (16 - serviceTitleSize.height) / 2,
+            x: (separatorX - Size.textEdgeInset - serviceTitleSize.width) / 2,
+            y: tableY + (Size.tableTitleRectHeight - serviceTitleSize.height) / 2,
             width: serviceTitleSize.width,
             height: serviceTitleSize.height
         )
@@ -191,8 +209,8 @@ private extension ContractBody {
         let attributedPriceTitle = NSAttributedString(string: "Цена (руб.)", attributes: regularFontAttributes)
         let priceTitleSize = attributedPriceTitle.size()
         let priceTitleRect = CGRect(
-            x: separatorX + (tableWidth - separatorX + 30 - priceTitleSize.width) / 2,
-            y: tableY + (16 - serviceTitleSize.height) / 2,
+            x: separatorX + (tableWidth - separatorX + Size.textEdgeInset - priceTitleSize.width) / 2,
+            y: tableY + (Size.tableTitleRectHeight - serviceTitleSize.height) / 2,
             width: priceTitleSize.width,
             height: priceTitleSize.height
         )
@@ -203,8 +221,8 @@ private extension ContractBody {
         let attributedTotal = NSAttributedString(string: "ИТОГО", attributes: boldFontAttributes)
         let totalSize = attributedTotal.size()
         let totalRect = CGRect(
-            x: 40,
-            y: tableBottom - 16 + (16 - totalSize.height) / 2,
+            x: Size.textEdgeInset + Size.tabletextEdgeInset,
+            y: tableBottom - Size.tableTitleRectHeight + (Size.tableTitleRectHeight - totalSize.height) / 2,
             width: totalSize.width,
             height: totalSize.height
         )
@@ -216,8 +234,8 @@ private extension ContractBody {
         )
         let totalPriceSize = attributedTotalPrice.size()
         let totalPriceRect = CGRect(
-            x: separatorX + (tableWidth - separatorX + 30 - totalPriceSize.width) / 2,
-            y: tableBottom - 16 + (16 - totalPriceSize.height) / 2,
+            x: separatorX + (tableWidth - separatorX + Size.textEdgeInset - totalPriceSize.width) / 2,
+            y: tableBottom - Size.tableTitleRectHeight + (Size.tableTitleRectHeight - totalPriceSize.height) / 2,
             width: totalPriceSize.width,
             height: totalPriceSize.height
         )
@@ -236,7 +254,7 @@ private extension ContractBody {
         let titleRect = CGRect(
             x: leading,
             y: titleTop,
-            width: (pageRect.width - 60) / 2,
+            width: (pageRect.width - Size.textEdgeInset * 2) / 2,
             height: titleSize.height
         )
         attributedTitle.draw(in: titleRect)
@@ -245,7 +263,7 @@ private extension ContractBody {
         let detailsRect = CGRect(
             x: leading,
             y: titleRect.maxY,
-            width: (pageRect.width - 60) / 2,
+            width: (pageRect.width - Size.textEdgeInset * 2) / 2,
             height: pageRect.height - titleTop - 520
         )
         attributedDetails.draw(in: detailsRect)
@@ -275,24 +293,24 @@ private extension ContractBody {
             attributes: regularFontAttributes
         )
         let freeMedicineInformingRect = CGRect(
-            x: 30,
-            y: pageRect.height - 300,
-            width: pageRect.width - 60,
-            height: pageRect.height
+            x: Size.textEdgeInset,
+            y: pageRect.height - Size.informingHeight * 2,
+            width: pageRect.width - Size.textEdgeInset * 2,
+            height: Size.informingHeight
         )
         attributedFreeMedicineInforming.draw(in: freeMedicineInformingRect)
 
         addSignatureField(
             "_______________________ / _______________________     Дата: __________________",
             signatureTop: pageRect.height - 210,
-            leading: 180,
-            width: pageRect.width - 60
+            leading: Size.signatureLeading,
+            width: pageRect.width - Size.textEdgeInset * 2
         )
         addSignatureField(
             "Лечащий врач (специалист) _______________________ / _______________________",
             signatureTop: pageRect.height - 180,
-            leading: 180,
-            width: pageRect.width - 60
+            leading: Size.signatureLeading,
+            width: pageRect.width - Size.textEdgeInset * 2
         )
 
         let attributedRecommendationsInforming = NSAttributedString(
@@ -300,24 +318,35 @@ private extension ContractBody {
             attributes: regularFontAttributes
         )
         let recommendationsInformingRect = CGRect(
-            x: 30,
-            y: pageRect.height - 150,
-            width: pageRect.width - 60,
-            height: pageRect.height
+            x: Size.textEdgeInset,
+            y: pageRect.height - Size.informingHeight,
+            width: pageRect.width - Size.textEdgeInset * 2,
+            height: Size.informingHeight
         )
         attributedRecommendationsInforming.draw(in: recommendationsInformingRect)
 
         addSignatureField(
             "_______________________ / _______________________     Дата: __________________",
             signatureTop: pageRect.height - 80,
-            leading: 180,
-            width: pageRect.width - 60
+            leading: Size.signatureLeading,
+            width: pageRect.width - Size.textEdgeInset * 2
         )
         addSignatureField(
             "Лечащий врач (специалист) _______________________ / _______________________",
             signatureTop: pageRect.height - 50,
-            leading: 180,
-            width: pageRect.width - 60
+            leading: Size.signatureLeading,
+            width: pageRect.width - Size.textEdgeInset * 2
         )
+    }
+}
+
+extension ContractBody {
+    enum Size {
+        static let textEdgeInset: CGFloat = 30
+        static let tabletextEdgeInset: CGFloat = 10
+        static let tableTitleRectHeight: CGFloat = 16
+        static let servicesSpacing: CGFloat = 5
+        static let signatureLeading: CGFloat = 180
+        static let informingHeight: CGFloat = 150
     }
 }
