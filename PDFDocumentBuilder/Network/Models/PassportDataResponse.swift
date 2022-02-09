@@ -22,7 +22,6 @@ struct PassportData: Decodable {
         case name, surname, patronymic, gender, birthday, birthplace, authority
         case seriesNumber = "series_number"
         case issueDate = "issue_date"
-        case authorityCode = "authority_code"
     }
 
     let name: String
@@ -34,5 +33,4 @@ struct PassportData: Decodable {
     let birthplace: String
     let issueDate: String
     let authority: String
-    let authorityCode: String
 }

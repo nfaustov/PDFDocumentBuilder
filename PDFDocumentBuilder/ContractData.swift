@@ -9,13 +9,17 @@ import Foundation
 
 final class Patient {
     let id: UUID?
-    let name: String
     let passport: PassportData
+//    let placeOfResidence: PlaceOfResidence
 
-    init(id: UUID? = UUID(), passport: PassportData) {
+    var name: String {
+        passport.surname + " " + passport.name + " " + passport.patronymic
+    }
+
+    init(id: UUID? = UUID(), passport: PassportData/*, placeOfResidence: PlaceOfResidence*/) {
         self.id = id
         self.passport = passport
-        name = passport.surname + " " + passport.name + " " + passport.patronymic
+//        self.placeOfResidence = placeOfResidence
     }
 }
 
@@ -79,4 +83,12 @@ struct Service: Decodable, Hashable {
 
         return title.lowercased().contains(lowercasedFilter)
     }
+}
+
+struct PlaceOfResidence {
+    let region: String?
+    let locality: String
+    let streetAdress: String
+    let house: String
+    let appartment: String?
 }

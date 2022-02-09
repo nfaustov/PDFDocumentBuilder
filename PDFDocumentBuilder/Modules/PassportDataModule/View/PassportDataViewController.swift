@@ -13,18 +13,18 @@ final class PassportDataViewController: UIViewController {
 
     var passportImage: UIImage?
 
-    private let scrollView = UIScrollView()
-
-    private let nameTextField = UITextField()
-    private let surnameTextField = UITextField()
-    private let patronymicTextField = UITextField()
-    private let genderTextField = UITextField()
-    private let seriesNumberTextField = UITextField()
-    private let birthdayTextField = UITextField()
-    private let birthplaceTextField = UITextField()
-    private let issueDateTextField = UITextField()
-    private let authorityTextField = UITextField()
-    private let authorityCodeTextField = UITextField()
+    private let nameTextField = FloatingTextField(placeholder: "Имя")
+    private let surnameTextField = FloatingTextField(placeholder: "Фамилия")
+    private let patronymicTextField = FloatingTextField(placeholder: "Отчество")
+    private let genderTextField = FloatingTextField(placeholder: "Пол")
+    private let seriesNumberTextField = FloatingTextField(
+        placeholder: "Серия и номер паспорта",
+        keyboardType: .numberPad
+    )
+    private let birthdayTextField = FloatingTextField(placeholder: "Дата рождения")
+    private let birthplaceTextField = FloatingTextField(placeholder: "Место рождения")
+    private let issueDateTextField = FloatingTextField(placeholder: "Дата выдачи паспорта")
+    private let authorityTextView = UITextView()
 
     private let statusLabel = UILabel()
     private let progressView = UIView()
@@ -35,19 +35,6 @@ final class PassportDataViewController: UIViewController {
         super.viewDidLoad()
 
         configureHierarchy()
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(adjustForKeyboard(notification:)),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(adjustForKeyboard(notification:)),
-            name: UIResponder.keyboardWillChangeFrameNotification,
-            object: nil
-        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,9 +50,6 @@ final class PassportDataViewController: UIViewController {
     private func configureHierarchy() {
         view.backgroundColor = .systemBackground
 
-        view.addSubview(scrollView)
-        scrollView.frame = view.bounds
-
         configureStack()
 
         progressView.backgroundColor = .systemBackground.withAlphaComponent(0.8)
@@ -80,7 +64,7 @@ final class PassportDataViewController: UIViewController {
         confirmButton.layer.borderWidth = 1
         confirmButton.layer.borderColor = UIColor.label.cgColor
         confirmButton.addTarget(self, action: #selector(confirmPassportData), for: .touchUpInside)
-        scrollView.addSubview(confirmButton)
+        view.addSubview(confirmButton)
 
         progressView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -99,58 +83,63 @@ final class PassportDataViewController: UIViewController {
             statusLabel.bottomAnchor.constraint(equalTo: progressView.safeAreaLayoutGuide.bottomAnchor, constant: -100),
             statusLabel.centerXAnchor.constraint(equalTo: progressView.centerXAnchor),
 
-            confirmButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            confirmButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.5),
+            confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            confirmButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
             confirmButton.heightAnchor.constraint(equalToConstant: 60),
-            confirmButton.bottomAnchor.constraint(equalTo: scrollView.frameLayoutGuide.bottomAnchor, constant: -20)
+            confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
         ])
     }
 
     private func configureStack() {
+        let nameStack = UIStackView(arrangedSubviews: [surnameTextField, nameTextField])
+        nameStack.axis = .horizontal
+        nameStack.distribution = .fillEqually
+        nameStack.spacing = 10
+
+        let patronymicStack = UIStackView(arrangedSubviews: [patronymicTextField, genderTextField])
+        patronymicStack.axis = .horizontal
+        patronymicStack.distribution = .fillEqually
+        patronymicStack.spacing = 10
+
+        let birthStack = UIStackView(arrangedSubviews: [birthdayTextField, birthplaceTextField])
+        birthStack.axis = .horizontal
+        birthStack.distribution = .fillEqually
+        birthStack.spacing = 10
+
+        let passportStack = UIStackView(arrangedSubviews: [seriesNumberTextField, issueDateTextField])
+        passportStack.axis = .horizontal
+        passportStack.distribution = .fillEqually
+        passportStack.spacing = 10
+
         let stack = UIStackView(
             arrangedSubviews: [
-                nameTextField,
-                surnameTextField,
-                patronymicTextField,
-                genderTextField,
-                birthdayTextField,
-                birthplaceTextField,
-                seriesNumberTextField,
-                issueDateTextField,
-                authorityTextField,
-                authorityCodeTextField
+                nameStack,
+                patronymicStack,
+                birthStack,
+                passportStack
             ]
         )
         stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.spacing = 25
-        scrollView.addSubview(stack)
+        stack.distribution = .equalSpacing
+        view.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
 
+        authorityTextView.layer.borderWidth = 0.5
+        authorityTextView.layer.borderColor = UIColor.systemGray3.cgColor
+        authorityTextView.font = UIFont.systemFont(ofSize: 17)
+        view.addSubview(authorityTextView)
+        authorityTextView.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 12),
-            stack.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 12),
-            stack.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -12),
-            stack.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -100)
+            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
+
+            authorityTextView.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 20),
+            authorityTextView.leadingAnchor.constraint(equalTo: stack.leadingAnchor),
+            authorityTextView.trailingAnchor.constraint(equalTo: stack.trailingAnchor),
+            authorityTextView.heightAnchor.constraint(equalToConstant: 100)
         ])
-
-        for textField in stack.arrangedSubviews {
-            guard let textField = textField as? UITextField else { return }
-
-            textField.adjustsFontSizeToFitWidth = true
-            textField.delegate = self
-        }
-
-        nameTextField.placeholder = "Имя"
-        surnameTextField.placeholder = "Фамилия"
-        patronymicTextField.placeholder = "Отчество"
-        genderTextField.placeholder = "Пол"
-        birthdayTextField.placeholder = "Дата рождения"
-        birthplaceTextField.placeholder = "Место рождения"
-        seriesNumberTextField.placeholder = "Серия и номер паспорта"
-        issueDateTextField.placeholder = "Дата выдачи паспорта"
-        authorityTextField.placeholder = "Кем выдан паспорт"
-        authorityCodeTextField.placeholder = "Код подразделения"
     }
 
     @objc private func confirmPassportData() {
@@ -163,43 +152,10 @@ final class PassportDataViewController: UIViewController {
             birthday: birthdayTextField.text ?? "",
             birthplace: birthplaceTextField.text ?? "",
             issueDate: issueDateTextField.text ?? "",
-            authority: authorityTextField.text ?? "",
-            authorityCode: authorityCodeTextField.text ?? ""
+            authority: authorityTextView.text ?? ""
         )
 
         presenter.confirmPassportData(passport)
-    }
-
-    @objc private func adjustForKeyboard(notification: Notification) {
-        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
-            return
-        }
-
-        let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-
-        if notification.name == UIResponder.keyboardWillHideNotification {
-            scrollView.contentInset = .zero
-        } else {
-            scrollView.contentInset = UIEdgeInsets(
-                top: 0,
-                left: 0,
-                bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom + 2,
-                right: 0
-            )
-        }
-
-        scrollView.scrollIndicatorInsets = scrollView.contentInset
-    }
-}
-
-// MARK: - UITextFieldDelegate
-
-extension PassportDataViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-
-        return false
     }
 }
 
@@ -223,7 +179,6 @@ extension PassportDataViewController: PassportDataView {
         birthplaceTextField.text = recognizedData.birthplace
         seriesNumberTextField.text = recognizedData.seriesNumber
         issueDateTextField.text = recognizedData.issueDate
-        authorityTextField.text = recognizedData.authority
-        authorityCodeTextField.text = recognizedData.authorityCode
+        authorityTextView.text = recognizedData.authority
     }
 }

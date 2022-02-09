@@ -66,6 +66,7 @@
 		8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */; };
 		8B97FFAF270D8512008492B5 /* PDFPreviewSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */; };
 		8BA3998A2706450A00861B8B /* servicesCatalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BA399892706450A00861B8B /* servicesCatalog.json */; };
+		8BB798FA27ADD4EA00066F09 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB798F927ADD4EA00066F09 /* FloatingTextField.swift */; };
 		8BC10469279BF93B004F56CA /* CounterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC10468279BF93B004F56CA /* CounterResponse.swift */; };
 		8BC1046C279BFD5F004F56CA /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1046B279BFD5F004F56CA /* Counter.swift */; };
 		8BC1046E279BFDEB004F56CA /* CounterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1046D279BFDEB004F56CA /* CounterService.swift */; };
@@ -170,6 +171,7 @@
 		8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBodyController.swift; sourceTree = "<group>"; };
 		8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewSubscription.swift; sourceTree = "<group>"; };
 		8BA399892706450A00861B8B /* servicesCatalog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servicesCatalog.json; sourceTree = "<group>"; };
+		8BB798F927ADD4EA00066F09 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		8BC10468279BF93B004F56CA /* CounterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterResponse.swift; sourceTree = "<group>"; };
 		8BC1046B279BFD5F004F56CA /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		8BC1046D279BFDEB004F56CA /* CounterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterService.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				8B21AD1227032CA500E63DBA /* PassportDataViewController.swift */,
+				8BB798F827ADD4D100066F09 /* Subviews */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -636,6 +639,14 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		8BB798F827ADD4D100066F09 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				8BB798F927ADD4EA00066F09 /* FloatingTextField.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		8BC1046A279BFD3A004F56CA /* CounterService */ = {
 			isa = PBXGroup;
 			children = (
@@ -919,6 +930,7 @@
 				8B718AAE270A70FE006B9A9A /* ServiceCell.swift in Sources */,
 				8B21AD1527032CF500E63DBA /* PassportDataPresenter.swift in Sources */,
 				8B4B7529270219D50071C92A /* HomeCoordinator.swift in Sources */,
+				8BB798FA27ADD4EA00066F09 /* FloatingTextField.swift in Sources */,
 				8B5D2F332701931C00061322 /* HomeViewController.swift in Sources */,
 				8B5E431B26B1912800A7996B /* AppDelegate.swift in Sources */,
 				8B5E431D26B1912800A7996B /* SceneDelegate.swift in Sources */,
