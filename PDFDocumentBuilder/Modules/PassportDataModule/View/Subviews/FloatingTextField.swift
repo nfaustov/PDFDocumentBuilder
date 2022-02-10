@@ -31,6 +31,7 @@ final class FloatingTextField: UIView {
         }
         set {
             textField.text = newValue
+            changeTextFieldState()
         }
     }
 
@@ -51,6 +52,7 @@ final class FloatingTextField: UIView {
         textField.borderStyle = .none
         textField.adjustsFontSizeToFitWidth = true
         textField.keyboardType = keyboardType
+        textField.delegate = self
         addSubview(textField)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.addTarget(self, action: #selector(textRecognizer), for: .allEditingEvents)
@@ -88,6 +90,10 @@ final class FloatingTextField: UIView {
     }
 
     @objc private func textRecognizer() {
+        changeTextFieldState()
+    }
+
+    private func changeTextFieldState() {
         let placeholderX = placeholderLabel.frame.width * 0.3
 
         UIView.animate(withDuration: 0.15) {

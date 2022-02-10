@@ -85,6 +85,8 @@ final class PassportInputView: UIView {
         authorityTextView.layer.borderWidth = 0.5
         authorityTextView.layer.borderColor = UIColor.systemGray3.cgColor
         authorityTextView.font = UIFont.systemFont(ofSize: 17)
+        authorityTextView.returnKeyType = .done
+        authorityTextView.delegate = self
         addSubview(authorityTextView)
         authorityTextView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -98,5 +100,19 @@ final class PassportInputView: UIView {
             authorityTextView.trailingAnchor.constraint(equalTo: stack.trailingAnchor),
             authorityTextView.heightAnchor.constraint(equalToConstant: 100)
         ])
+    }
+}
+
+// MARK: -
+
+extension PassportInputView: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+
+            return false
+        }
+
+        return true
     }
 }

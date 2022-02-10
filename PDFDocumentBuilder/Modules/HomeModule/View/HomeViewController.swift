@@ -11,8 +11,7 @@ final class HomeViewController: UIViewController {
     typealias PresenterType = HomePresentation
     var presenter: PresenterType!
 
-    let initialLabel = UILabel()
-    let currentLabel = UILabel()
+    let contractLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +28,6 @@ final class HomeViewController: UIViewController {
     private func configureHierarchy() {
         view.backgroundColor = .systemBackground
 
-        initialLabel.font = UIFont.systemFont(ofSize: 15)
-        currentLabel.font = UIFont.systemFont(ofSize: 15)
-        let stack = UIStackView(arrangedSubviews: [initialLabel, currentLabel])
-        stack.axis = .vertical
-        view.addSubview(stack)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-
         let scanButton = UIButton(type: .custom)
         scanButton.setTitle("Сканировать паспорт", for: .normal)
 
@@ -51,15 +43,19 @@ final class HomeViewController: UIViewController {
             button.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            stack.heightAnchor.constraint(equalToConstant: 40),
+        contractLabel.font = UIFont.systemFont(ofSize: 13)
+        contractLabel.textColor = .systemGray
+        scanButton.addSubview(contractLabel)
+        contractLabel.translatesAutoresizingMaskIntoConstraints = false
 
-            scanButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 30),
+        NSLayoutConstraint.activate([
+            scanButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             scanButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             scanButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             scanButton.heightAnchor.constraint(equalToConstant: 160),
+
+            contractLabel.centerXAnchor.constraint(equalTo: scanButton.centerXAnchor),
+            contractLabel.bottomAnchor.constraint(equalTo: scanButton.bottomAnchor, constant: -5),
 
             manualEnterButton.topAnchor.constraint(equalTo: scanButton.bottomAnchor, constant: 50),
             manualEnterButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -106,7 +102,6 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
 
 extension HomeViewController: HomeView {
     func updateStatus(initial: Int, current: Int) {
-        initialLabel.text = "Доступно распознаваний: \(initial)"
-        currentLabel.text = "Текущее количество распознаваний: \(current)"
+        contractLabel.text = "Доступно распознаваний: \(initial - current)/\(initial)"
     }
 }
