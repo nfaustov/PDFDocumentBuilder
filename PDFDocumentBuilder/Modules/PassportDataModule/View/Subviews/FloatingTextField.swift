@@ -91,7 +91,8 @@ final class FloatingTextField: UIView {
         let placeholderX = placeholderLabel.frame.width * 0.3
 
         UIView.animate(withDuration: 0.15) {
-            self.placeholderLabel.transform = self.isActive ? .init(scaleX: 0.7, y: 0.7).translatedBy(x: -placeholderX, y: 0) : .identity
+            self.placeholderLabel.transform = self.isActive ?
+                .init(scaleX: 0.7, y: 0.7).translatedBy(x: -placeholderX, y: 0) : .identity
             self.placeholderTopConstraint.constant = self.isActive ? 0 : 15
             self.layoutIfNeeded()
         }

@@ -76,6 +76,7 @@
 		8BCE5C702701E69C00ED9A66 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */; };
 		8BCE5C742701E7CF00ED9A66 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C732701E7CF00ED9A66 /* Authorization.swift */; };
 		8BCE5C762701E83C00ED9A66 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */; };
+		8BE1094027B5247700DADCA6 /* PassportInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE1093F27B5247700DADCA6 /* PassportInputView.swift */; };
 		8BEC53FA270C80AE00E53887 /* ServicesCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC53F9270C80AE00E53887 /* ServicesCountView.swift */; };
 		8BEC53FC270C867100E53887 /* BillServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC53FB270C867100E53887 /* BillServiceCell.swift */; };
 		8BEC5400270C8A4F00E53887 /* ServiceCountAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC53FF270C8A4F00E53887 /* ServiceCountAction.swift */; };
@@ -181,6 +182,7 @@
 		8BCE5C6F2701E69C00ED9A66 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		8BCE5C732701E7CF00ED9A66 /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		8BCE5C752701E83C00ED9A66 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
+		8BE1093F27B5247700DADCA6 /* PassportInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportInputView.swift; sourceTree = "<group>"; };
 		8BEC53F9270C80AE00E53887 /* ServicesCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCountView.swift; sourceTree = "<group>"; };
 		8BEC53FB270C867100E53887 /* BillServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillServiceCell.swift; sourceTree = "<group>"; };
 		8BEC53FF270C8A4F00E53887 /* ServiceCountAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCountAction.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 		8BB798F827ADD4D100066F09 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				8BE1093F27B5247700DADCA6 /* PassportInputView.swift */,
 				8BB798F927ADD4EA00066F09 /* FloatingTextField.swift */,
 			);
 			path = Subviews;
@@ -899,6 +902,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BE1094027B5247700DADCA6 /* PassportInputView.swift in Sources */,
 				8BEC5407270C95AD00E53887 /* TotalCell.swift in Sources */,
 				8B3E112D26F51A0B00FBE02C /* Presenter.swift in Sources */,
 				8B3E035727A325290085A807 /* SelectionSubscription.swift in Sources */,
