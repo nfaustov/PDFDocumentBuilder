@@ -24,16 +24,12 @@ final class PassportDataViewController: UIViewController {
         super.viewDidLoad()
 
         configureHierarchy()
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        guard let image = passportImage else { return }
 
-        if let image = passportImage {
-            progressView.isHidden = false
-            activityIndicatorView.startAnimating()
-            presenter.recognizePassport(image: image)
-        }
+        progressView.isHidden = false
+        activityIndicatorView.startAnimating()
+        presenter.recognizePassport(image: image)
     }
 
     private func configureHierarchy() {
