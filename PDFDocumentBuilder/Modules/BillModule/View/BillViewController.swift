@@ -64,9 +64,10 @@ final class BillViewController: UIViewController {
         }
 
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
             nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            nameLabel.bottomAnchor.constraint(lessThanOrEqualTo: clearButton.topAnchor, constant: -10),
 
             clearButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             clearButton.widthAnchor.constraint(equalToConstant: 150),
