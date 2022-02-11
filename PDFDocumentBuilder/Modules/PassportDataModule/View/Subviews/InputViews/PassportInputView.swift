@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PassportInputView: UIView {
+final class PassportInputView: UIView, InputObject {
     private let nameTextField = FloatingTextField(placeholder: "Имя")
     private let surnameTextField = FloatingTextField(placeholder: "Фамилия")
     private let patronymicTextField = FloatingTextField(placeholder: "Отчество")
@@ -20,6 +20,9 @@ final class PassportInputView: UIView {
     private let birthplaceTextField = FloatingTextField(placeholder: "Место рождения")
     private let issueDateTextField = FloatingTextField(placeholder: "Дата выдачи паспорта")
     private let authorityTextView = UITextView()
+
+    let header = UIView()
+    let input = UIView()
 
     var data: PassportData {
         PassportData(
@@ -35,8 +38,11 @@ final class PassportInputView: UIView {
         )
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    let title: String
+
+    init(title: String) {
+        self.title = title
+        super.init(frame: .zero)
 
         configureHierarchy()
     }
@@ -64,7 +70,6 @@ final class PassportInputView: UIView {
         let passportStack = UIStackView(arrangedSubviews: [seriesNumberTextField, issueDateTextField])
 
         [nameStack, patronymicStack, birthStack, passportStack].forEach { stack in
-            stack.axis = .horizontal
             stack.distribution = .fillEqually
             stack.spacing = 10
         }

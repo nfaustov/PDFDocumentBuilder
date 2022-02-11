@@ -18,7 +18,8 @@ final class PassportDataViewController: UIViewController {
     private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     private let confirmButton = UIButton(type: .custom)
 
-    private let passportInputView = PassportInputView()
+//    private let passportInputView = PassportInputView(title: "Паспортные данные")
+    private let residenceInputView = ResidenceInputView(title: "Место жительства")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,8 @@ final class PassportDataViewController: UIViewController {
     private func configureHierarchy() {
         view.backgroundColor = .systemBackground
 
-        view.addSubview(passportInputView)
+//        view.addSubview(passportInputView)
+        view.addSubview(residenceInputView)
 
         progressView.backgroundColor = .systemBackground.withAlphaComponent(0.8)
         progressView.isHidden = true
@@ -51,15 +53,19 @@ final class PassportDataViewController: UIViewController {
         confirmButton.addTarget(self, action: #selector(confirmPassportData), for: .touchUpInside)
         view.addSubview(confirmButton)
 
-        [passportInputView, progressView, activityIndicatorView, statusLabel, confirmButton].forEach { view in
+        [residenceInputView, progressView, activityIndicatorView, statusLabel, confirmButton].forEach { view in
             view.translatesAutoresizingMaskIntoConstraints = false
         }
 
         NSLayoutConstraint.activate([
-            passportInputView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            passportInputView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            passportInputView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            passportInputView.bottomAnchor.constraint(equalTo: confirmButton.topAnchor, constant: -50),
+            residenceInputView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            residenceInputView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            residenceInputView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            residenceInputView.bottomAnchor.constraint(equalTo: confirmButton.topAnchor, constant: -50),
+//            passportInputView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+//            passportInputView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            passportInputView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            passportInputView.bottomAnchor.constraint(equalTo: confirmButton.topAnchor, constant: -50),
 
             progressView.topAnchor.constraint(equalTo: view.topAnchor),
             progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -80,8 +86,8 @@ final class PassportDataViewController: UIViewController {
     }
 
     @objc private func confirmPassportData() {
-        let passport = passportInputView.data
-        presenter.confirmPassportData(passport)
+//        let passport = passportInputView.data
+//        presenter.confirmPassportData(passport)
     }
 }
 
@@ -97,6 +103,6 @@ extension PassportDataViewController: PassportDataView {
         activityIndicatorView.stopAnimating()
         progressView.isHidden = true
 
-        passportInputView.fillInFields(data: recognizedData)
+//        passportInputView.fillInFields(data: recognizedData)
     }
 }

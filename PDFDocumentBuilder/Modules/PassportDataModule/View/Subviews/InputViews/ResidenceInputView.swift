@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ResidenceInputView: UIView {
+final class ResidenceInputView: UIView, InputObject {
     private let regionTextField = FloatingTextField(placeholder: "Регион")
     private let localityTextField = FloatingTextField(placeholder: "Населенный пункт")
     private let streetTextField = FloatingTextField(placeholder: "Улица")
@@ -23,9 +23,12 @@ final class ResidenceInputView: UIView {
             appartment: appartmentTextField.text ?? ""
         )
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+
+    let title: String
+
+    init(title: String) {
+        self.title = title
+        super.init(frame: .zero)
 
         configureHierarchy()
     }
@@ -35,29 +38,22 @@ final class ResidenceInputView: UIView {
     }
 
     private func configureHierarchy() {
-        addSubview(regionTextField)
-        regionTextField.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(localityTextField)
-        localityTextField.translatesAutoresizingMaskIntoConstraints = false
-
         let adressStack = UIStackView(arrangedSubviews: [streetTextField, houseTextField, appartmentTextField])
-        addSubview(adressStack)
-        adressStack.translatesAutoresizingMaskIntoConstraints = false
+        adressStack.spacing = 10
+
+        let stack = UIStackView(arrangedSubviews: [regionTextField, localityTextField, adressStack])
+        stack.axis = .vertical
+        stack.distribution = .equalSpacing
+        addSubview(stack)
+        stack.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            regionTextField.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            regionTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
-            regionTextField.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stack.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
 
-            localityTextField.topAnchor.constraint(equalTo: regionTextField.bottomAnchor, constant: 10),
-            localityTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
-            localityTextField.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            adressStack.topAnchor.constraint(equalTo: localityTextField.bottomAnchor, constant: 10),
-            adressStack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            adressStack.trailingAnchor.constraint(equalTo: trailingAnchor)
+            streetTextField.widthAnchor.constraint(equalTo: adressStack.widthAnchor, multiplier: 0.6),
+            houseTextField.widthAnchor.constraint(equalTo: appartmentTextField.widthAnchor)
         ])
-        
     }
 }
