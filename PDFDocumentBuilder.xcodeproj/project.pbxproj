@@ -17,6 +17,7 @@
 		8B1BCD2F2706519D003F6B92 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BCD2E2706519D003F6B92 /* ServicesViewController.swift */; };
 		8B1BCD3127065209003F6B92 /* ServicesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BCD3027065209003F6B92 /* ServicesPresenter.swift */; };
 		8B1BCD35270653F4003F6B92 /* ServicesSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BCD34270653F4003F6B92 /* ServicesSubscription.swift */; };
+		8B2136EF27B573AF00816C8B /* ResidenceInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2136EE27B573AF00816C8B /* ResidenceInputView.swift */; };
 		8B21AD1027032BF900E63DBA /* PassportDataModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD0F27032BF900E63DBA /* PassportDataModule.swift */; };
 		8B21AD1327032CA500E63DBA /* PassportDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD1227032CA500E63DBA /* PassportDataViewController.swift */; };
 		8B21AD1527032CF500E63DBA /* PassportDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD1427032CF500E63DBA /* PassportDataPresenter.swift */; };
@@ -117,6 +118,7 @@
 		8B1BCD2E2706519D003F6B92 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		8B1BCD3027065209003F6B92 /* ServicesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesPresenter.swift; sourceTree = "<group>"; };
 		8B1BCD34270653F4003F6B92 /* ServicesSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesSubscription.swift; sourceTree = "<group>"; };
+		8B2136EE27B573AF00816C8B /* ResidenceInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidenceInputView.swift; sourceTree = "<group>"; };
 		8B21AD0F27032BF900E63DBA /* PassportDataModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataModule.swift; sourceTree = "<group>"; };
 		8B21AD1227032CA500E63DBA /* PassportDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataViewController.swift; sourceTree = "<group>"; };
 		8B21AD1427032CF500E63DBA /* PassportDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataPresenter.swift; sourceTree = "<group>"; };
@@ -282,6 +284,15 @@
 				8B718AAC270A70C4006B9A9A /* CollectionView Items */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8B2136ED27B5738400816C8B /* InputViews */ = {
+			isa = PBXGroup;
+			children = (
+				8BE1093F27B5247700DADCA6 /* PassportInputView.swift */,
+				8B2136EE27B573AF00816C8B /* ResidenceInputView.swift */,
+			);
+			path = InputViews;
 			sourceTree = "<group>";
 		};
 		8B21AD0D27032BC000E63DBA /* PassportDataModule */ = {
@@ -644,7 +655,7 @@
 		8BB798F827ADD4D100066F09 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				8BE1093F27B5247700DADCA6 /* PassportInputView.swift */,
+				8B2136ED27B5738400816C8B /* InputViews */,
 				8BB798F927ADD4EA00066F09 /* FloatingTextField.swift */,
 			);
 			path = Subviews;
@@ -958,6 +969,7 @@
 				8B0B30582702116E000D6755 /* DependencyContainer.swift in Sources */,
 				8B3E113526F51AD800FBE02C /* Coordinator.swift in Sources */,
 				8B5E754D27A1461E009FCC28 /* CategoryCell.swift in Sources */,
+				8B2136EF27B573AF00816C8B /* ResidenceInputView.swift in Sources */,
 				8B1BCD3127065209003F6B92 /* ServicesPresenter.swift in Sources */,
 				8B6D532527A4043500CE9C66 /* SelectionServiceCell.swift in Sources */,
 				8B125A4C27A7C31C005FEABA /* CustomPresentationController.swift in Sources */,

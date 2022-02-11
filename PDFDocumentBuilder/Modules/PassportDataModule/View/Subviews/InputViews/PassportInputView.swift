@@ -36,7 +36,7 @@ final class PassportInputView: UIView {
     }
 
     override init(frame: CGRect) {
-        super.init(frame: .zero)
+        super.init(frame: frame)
 
         configureHierarchy()
     }
@@ -103,7 +103,7 @@ final class PassportInputView: UIView {
     }
 }
 
-// MARK: -
+// MARK: - UITextFieldDelegate
 
 extension PassportInputView: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
