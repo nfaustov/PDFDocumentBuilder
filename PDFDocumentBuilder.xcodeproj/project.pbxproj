@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8B0B30582702116E000D6755 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B30572702116E000D6755 /* DependencyContainer.swift */; };
 		8B0B305A270211D1000D6755 /* NetworkServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B3059270211D1000D6755 /* NetworkServiceDependencies.swift */; };
-		8B11433427B66E99005DBBFD /* InputObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11433327B66E99005DBBFD /* InputObject.swift */; };
 		8B11942E279C2D990027DE93 /* Token.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B11942C279C2D990027DE93 /* Token.xcdatamodeld */; };
 		8B119430279C2E230027DE93 /* TokenDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11942F279C2E230027DE93 /* TokenDatabase.swift */; };
 		8B11DD0B27090B6F0035BC49 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11DD0A27090B6F0035BC49 /* Bundle-Decodable.swift */; };
@@ -24,6 +23,7 @@
 		8B21AD1527032CF500E63DBA /* PassportDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD1427032CF500E63DBA /* PassportDataPresenter.swift */; };
 		8B21AD1727032F5F00E63DBA /* PassportDataSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD1627032F5F00E63DBA /* PassportDataSubscription.swift */; };
 		8B21AD1A2703448000E63DBA /* PassportDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AD192703448000E63DBA /* PassportDataInteractor.swift */; };
+		8B2E789027B7B896002DCD06 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E788F27B7B896002DCD06 /* InputView.swift */; };
 		8B3006C126B1E72700DBC3AD /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C026B1E72700DBC3AD /* PDFCreator.swift */; };
 		8B3006C326B1F05100DBC3AD /* PDFPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C226B1F05100DBC3AD /* PDFPreviewViewController.swift */; };
 		8B3006C526B1F24800DBC3AD /* ContractBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3006C426B1F24800DBC3AD /* ContractBody.swift */; };
@@ -111,7 +111,6 @@
 /* Begin PBXFileReference section */
 		8B0B30572702116E000D6755 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		8B0B3059270211D1000D6755 /* NetworkServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceDependencies.swift; sourceTree = "<group>"; };
-		8B11433327B66E99005DBBFD /* InputObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputObject.swift; sourceTree = "<group>"; };
 		8B11942D279C2D990027DE93 /* Token.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Token.xcdatamodel; sourceTree = "<group>"; };
 		8B11942F279C2E230027DE93 /* TokenDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDatabase.swift; sourceTree = "<group>"; };
 		8B11DD0A27090B6F0035BC49 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
@@ -127,6 +126,7 @@
 		8B21AD1627032F5F00E63DBA /* PassportDataSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataSubscription.swift; sourceTree = "<group>"; };
 		8B21AD192703448000E63DBA /* PassportDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportDataInteractor.swift; sourceTree = "<group>"; };
 		8B2485EF279AE29500E13BC1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		8B2E788F27B7B896002DCD06 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		8B3006C026B1E72700DBC3AD /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		8B3006C226B1F05100DBC3AD /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 		8B3006C426B1F24800DBC3AD /* ContractBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBody.swift; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 		8B2136ED27B5738400816C8B /* InputViews */ = {
 			isa = PBXGroup;
 			children = (
-				8B11433327B66E99005DBBFD /* InputObject.swift */,
+				8B2E788F27B7B896002DCD06 /* InputView.swift */,
 				8BE1093F27B5247700DADCA6 /* PassportInputView.swift */,
 				8B2136EE27B573AF00816C8B /* ResidenceInputView.swift */,
 			);
@@ -924,6 +924,7 @@
 				8B6ACC752703B47900127AA6 /* PassportDataResponse.swift in Sources */,
 				8B21AD1027032BF900E63DBA /* PassportDataModule.swift in Sources */,
 				8B3E113226F51A7800FBE02C /* ModulesFactory.swift in Sources */,
+				8B2E789027B7B896002DCD06 /* InputView.swift in Sources */,
 				8BF119F2279C217000A6F82D /* HomeInteractor.swift in Sources */,
 				8B11DD0B27090B6F0035BC49 /* Bundle-Decodable.swift in Sources */,
 				8B3E035327A322A80085A807 /* SelectionViewController.swift in Sources */,
@@ -959,7 +960,6 @@
 				8B3006C126B1E72700DBC3AD /* PDFCreator.swift in Sources */,
 				8B1BCD2F2706519D003F6B92 /* ServicesViewController.swift in Sources */,
 				8BEC5403270C8BB800E53887 /* AddServiceCell.swift in Sources */,
-				8B11433427B66E99005DBBFD /* InputObject.swift in Sources */,
 				8B5E755327A14FEC009FCC28 /* ServicesCellFactory.swift in Sources */,
 				8B5D2F2E270191D800061322 /* HomeModule.swift in Sources */,
 				8B3E112926F519C300FBE02C /* View.swift in Sources */,

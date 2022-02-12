@@ -25,8 +25,8 @@ extension PassportDataPresenter: PassportDataPresentation {
         interactor.getToken()
     }
 
-    func confirmPassportData(_ passportData: PassportData) {
-        let patient = Patient(passport: passportData)
+    func confirmPassportData(_ passportData: PassportData, placeOfResidence: PlaceOfResidence) {
+        let patient = Patient(passport: passportData, placeOfResidence: placeOfResidence)
         coordinator?.routeToBill(patient: patient)
     }
 }

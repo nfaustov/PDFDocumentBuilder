@@ -10,16 +10,16 @@ import Foundation
 final class Patient {
     let id: UUID?
     let passport: PassportData
-//    let placeOfResidence: PlaceOfResidence
+    let placeOfResidence: PlaceOfResidence
 
     var name: String {
         passport.surname + " " + passport.name + " " + passport.patronymic
     }
 
-    init(id: UUID? = UUID(), passport: PassportData/*, placeOfResidence: PlaceOfResidence*/) {
+    init(id: UUID? = UUID(), passport: PassportData, placeOfResidence: PlaceOfResidence) {
         self.id = id
         self.passport = passport
-//        self.placeOfResidence = placeOfResidence
+        self.placeOfResidence = placeOfResidence
     }
 }
 
@@ -85,7 +85,7 @@ struct Service: Decodable, Hashable {
     }
 }
 
-struct PassportData: Decodable, InputModel {
+struct PassportData: Decodable {
     enum CodingKeys: String, CodingKey {
         case name, surname, patronymic, gender, birthday, birthplace, authority
         case seriesNumber = "series_number"
@@ -103,7 +103,7 @@ struct PassportData: Decodable, InputModel {
     let authority: String
 }
 
-struct PlaceOfResidence: InputModel {
+struct PlaceOfResidence {
     let region: String?
     let locality: String
     let streetAdress: String

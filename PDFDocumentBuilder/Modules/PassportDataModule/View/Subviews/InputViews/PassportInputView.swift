@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PassportInputView: UIView, InputObject {
+final class PassportInputView: InputView {
     private let nameTextField = FloatingTextField(placeholder: "Имя")
     private let surnameTextField = FloatingTextField(placeholder: "Фамилия")
     private let patronymicTextField = FloatingTextField(placeholder: "Отчество")
@@ -20,9 +20,6 @@ final class PassportInputView: UIView, InputObject {
     private let birthplaceTextField = FloatingTextField(placeholder: "Место рождения")
     private let issueDateTextField = FloatingTextField(placeholder: "Дата выдачи паспорта")
     private let authorityTextView = UITextView()
-
-    let header = UIView()
-    let input = UIView()
 
     var data: PassportData {
         PassportData(
@@ -38,13 +35,10 @@ final class PassportInputView: UIView, InputObject {
         )
     }
 
-    let title: String
+    override init(title: String, state: State = .collapse) {
+        super.init(title: title, state: state)
 
-    init(title: String) {
-        self.title = title
-        super.init(frame: .zero)
-
-        configureHierarchy()
+        configureInputStack()
     }
 
     required init?(coder: NSCoder) {
@@ -63,48 +57,26 @@ final class PassportInputView: UIView, InputObject {
         authorityTextView.text = data.authority
     }
 
-    private func configureHierarchy() {
+    func configureInputStack() {
         let nameStack = UIStackView(arrangedSubviews: [surnameTextField, nameTextField])
         let patronymicStack = UIStackView(arrangedSubviews: [patronymicTextField, genderTextField])
         let birthStack = UIStackView(arrangedSubviews: [birthdayTextField, birthplaceTextField])
         let passportStack = UIStackView(arrangedSubviews: [seriesNumberTextField, issueDateTextField])
-
-        [nameStack, patronymicStack, birthStack, passportStack].forEach { stack in
-            stack.distribution = .fillEqually
-            stack.spacing = 10
-        }
-
-        let stack = UIStackView(
-            arrangedSubviews: [
-                nameStack,
-                patronymicStack,
-                birthStack,
-                passportStack
-            ]
-        )
-        stack.axis = .vertical
-        stack.distribution = .equalSpacing
-        addSubview(stack)
-        stack.translatesAutoresizingMaskIntoConstraints = false
 
         authorityTextView.layer.borderWidth = 0.5
         authorityTextView.layer.borderColor = UIColor.systemGray3.cgColor
         authorityTextView.font = UIFont.systemFont(ofSize: 17)
         authorityTextView.returnKeyType = .done
         authorityTextView.delegate = self
-        addSubview(authorityTextView)
-        authorityTextView.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+        [nameStack, patronymicStack, birthStack, passportStack, authorityTextView].forEach { view in
+            if let stack = view as? UIStackView {
+                stack.distribution = .fillEqually
+                stack.spacing = 10
+            }
 
-            authorityTextView.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 20),
-            authorityTextView.leadingAnchor.constraint(equalTo: stack.leadingAnchor),
-            authorityTextView.trailingAnchor.constraint(equalTo: stack.trailingAnchor),
-            authorityTextView.heightAnchor.constraint(equalToConstant: 100)
-        ])
+            inputStack.addArrangedSubview(view)
+        }
     }
 }
 

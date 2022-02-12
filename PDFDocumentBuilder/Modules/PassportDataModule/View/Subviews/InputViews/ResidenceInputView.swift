@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ResidenceInputView: UIView, InputObject {
+final class ResidenceInputView: InputView {
     private let regionTextField = FloatingTextField(placeholder: "Регион")
     private let localityTextField = FloatingTextField(placeholder: "Населенный пункт")
     private let streetTextField = FloatingTextField(placeholder: "Улица")
@@ -24,34 +24,25 @@ final class ResidenceInputView: UIView, InputObject {
         )
     }
 
-    let title: String
+    override init(title: String, state: State = .collapse) {
+        super.init(title: title, state: state)
 
-    init(title: String) {
-        self.title = title
-        super.init(frame: .zero)
-
-        configureHierarchy()
+        configureInputStack()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func configureHierarchy() {
+    func configureInputStack() {
         let adressStack = UIStackView(arrangedSubviews: [streetTextField, houseTextField, appartmentTextField])
         adressStack.spacing = 10
 
-        let stack = UIStackView(arrangedSubviews: [regionTextField, localityTextField, adressStack])
-        stack.axis = .vertical
-        stack.distribution = .equalSpacing
-        addSubview(stack)
-        stack.translatesAutoresizingMaskIntoConstraints = false
+        inputStack.addArrangedSubview(regionTextField)
+        inputStack.addArrangedSubview(localityTextField)
+        inputStack.addArrangedSubview(adressStack)
 
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-
             streetTextField.widthAnchor.constraint(equalTo: adressStack.widthAnchor, multiplier: 0.6),
             houseTextField.widthAnchor.constraint(equalTo: appartmentTextField.widthAnchor)
         ])
