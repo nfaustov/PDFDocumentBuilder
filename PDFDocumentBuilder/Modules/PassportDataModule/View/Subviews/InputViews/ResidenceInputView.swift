@@ -24,8 +24,8 @@ final class ResidenceInputView: InputView {
         )
     }
 
-    override init(title: String, state: State = .collapse) {
-        super.init(title: title, state: state)
+    override init(title: String) {
+        super.init(title: title)
 
         configureInputStack()
     }

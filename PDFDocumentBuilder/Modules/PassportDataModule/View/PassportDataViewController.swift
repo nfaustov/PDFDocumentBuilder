@@ -18,7 +18,7 @@ final class PassportDataViewController: UIViewController {
     private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     private let confirmButton = UIButton(type: .custom)
 
-    private let passportInputView = PassportInputView(title: "Паспортные данные", state: .expand)
+    private let passportInputView = PassportInputView(title: "Паспортные данные")
     private let residenceInputView = ResidenceInputView(title: "Место жительства")
 
     override func viewDidLoad() {

@@ -35,8 +35,8 @@ final class PassportInputView: InputView {
         )
     }
 
-    override init(title: String, state: State = .collapse) {
-        super.init(title: title, state: state)
+    override init(title: String) {
+        super.init(title: title)
 
         configureInputStack()
     }
@@ -63,18 +63,26 @@ final class PassportInputView: InputView {
         let birthStack = UIStackView(arrangedSubviews: [birthdayTextField, birthplaceTextField])
         let passportStack = UIStackView(arrangedSubviews: [seriesNumberTextField, issueDateTextField])
 
+        [nameStack, patronymicStack, birthStack, passportStack].forEach { stack in
+            stack.distribution = .fillEqually
+            stack.spacing = 10
+        }
+
+        let label = UILabel()
+        label.text = "Выдан:"
+        label.textColor = .systemGray
+        label.font = UIFont.systemFont(ofSize: 15)
+
         authorityTextView.layer.borderWidth = 0.5
         authorityTextView.layer.borderColor = UIColor.systemGray3.cgColor
         authorityTextView.font = UIFont.systemFont(ofSize: 17)
         authorityTextView.returnKeyType = .done
         authorityTextView.delegate = self
 
-        [nameStack, patronymicStack, birthStack, passportStack, authorityTextView].forEach { view in
-            if let stack = view as? UIStackView {
-                stack.distribution = .fillEqually
-                stack.spacing = 10
-            }
+        let authorityStack = UIStackView(arrangedSubviews: [label, authorityTextView])
+        authorityStack.spacing = 10
 
+        [nameStack, patronymicStack, birthStack, passportStack, authorityStack].forEach { view in
             inputStack.addArrangedSubview(view)
         }
     }
