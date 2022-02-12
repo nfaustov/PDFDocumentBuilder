@@ -16,6 +16,25 @@ final class Patient {
         passport.surname + " " + passport.name + " " + passport.patronymic
     }
 
+    var residence: String {
+        let items = [
+            placeOfResidence.region,
+            placeOfResidence.locality,
+            placeOfResidence.streetAdress,
+            placeOfResidence.house,
+            placeOfResidence.appartment
+        ]
+        var residence = ""
+
+        for item in items where !item.isEmpty {
+            residence.append(item + ", ")
+        }
+
+        residence.removeLast(2)
+
+        return residence
+    }
+
     init(id: UUID? = UUID(), passport: PassportData, placeOfResidence: PlaceOfResidence) {
         self.id = id
         self.passport = passport
@@ -109,17 +128,4 @@ struct PlaceOfResidence {
     let streetAdress: String
     let house: String
     let appartment: String
-
-    var fullResidence: String {
-        let items = [region, locality, streetAdress, house, appartment]
-        var residence = ""
-
-        for item in items where !item.isEmpty {
-            residence.append(item + ", ")
-        }
-
-        residence.removeLast(2)
-
-        return residence
-    }
 }

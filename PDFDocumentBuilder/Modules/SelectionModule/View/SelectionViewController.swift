@@ -96,7 +96,7 @@ final class SelectionViewController: UITableViewController {
     }
 
     private func configureCloseButton() {
-        closeButton.backgroundColor = .systemBackground
+        closeButton.backgroundColor = .white
         closeButton.layer.cornerRadius = 20
         closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         closeButton.tintColor = .black

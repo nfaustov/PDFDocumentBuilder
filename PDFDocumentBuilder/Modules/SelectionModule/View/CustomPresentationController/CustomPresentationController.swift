@@ -53,6 +53,9 @@ final class CustomPrentationController: UIPresentationController {
     }
 
     @objc private func dismiss() {
-        presentedViewController.dismiss(animated: true)
+        if let presentedViewController = presentedViewController as? SelectionViewController {
+            let services = presentedViewController.services
+            presentedViewController.presenter.didFinish(with: services, isRouteToBill: false)
+        }
     }
 }

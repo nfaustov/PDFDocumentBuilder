@@ -81,7 +81,7 @@ struct ContractBodyController {
         Дата рождения: \(patient.passport.birthday)
         Серия и номер паспорта: \(patient.passport.seriesNumber)
         Выдан: \(patient.passport.authority) \(patient.passport.issueDate)
-        Адрес регистрации: \(patient.placeOfResidence.fullResidence)
+        Адрес регистрации: \(patient.residence)
 
 
 

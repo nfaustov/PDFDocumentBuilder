@@ -21,12 +21,12 @@ final class ServicesViewController: UIViewController {
     var selectedServices = [Service]() {
         didSet {
             if selectedServices.isEmpty {
-                UIView.animate(withDuration: 0.2) {
-                    self.buttonViewBottomConstraint.constant = 70
+                UIView.animate(withDuration: 0.15) {
+                    self.buttonViewBottomConstraint.constant = 100
                     self.view.layoutIfNeeded()
                 }
             } else {
-                UIView.animate(withDuration: 0.2) {
+                UIView.animate(withDuration: 0.15) {
                     self.buttonViewBottomConstraint.constant = 0
                     self.view.layoutIfNeeded()
                 }
@@ -188,7 +188,7 @@ final class ServicesViewController: UIViewController {
 
         buttonViewBottomConstraint = buttonView.bottomAnchor.constraint(
             equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-            constant: 70
+            constant: 100
         )
 
         NSLayoutConstraint.activate([
