@@ -104,9 +104,22 @@ struct PassportData: Decodable {
 }
 
 struct PlaceOfResidence {
-    let region: String?
+    let region: String
     let locality: String
     let streetAdress: String
     let house: String
-    let appartment: String?
+    let appartment: String
+
+    var fullResidence: String {
+        let items = [region, locality, streetAdress, house, appartment]
+        var residence = ""
+
+        for item in items where !item.isEmpty {
+            residence.append(item + ", ")
+        }
+
+        residence.removeLast(2)
+
+        return residence
+    }
 }

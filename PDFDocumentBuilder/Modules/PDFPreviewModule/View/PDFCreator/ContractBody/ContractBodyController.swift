@@ -70,6 +70,8 @@ struct ContractBodyController {
         ИНН/КПП 4826072119/482401001
         ОГРН 1104823005319
         e-mail: artmedics.lip@yandex.ru
+
+
         """
     }
 
@@ -79,6 +81,11 @@ struct ContractBodyController {
         Дата рождения: \(patient.passport.birthday)
         Серия и номер паспорта: \(patient.passport.seriesNumber)
         Выдан: \(patient.passport.authority) \(patient.passport.issueDate)
+        Адрес регистрации: \(patient.placeOfResidence.fullResidence)
+
+
+
+
         """
     }
 
