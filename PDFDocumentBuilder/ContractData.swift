@@ -67,9 +67,12 @@ final class PriceList {
     }
 
     func filteredServices(withFilterText filterText: String? = nil, category: ServicesCategory? = nil) -> [Service] {
-        if let category = category {
-            return categories
-                .filter { $0.title == category.title }
+        if let filteredCategory = categories.first(where: { $0.title == category?.title }) {
+            guard let subcategories = filteredCategory.subcategories else {
+                return filteredCategory.services?.filter { $0.contains(filterText) } ?? []
+            }
+
+            return subcategories
                 .compactMap { $0.services }
                 .flatMap { $0 }
                 .filter { $0.contains(filterText) }
