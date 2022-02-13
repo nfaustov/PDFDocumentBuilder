@@ -155,6 +155,12 @@ final class BillViewController: UIViewController {
 
 extension BillViewController: BillView {
     func updateSelectedServices(_ services: [Service]) {
-        servicesCountView.services.append(contentsOf: services)
+        for service in services {
+            guard !servicesCountView.services.contains(service) else {
+                continue
+            }
+
+            servicesCountView.services.append(service)
+        }
     }
 }

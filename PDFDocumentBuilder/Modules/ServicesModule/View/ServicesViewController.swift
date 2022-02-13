@@ -251,6 +251,8 @@ extension ServicesViewController: UICollectionViewDelegate {
         guard let dataSource = dataSource else { return }
 
         if let service = dataSource.itemIdentifier(for: indexPath) as? Service {
+            guard !selectedServices.contains(service) else { return }
+
             selectedServices.append(service)
             collectionView.deselectItem(at: indexPath, animated: true)
         } else if let category = dataSource.itemIdentifier(for: indexPath) as? ServicesCategory {
