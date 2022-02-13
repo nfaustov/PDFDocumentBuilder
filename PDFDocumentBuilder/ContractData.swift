@@ -30,7 +30,7 @@ final class Patient {
             residence.append(item + ", ")
         }
 
-        residence.removeLast(2)
+        if residence.count > 1 { residence.removeLast(2) }
 
         return residence
     }
