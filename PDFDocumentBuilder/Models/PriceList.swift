@@ -9,7 +9,7 @@ import Foundation
 
 final class PriceList {
     private lazy var categories: [ServicesCategory] = {
-        Bundle.main.decode([ServicesCategory].self, from: "priceList")
+        Bundle.main.decode([ServicesCategory].self, from: "servicesPriceList")
     }()
 
     private var allServices: [Service] {
