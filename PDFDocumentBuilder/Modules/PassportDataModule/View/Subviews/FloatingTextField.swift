@@ -25,6 +25,10 @@ final class FloatingTextField: UIView {
         textField.isFirstResponder || !isEmpty
     }
 
+    override var isFirstResponder: Bool {
+        textField.isFirstResponder
+    }
+
     var text: String? {
         get {
             textField.text

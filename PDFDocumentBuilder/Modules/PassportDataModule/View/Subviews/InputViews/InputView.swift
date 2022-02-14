@@ -8,11 +8,20 @@
 import UIKit
 
 class InputView: UIView {
+    final private let title: String
     final private let header = UIView()
 
     final let inputStack = UIStackView()
 
-    final private let title: String
+    override var isFirstResponder: Bool {
+        inputStack.arrangedSubviews.contains { subview in
+            guard let subview = subview as? UIStackView else {
+                return subview.isFirstResponder
+            }
+
+            return subview.arrangedSubviews.contains(where: { $0.isFirstResponder })
+        }
+    }
 
     init(title: String) {
         self.title = title

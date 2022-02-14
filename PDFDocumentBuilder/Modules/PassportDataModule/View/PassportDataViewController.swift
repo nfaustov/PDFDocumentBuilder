@@ -26,6 +26,19 @@ final class PassportDataViewController: UIViewController {
 
         configureHierarchy()
 
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardAppearance(notification:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardAppearance(notification:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+
         guard let image = passportImage else { return }
 
         progressView.isHidden = false
@@ -40,9 +53,8 @@ final class PassportDataViewController: UIViewController {
         inputViewsStack.axis = .vertical
         inputViewsStack.spacing = 10
         view.addSubview(inputViewsStack)
-        inputViewsStack.translatesAutoresizingMaskIntoConstraints = false
 
-        progressView.backgroundColor = .systemBackground.withAlphaComponent(0.8)
+        progressView.backgroundColor = .systemBackground.withAlphaComponent(0.7)
         progressView.isHidden = true
         progressView.addSubview(activityIndicatorView)
         progressView.addSubview(statusLabel)
@@ -56,7 +68,7 @@ final class PassportDataViewController: UIViewController {
         confirmButton.addTarget(self, action: #selector(confirmPassportData), for: .touchUpInside)
         view.addSubview(confirmButton)
 
-        [residenceInputView, progressView, activityIndicatorView, statusLabel, confirmButton].forEach { view in
+        [inputViewsStack, progressView, activityIndicatorView, statusLabel, confirmButton].forEach { view in
             view.translatesAutoresizingMaskIntoConstraints = false
         }
 
@@ -82,6 +94,16 @@ final class PassportDataViewController: UIViewController {
             confirmButton.heightAnchor.constraint(equalToConstant: 60),
             confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40)
         ])
+    }
+
+    @objc private func keyboardAppearance(notification: Notification) {
+        [passportInputView, residenceInputView].forEach { view in
+            if notification.name == UIResponder.keyboardWillShowNotification {
+                view.isHidden = !view.isFirstResponder
+            } else {
+                view.isHidden = false
+            }
+        }
     }
 
     @objc private func confirmPassportData() {
