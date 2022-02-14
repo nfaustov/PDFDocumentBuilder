@@ -35,7 +35,7 @@ final class PassportDataViewController: UIViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardAppearance(notification:)),
-            name: UIResponder.keyboardWillHideNotification,
+            name: UIResponder.keyboardWillChangeFrameNotification,
             object: nil
         )
 
