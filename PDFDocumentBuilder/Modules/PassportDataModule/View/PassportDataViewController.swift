@@ -19,7 +19,7 @@ final class PassportDataViewController: UIViewController {
     private let confirmButton = UIButton(type: .custom)
 
     private let passportInputView = PassportInputView(title: "Паспортные данные")
-    private let residenceInputView = ResidenceInputView(title: "Место жительства")
+    private let residenceInputView = ResidenceInputView(title: "Адрес регистрации")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,12 +96,36 @@ final class PassportDataViewController: UIViewController {
         ])
     }
 
-    @objc private func keyboardAppearance(notification: Notification) {
+    private func animateWithKeyboard(
+        notification: NSNotification,
+        animations: (() -> Void)?
+    ) {
+        let durationKey = UIResponder.keyboardAnimationDurationUserInfoKey
+        let curveKey = UIResponder.keyboardAnimationCurveUserInfoKey
+
+        guard let duration = notification.userInfo?[durationKey] as? Double,
+              let curveValue = notification.userInfo?[curveKey] as? Int,
+              let curve = UIView.AnimationCurve(rawValue: curveValue) else { return }
+
+        let animator = UIViewPropertyAnimator(duration: duration, curve: curve) {
+            animations?()
+        }
+
+        animator.startAnimation()
+    }
+
+    @objc private func keyboardAppearance(notification: NSNotification) {
         [passportInputView, residenceInputView].forEach { view in
             if notification.name == UIResponder.keyboardWillShowNotification {
-                view.isHidden = !view.isFirstResponder
+                animateWithKeyboard(notification: notification) {
+                    view.alpha = !view.isFirstResponder ? 0 : 1
+                    view.isHidden = !view.isFirstResponder
+                }
             } else {
-                view.isHidden = false
+                animateWithKeyboard(notification: notification) {
+                    view.alpha = 1
+                    view.isHidden = false
+                }
             }
         }
     }
