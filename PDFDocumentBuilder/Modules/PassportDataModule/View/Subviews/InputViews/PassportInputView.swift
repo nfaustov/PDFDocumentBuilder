@@ -14,11 +14,17 @@ final class PassportInputView: InputView {
     private let genderTextField = FloatingTextField(placeholder: "Пол")
     private let seriesNumberTextField = FloatingTextField(
         placeholder: "Серия и номер паспорта",
-        keyboardType: .numberPad
+        keyboardType: .numbersAndPunctuation
     )
-    private let birthdayTextField = FloatingTextField(placeholder: "Дата рождения")
+    private let birthdayTextField = FloatingTextField(
+        placeholder: "Дата рождения",
+        keyboardType: .numbersAndPunctuation
+    )
     private let birthplaceTextField = FloatingTextField(placeholder: "Место рождения")
-    private let issueDateTextField = FloatingTextField(placeholder: "Дата выдачи паспорта")
+    private let issueDateTextField = FloatingTextField(
+        placeholder: "Дата выдачи паспорта",
+        keyboardType: .numbersAndPunctuation
+    )
     private let authorityTextView = UITextView()
 
     var data: PassportData {
@@ -77,14 +83,20 @@ final class PassportInputView: InputView {
         authorityTextView.layer.borderColor = UIColor.systemGray3.cgColor
         authorityTextView.font = UIFont.systemFont(ofSize: 17)
         authorityTextView.returnKeyType = .done
+        authorityTextView.translatesAutoresizingMaskIntoConstraints = false
         authorityTextView.delegate = self
 
         let authorityStack = UIStackView(arrangedSubviews: [label, authorityTextView])
         authorityStack.spacing = 10
+        authorityStack.alignment = .top
 
         [nameStack, patronymicStack, birthStack, passportStack, authorityStack].forEach { view in
             inputStack.addArrangedSubview(view)
         }
+
+        NSLayoutConstraint.activate([
+            authorityTextView.heightAnchor.constraint(equalToConstant: 80)
+        ])
     }
 }
 

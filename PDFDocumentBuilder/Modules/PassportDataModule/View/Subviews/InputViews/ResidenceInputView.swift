@@ -11,8 +11,14 @@ final class ResidenceInputView: InputView {
     private let regionTextField = FloatingTextField(placeholder: "Регион")
     private let localityTextField = FloatingTextField(placeholder: "Населенный пункт")
     private let streetTextField = FloatingTextField(placeholder: "Улица")
-    private let houseTextField = FloatingTextField(placeholder: "Дом")
-    private let appartmentTextField = FloatingTextField(placeholder: "Квартира")
+    private let houseTextField = FloatingTextField(
+        placeholder: "Дом",
+        keyboardType: .numbersAndPunctuation
+    )
+    private let appartmentTextField = FloatingTextField(
+        placeholder: "Квартира",
+        keyboardType: .numbersAndPunctuation
+    )
 
     var data: PlaceOfResidence {
         PlaceOfResidence(

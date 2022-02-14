@@ -37,7 +37,7 @@ class InputView: UIView {
     private func configureHierarchy() {
         inputStack.axis = .vertical
         inputStack.spacing = 10
-        inputStack.distribution = .fillEqually
+        inputStack.distribution = .equalSpacing
         addSubview(inputStack)
         inputStack.translatesAutoresizingMaskIntoConstraints = false
 
