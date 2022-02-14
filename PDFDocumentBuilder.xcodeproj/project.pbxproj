@@ -66,7 +66,7 @@
 		8B718AAE270A70FE006B9A9A /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B718AAD270A70FE006B9A9A /* ServiceCell.swift */; };
 		8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */; };
 		8B97FFAF270D8512008492B5 /* PDFPreviewSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */; };
-		8BA3998A2706450A00861B8B /* servicesCatalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BA399892706450A00861B8B /* servicesCatalog.json */; };
+		8BA3998A2706450A00861B8B /* priceList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BA399892706450A00861B8B /* priceList.json */; };
 		8BA588E827B9137500F6FF87 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA588E727B9137500F6FF87 /* Patient.swift */; };
 		8BA588EA27B9139500F6FF87 /* PriceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA588E927B9139500F6FF87 /* PriceList.swift */; };
 		8BB798FA27ADD4EA00066F09 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB798F927ADD4EA00066F09 /* FloatingTextField.swift */; };
@@ -175,7 +175,7 @@
 		8B718AAD270A70FE006B9A9A /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBodyController.swift; sourceTree = "<group>"; };
 		8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewSubscription.swift; sourceTree = "<group>"; };
-		8BA399892706450A00861B8B /* servicesCatalog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servicesCatalog.json; sourceTree = "<group>"; };
+		8BA399892706450A00861B8B /* priceList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = priceList.json; sourceTree = "<group>"; };
 		8BA588E727B9137500F6FF87 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		8BA588E927B9139500F6FF87 /* PriceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceList.swift; sourceTree = "<group>"; };
 		8BB798F927ADD4EA00066F09 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
@@ -652,7 +652,7 @@
 		8BA39988270644F400861B8B /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				8BA399892706450A00861B8B /* servicesCatalog.json */,
+				8BA399892706450A00861B8B /* priceList.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -880,7 +880,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BA3998A2706450A00861B8B /* servicesCatalog.json in Resources */,
+				8BA3998A2706450A00861B8B /* priceList.json in Resources */,
 				8B5E432726B1912900A7996B /* LaunchScreen.storyboard in Resources */,
 				8B5E432426B1912900A7996B /* Assets.xcassets in Resources */,
 			);
