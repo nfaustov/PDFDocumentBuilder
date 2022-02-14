@@ -187,20 +187,20 @@ final class ServicesViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
 
         buttonViewBottomConstraint = buttonView.bottomAnchor.constraint(
-            equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+            equalTo: view.bottomAnchor,
             constant: 100
         )
 
         NSLayoutConstraint.activate([
             buttonView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             buttonView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            buttonView.heightAnchor.constraint(equalToConstant: 70),
+            buttonView.heightAnchor.constraint(equalToConstant: 100),
             buttonViewBottomConstraint,
 
             button.centerXAnchor.constraint(equalTo: buttonView.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
             button.widthAnchor.constraint(equalTo: buttonView.widthAnchor, multiplier: 0.6),
-            button.heightAnchor.constraint(equalTo: buttonView.heightAnchor, constant: -10)
+            button.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
 
