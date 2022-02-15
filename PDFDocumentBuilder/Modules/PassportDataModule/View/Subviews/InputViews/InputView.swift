@@ -36,8 +36,8 @@ class InputView: UIView {
 
     private func configureHierarchy() {
         inputStack.axis = .vertical
-        inputStack.spacing = 10
-        inputStack.distribution = .equalSpacing
+        inputStack.spacing = 4
+        inputStack.distribution = .fill
         addSubview(inputStack)
         inputStack.translatesAutoresizingMaskIntoConstraints = false
 
@@ -60,7 +60,7 @@ class InputView: UIView {
             titleLabel.centerYAnchor.constraint(equalTo: header.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 12),
 
-            inputStack.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 12),
+            inputStack.topAnchor.constraint(equalTo: header.bottomAnchor),
             inputStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             inputStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
             inputStack.bottomAnchor.constraint(equalTo: bottomAnchor)

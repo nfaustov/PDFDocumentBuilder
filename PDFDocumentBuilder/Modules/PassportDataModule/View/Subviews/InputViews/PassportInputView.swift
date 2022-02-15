@@ -94,8 +94,10 @@ final class PassportInputView: InputView {
             inputStack.addArrangedSubview(view)
         }
 
+        inputStack.setCustomSpacing(10, after: passportStack)
+
         NSLayoutConstraint.activate([
-            authorityTextView.heightAnchor.constraint(equalToConstant: 80)
+            authorityTextView.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
 }
