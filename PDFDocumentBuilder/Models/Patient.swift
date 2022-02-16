@@ -12,6 +12,14 @@ final class Patient {
     let passport: PassportData
     let placeOfResidence: PlaceOfResidence
 
+    var currentTreatmentPlan: TreatmentPlan? {
+        treatmentPlans.first(where: { $0.state == .active })
+    }
+
+    var suspendedTreatmentPlans: [TreatmentPlan] {
+        treatmentPlans.filter { $0.state != .active }
+    }
+
     var name: String {
         passport.surname + " " + passport.name + " " + passport.patronymic
     }
@@ -35,10 +43,28 @@ final class Patient {
         return residence
     }
 
+    private var treatmentPlans = [TreatmentPlan]()
+
     init(id: UUID? = UUID(), passport: PassportData, placeOfResidence: PlaceOfResidence) {
         self.id = id
         self.passport = passport
         self.placeOfResidence = placeOfResidence
+    }
+
+    func addTreatmentPlan(ofKind kind: TreatmentPlan.Kind, fromDate date: Date = Date()) {
+        let treatmentPlan = TreatmentPlan(kind: kind, startingDate: date)
+
+        for var plan in treatmentPlans {
+           plan.suspend(fromDate: date)
+        }
+
+        treatmentPlans.append(treatmentPlan)
+    }
+
+    func removeTreatmentPlan(_ treatmentPlan: TreatmentPlan) {
+        guard treatmentPlans.contains(treatmentPlan) else { return }
+
+        treatmentPlans.removeAll(where: { $0 == treatmentPlan })
     }
 }
 

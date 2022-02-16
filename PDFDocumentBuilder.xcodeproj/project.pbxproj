@@ -67,6 +67,7 @@
 		8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */; };
 		8B97FFAF270D8512008492B5 /* PDFPreviewSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */; };
 		8BA3998A2706450A00861B8B /* servicesPriceList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BA399892706450A00861B8B /* servicesPriceList.json */; };
+		8BA3D35027BD978600C2E7DF /* TreatmentPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3D34F27BD978600C2E7DF /* TreatmentPlan.swift */; };
 		8BA422E827BA9FD20005C79B /* laboratoryPriceList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BA422E727BA9FD20005C79B /* laboratoryPriceList.json */; };
 		8BA588E827B9137500F6FF87 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA588E727B9137500F6FF87 /* Patient.swift */; };
 		8BA588EA27B9139500F6FF87 /* PriceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA588E927B9139500F6FF87 /* PriceList.swift */; };
@@ -177,6 +178,7 @@
 		8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBodyController.swift; sourceTree = "<group>"; };
 		8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewSubscription.swift; sourceTree = "<group>"; };
 		8BA399892706450A00861B8B /* servicesPriceList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servicesPriceList.json; sourceTree = "<group>"; };
+		8BA3D34F27BD978600C2E7DF /* TreatmentPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentPlan.swift; sourceTree = "<group>"; };
 		8BA422E727BA9FD20005C79B /* laboratoryPriceList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = laboratoryPriceList.json; sourceTree = "<group>"; };
 		8BA588E727B9137500F6FF87 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		8BA588E927B9139500F6FF87 /* PriceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceList.swift; sourceTree = "<group>"; };
@@ -665,6 +667,7 @@
 			children = (
 				8BA588E727B9137500F6FF87 /* Patient.swift */,
 				8BA588E927B9139500F6FF87 /* PriceList.swift */,
+				8BA3D34F27BD978600C2E7DF /* TreatmentPlan.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1008,6 +1011,7 @@
 				8B21AD1A2703448000E63DBA /* PassportDataInteractor.swift in Sources */,
 				8B5D2F35270193C800061322 /* HomePresenter.swift in Sources */,
 				8BA588EA27B9139500F6FF87 /* PriceList.swift in Sources */,
+				8BA3D35027BD978600C2E7DF /* TreatmentPlan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
