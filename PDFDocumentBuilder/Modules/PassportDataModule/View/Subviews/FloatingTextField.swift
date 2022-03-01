@@ -25,6 +25,28 @@ final class FloatingTextField: UIView {
         textField.isFirstResponder || !isEmpty
     }
 
+    private var activity: Bool = false {
+        didSet {
+            if activity != oldValue {
+                UIView.animate(withDuration: 0.15) {
+                    if self.activity {
+                        let placeholderX = self.placeholderLabel.frame.width * 0.21
+                        self.placeholderLabel.transform = .init(scaleX: 0.7, y: 0.7)
+                            .translatedBy(x: -placeholderX, y: 0)
+                        self.placeholderTopConstraint.constant = 0
+                        print(self.placeholderLabel.frame.origin)
+                    } else {
+                        self.placeholderLabel.transform = .identity
+                        self.placeholderTopConstraint.constant = 15
+                        print(self.placeholderLabel.frame.origin)
+                    }
+
+                    self.layoutIfNeeded()
+                }
+            }
+        }
+    }
+
     override var isFirstResponder: Bool {
         textField.isFirstResponder
     }
@@ -98,14 +120,7 @@ final class FloatingTextField: UIView {
     }
 
     private func changeTextFieldState() {
-        let placeholderX = placeholderLabel.frame.width * 0.3
-
-        UIView.animate(withDuration: 0.15) {
-            self.placeholderLabel.transform = self.isActive ?
-                .init(scaleX: 0.7, y: 0.7).translatedBy(x: -placeholderX, y: 0) : .identity
-            self.placeholderTopConstraint.constant = self.isActive ? 0 : 15
-            self.layoutIfNeeded()
-        }
+        activity = isActive
     }
 }
 

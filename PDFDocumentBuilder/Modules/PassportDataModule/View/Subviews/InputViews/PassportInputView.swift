@@ -13,7 +13,7 @@ final class PassportInputView: InputView {
     private let patronymicTextField = FloatingTextField(placeholder: "Отчество")
     private let genderTextField = FloatingTextField(placeholder: "Пол")
     private let seriesNumberTextField = FloatingTextField(
-        placeholder: "Серия и номер паспорта",
+        placeholder: "Серия и номер",
         keyboardType: .numbersAndPunctuation
     )
     private let birthdayTextField = FloatingTextField(
@@ -22,7 +22,7 @@ final class PassportInputView: InputView {
     )
     private let birthplaceTextField = FloatingTextField(placeholder: "Место рождения")
     private let issueDateTextField = FloatingTextField(
-        placeholder: "Дата выдачи паспорта",
+        placeholder: "Дата выдачи",
         keyboardType: .numbersAndPunctuation
     )
     private let authorityTextView = UITextView()
