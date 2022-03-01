@@ -15,7 +15,8 @@ struct TreatmentPlan: Equatable {
 
     enum State: Equatable {
         case active
-        case suspended(daysToExpiration: Int)
+        case upcoming
+        case completed
     }
 
     private let calendar = Calendar.current
@@ -23,58 +24,42 @@ struct TreatmentPlan: Equatable {
     private(set) var kind: Kind
     private let startingDate: Date
     private(set) var expirationDate: Date
-    private(set) var state: State
 
-    init(kind: Kind, startingDate: Date = Date()) {
-        self.kind = kind
-        self.startingDate = calendar.startOfDay(for: startingDate)
-        let yearLaterDate = Date().addingTimeInterval(86_400 * 365)
-        expirationDate = calendar.date(byAdding: .year, value: 1, to: self.startingDate) ?? yearLaterDate
-        state = .active
-    }
-
-    mutating func upgrade(toKind newKind: Kind) {
-        if newKind.rawValue > kind.rawValue {
-            kind = newKind
+    var state: State {
+        if startingDate < Date() {
+            return .upcoming
+        } else {
+            if expirationDate > Date() {
+                return .completed
+            } else {
+                return .active
+            }
         }
     }
 
-    mutating func suspend(fromDate date: Date) {
-        switch state {
-        case .active:
-            let daysToExpiration = daysToExpiration(fromDate: date)
-            state = .suspended(daysToExpiration: daysToExpiration)
-        case .suspended:
-            return
-        }
-    }
-
-    mutating func activate(fromDate date: Date) {
-        switch state {
-        case .active:
-            return
-        case .suspended(let daysToExpiration):
-            state = .active
-            let remainingTimeInterval = TimeInterval(86_400 * daysToExpiration)
-            expirationDate = date.addingTimeInterval(remainingTimeInterval)
-        }
-    }
-
-    mutating func extend(forYears years: Int = 1) {
-        let yearLaterDate = expirationDate.addingTimeInterval(TimeInterval(86_400 * years))
-        expirationDate = calendar.date(byAdding: .year, value: years, to: expirationDate) ?? yearLaterDate
-    }
-
-    func daysToExpiration(fromDate date: Date = Date()) -> Int {
+    var daysToExpiration: Int {
         guard let numberOfDays = calendar.dateComponents(
             [.day],
-            from: calendar.startOfDay(for: date),
+            from: calendar.startOfDay(for: Date()),
             to: expirationDate
         ).day else {
             return 0
         }
 
         return numberOfDays
+    }
+
+    init(kind: Kind, startingDate: Date = Date()) {
+        self.kind = kind
+        self.startingDate = calendar.startOfDay(for: startingDate)
+        let yearLaterDate = Date().addingTimeInterval(86_400 * 365)
+        expirationDate = calendar.date(byAdding: .year, value: 1, to: self.startingDate) ?? yearLaterDate
+    }
+
+    mutating func upgrade(toKind newKind: Kind) {
+        if newKind.rawValue > kind.rawValue {
+            kind = newKind
+        }
     }
 
     static func == (lhs: TreatmentPlan, rhs: TreatmentPlan) -> Bool {
