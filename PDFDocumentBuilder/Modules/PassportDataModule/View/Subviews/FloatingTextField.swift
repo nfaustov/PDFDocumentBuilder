@@ -34,11 +34,9 @@ final class FloatingTextField: UIView {
                         self.placeholderLabel.transform = .init(scaleX: 0.7, y: 0.7)
                             .translatedBy(x: -placeholderX, y: 0)
                         self.placeholderTopConstraint.constant = 0
-                        print(self.placeholderLabel.frame.origin)
                     } else {
                         self.placeholderLabel.transform = .identity
                         self.placeholderTopConstraint.constant = 15
-                        print(self.placeholderLabel.frame.origin)
                     }
 
                     self.layoutIfNeeded()
