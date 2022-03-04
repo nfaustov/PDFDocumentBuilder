@@ -1150,6 +1150,238 @@
                 "title": "Плесень Candida albicans, IgG (M5)",
                 "price": 600
             },
+            {
+                "title": "Антитела класса IgG к вирусу клещевого энцефалита",
+                "price": 600
+            },
+            {
+                "title": "Антитела класса IgM к вирусу клещевого энцефалита",
+                "price": 600
+            },
+            {
+                "title": "Лабораторное исследование клеща для выявления РНК вируса клещевого энцефалита",
+                "price": 690
+            },
+            {
+                "title": "Лабораторное исследование клеща для выявления вируса клещевого энцефалита РНК, ПЦР, ДНК возбудителя Лайм-Боррелиоза",
+                "price": 1200
+            },
+            {
+                "title": "Антитела класса IgA к Bordetella pertussis",
+                "price": 790
+            },
+            {
+                "title": "Антитела класса IgG к Bordetella pertussis",
+                "price": 660
+            },
+            {
+                "title": "Антитела класса IgM к Bordetella pertussis",
+                "price": 600
+            },
+            {
+                "title": "Антитела класа IgG к вирусу кори",
+                "price": 710
+            },
+            {
+                "title": "Антитела класса IgM к вирусу кори",
+                "price": 690
+            },
+            {
+                "title": "Антитела класса IgG к вирусу краснухи",
+                "price": 420
+            },
+            {
+                "title": "Антитела класса IgM к вирусу краснухи",
+                "price": 480
+            },
+            {
+                "title": "Антитела класса IgG к антигенам вируса краснухи, выявляемые методом иммуноблоттинга",
+                "price": 4960
+            },
+            {
+                "title": "Антитела класса IgG к вирусу краснуххи, определение авидности",
+                "price": 940
+            },
+            {
+                "title": "Антитела классов IgM и IgG к Mycoplasma hominis",
+                "price": 840
+            },
+            {
+                "title": "Антитела класса IgM к Mycoplasma hominis",
+                "price": 420
+            },
+            {
+                "title": "Антитела класса IgG к Mycoplasma hominis",
+                "price": 540
+            },
+            {
+                "title": "Антитела класса IgA к Mycoplasma hominis",
+                "price": 600
+            },
+            {
+                "title": "Антитела классов IgM и IgG к Mycoplasma pneumoniae",
+                "price": 1000
+            },
+            {
+                "title": "Антитела класса IgM к Mycoplasma pneumoniae",
+                "price": 500
+            },
+            {
+                "title": "Антитела класса IgG к Mycoplasma pneumoniae",
+                "price": 500
+            },
+            {
+                "title": "Антитела класса IgG к вирусу эпидемического паротита",
+                "price": 680
+            },
+            {
+                "title": "Антитела класса IgM к вирусу эпидемического паротита",
+                "price": 700
+            },
+            {
+                "title": "Антитела класса IgG к респираторно-синцитиальному вирусу",
+                "price": 690
+            },
+            {
+                "title": "Антитела класса IgM к респираторно-синцитиальному вирусу",
+                "price": 690
+            },
+            {
+                "title": "Сифилис RPR - антикардиолипиновый тест",
+                "price": 370
+            },
+            {
+                "title": "Антитела классов IgM и IgG к Treponema pallidum, суммарно",
+                "price": 370
+            },
+            {
+                "title": "Антитела класса IgM к Treponema pallidum",
+                "price": 790
+            },
+            {
+                "title": "Антитела класса IgM к Treponema pallidum, выявляемые методом иммуноблоттинга",
+                "price": 1740
+            },
+            {
+                "title": "Антитела класса IgG к Treponema pallidum, выявляемые методом иммуноблоттинга",
+                "price": 1740
+            },
+            {
+                "title": "Антитела класса IgG к столбнячному анатоксину",
+                "price": 880
+            },
+            {
+                "title": "Антитела класса IgG к Т-лимфотропному вирусу человека 1 и 2 типов",
+                "price": 760
+            },
+            {
+                "title": "Антитела класса IgG к Toxoplasma gondii",
+                "price": 420
+            },
+            {
+                "title": "Антитела класса IgM к Toxoplasma gondii",
+                "price": 420
+            },
+            {
+                "title": "Антитела класса IgG к Toxoplasma gondii, определение авидности",
+                "price": 920
+            },
+            {
+                "title": "Антитела класса IgG к Trichomonas vaginalis",
+                "price": 590
+            },
+            {
+                "title": "Антитела классов IgM, IgA, IgG к Mycobacterium tuberculosis, суммарно",
+                "price": 1580
+            },
+            {
+                "title": "Антитела класса IgG к Ureaplasma urealyticum",
+                "price": 600
+            },
+            {
+                "title": "Антитела класса IgA к Ureaplasma urealyticum",
+                "price": 540
+            },
+            {
+                "title": "Антитела класса IgG к Helicobacter pylori",
+                "price": 790
+            },
+            {
+                "title": "Антитела класса IgM к Helicobacter pylori",
+                "price": 610
+            },
+            {
+                "title": "Антитела класса IgA к Helicobacter pylori",
+                "price": 610
+            },
+            {
+                "title": "Антитела класса IgG к Helicobacter pylori, выявляемые методом иммуноблоттинга",
+                "price": 2700
+            },
+            {
+                "title": "Антитела класса IgA к Helicobacter pylori, выявляемые методом иммуноблоттинга",
+                "price": 2700
+            },
+            {
+                "title": "Антитела класса IgA к Chlamydia trachomatis",
+                "price": 480
+            },
+            {
+                "title": "Антитела класса IgG к Chlamydia trachomatis",
+                "price": 490
+            },
+            {
+                "title": "Антитела классов IgA и IgG к Chlamydia trachomatis, раздельно",
+                "price": 960
+            },
+            {
+                "title": "Антитела класса IgM к Chlamydia trachomatis",
+                "price": 480
+            },
+            {
+                "title": "Антитела класса IgA к Chlamydophila pneumoniae",
+                "price": 600
+            },
+            {
+                "title": "Антитела класса IgM к Chlamydophila pneumoniae",
+                "price": 540
+            },
+            {
+                "title": "Антитела класса IgG к Chlamydophila pneumoniae",
+                "price": 540
+            },
+            {
+                "title": "Антитела класса IgG к белку теплового шока (БТШ) Chlamydia trachomatis",
+                "price": 530
+            },
+            {
+                "title": "Антитела класса IgG к цитомегаловирусу",
+                "price": 360
+            },
+            {
+                "title": "Антитела класса igM к цитомегаловирусу",
+                "price": 520
+            },
+            {
+                "title": "Антитела класса IgG к цитомегаловирусу, определение авидности",
+                "price": 1020
+            },
+            {
+                "title": "Антитела класса IgM к капсидному антигену вируса Эпштейна-Барр",
+                "price": 540
+            },
+            {
+                "title": "Антитела класса IgG к ядерному антигену вируса Эпштейна-Барр",
+                "price": 660
+            },
+            {
+                "title": "Антитела класса IgG к раннему антигену вируса Эпштейна-Барр",
+                "price": 550
+            },
+            {
+                "title": "Антитела класса IgG к капсидному антигену вируса Эпштейна-Барр",
+                "price": 670
+            }
         ]
     }
 ]
