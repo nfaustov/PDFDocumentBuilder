@@ -133,7 +133,7 @@ final class BillViewController: UIViewController {
                 self.discount = 0.1
             }
         }
-        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel) { _ in
+        let cancelAction = UIAlertAction(title: "Без скидки", style: .cancel) { _ in
             alertController.dismiss(animated: true) {
                 self.discount = 0
             }
