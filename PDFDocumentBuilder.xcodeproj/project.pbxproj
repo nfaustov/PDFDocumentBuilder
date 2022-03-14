@@ -693,10 +693,10 @@
 		8BCE5C652701DDF000ED9A66 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				8BCE5C662701DE7A00ED9A66 /* Models */,
 				8BCE5C692701E02F00ED9A66 /* Endpoint.swift */,
 				8BCE5C722701E79700ED9A66 /* NetworkController */,
 				8BCE5C772701F19F00ED9A66 /* NetworkServices */,
+				8BCE5C662701DE7A00ED9A66 /* Models */,
 			);
 			path = Network;
 			sourceTree = "<group>";
