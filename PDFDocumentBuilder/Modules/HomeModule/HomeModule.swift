@@ -14,6 +14,7 @@ protocol HomeModule: AnyObject {
 
 protocol HomeView: View {
     func updateStatus(initial: Int, current: Int)
+    func updateStatus(message: String)
 }
 
 protocol HomePresentation: AnyObject {
@@ -29,5 +30,6 @@ protocol HomeInteraction: Interactor {
 
 protocol HomeInteractorDelegate: AnyObject {
     func agreementDidChecked(initial: Int, current: Int)
+    func agreementFailure(message: String)
     func tokenDidReceived(_ token: Token)
 }

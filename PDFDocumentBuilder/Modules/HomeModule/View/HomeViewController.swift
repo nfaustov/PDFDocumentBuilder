@@ -12,6 +12,8 @@ final class HomeViewController: UIViewController {
     var presenter: PresenterType!
 
     let contractLabel = UILabel()
+    let scanButton = UIButton(type: .custom)
+    let activityIndicator = UIActivityIndicatorView(style: .medium)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +25,13 @@ final class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
 
         presenter.getAgreementStatus()
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
     }
 
     private func configureHierarchy() {
         view.backgroundColor = .systemBackground
 
-        let scanButton = UIButton(type: .custom)
         scanButton.setTitle("Сканировать паспорт", for: .normal)
 
         let manualEnterButton = UIButton(type: .custom)
@@ -45,7 +48,14 @@ final class HomeViewController: UIViewController {
 
         contractLabel.font = UIFont.systemFont(ofSize: 13)
         contractLabel.textColor = .systemGray
+        activityIndicator.hidesWhenStopped = true
+
+        scanButton.isEnabled = false
+        scanButton.alpha = 0.5
         scanButton.addSubview(contractLabel)
+        scanButton.addSubview(activityIndicator)
+
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         contractLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
@@ -56,6 +66,9 @@ final class HomeViewController: UIViewController {
 
             contractLabel.centerXAnchor.constraint(equalTo: scanButton.centerXAnchor),
             contractLabel.bottomAnchor.constraint(equalTo: scanButton.bottomAnchor, constant: -5),
+
+            activityIndicator.centerXAnchor.constraint(equalTo: contractLabel.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: contractLabel.centerYAnchor),
 
             manualEnterButton.topAnchor.constraint(equalTo: scanButton.bottomAnchor, constant: 50),
             manualEnterButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -102,6 +115,14 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
 
 extension HomeViewController: HomeView {
     func updateStatus(initial: Int, current: Int) {
+        activityIndicator.stopAnimating()
+        scanButton.isEnabled = true
+        scanButton.alpha = 1
         contractLabel.text = "Доступно распознаваний: \(initial - current)/\(initial)"
+    }
+
+    func updateStatus(message: String) {
+        activityIndicator.stopAnimating()
+        contractLabel.text = message
     }
 }

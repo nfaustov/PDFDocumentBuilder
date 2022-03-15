@@ -39,7 +39,7 @@ extension PassportDataInteractor: PassportDataInteraction {
                 } else if let errorMessage = response.errorMessage {
                     delegate?.recognitionFailure(message: errorMessage)
                 } else {
-                    delegate?.recognitionFailure(message: "Ошибка запроса")
+                    delegate?.recognitionFailure(message: "Ошибка запроса распознавания")
                 }
             })
             .store(in: &subscriptions)

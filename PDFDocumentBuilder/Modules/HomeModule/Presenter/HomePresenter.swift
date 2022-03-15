@@ -39,4 +39,8 @@ extension HomePresenter: HomeInteractorDelegate {
     func tokenDidReceived(_ token: Token) {
         interactor.checkAgreement(token: token)
     }
+
+    func agreementFailure(message: String) {
+        view?.updateStatus(message: message)
+    }
 }

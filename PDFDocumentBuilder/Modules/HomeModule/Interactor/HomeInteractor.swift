@@ -25,42 +25,43 @@ extension HomeInteractor: HomeInteraction {
     func checkAgreement(token: Token) {
         counterService?.countServices(token: token.access)
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [delegate] completion in
                 switch completion {
                 case .failure(let error):
-                    print("Couldn't count services: \(error.localizedDescription)")
+                    delegate?.agreementFailure(message: error.localizedDescription)
                 case .finished: break
                 }
             }, receiveValue: { [delegate] response in
                 if let counter = response.detail?.first {
                     delegate?.agreementDidChecked(initial: counter.initial, current: counter.current)
+                } else if let errorMessage = response.errorMessage {
+                    delegate?.agreementFailure(message: errorMessage)
+                } else {
+                    delegate?.agreementFailure(message: "Ошибка запроса договора")
                 }
             })
             .store(in: &subscriptions)
     }
 
     func getToken() {
-        if let tokenEntity = tokenDatabase?.getToken() {
-            guard let access = tokenEntity.access, let refresh = tokenEntity.refresh else { return }
-
-            let token = Token(access: access, refresh: refresh)
-            delegate?.tokenDidReceived(token)
-        } else {
-            authorizationService?.getToken()
-                .receive(on: RunLoop.main)
-                .sink(receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error):
-                        print("Couldn't get token: \(error.localizedDescription)")
-                    case .finished: break
-                    }
-                }, receiveValue: { [tokenDatabase, delegate] response in
-                    if let token = response.token {
-                        tokenDatabase?.saveToken(token: token)
-                        delegate?.tokenDidReceived(token)
-                    }
-                })
-                .store(in: &subscriptions)
-        }
+        authorizationService?.getToken()
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { [delegate] completion in
+                switch completion {
+                case .failure(let error):
+                    delegate?.agreementFailure(message: error.localizedDescription)
+                case .finished: break
+                }
+            }, receiveValue: { [tokenDatabase, delegate] response in
+                if let token = response.token {
+                    tokenDatabase?.saveToken(token: token)
+                    delegate?.tokenDidReceived(token)
+                } else if let errorMessage = response.errorMessage {
+                    delegate?.agreementFailure(message: errorMessage)
+                } else {
+                    delegate?.agreementFailure(message: "Ошибка запроса токена")
+                }
+            })
+            .store(in: &subscriptions)
     }
 }
