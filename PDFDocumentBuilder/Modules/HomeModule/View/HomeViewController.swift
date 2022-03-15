@@ -24,9 +24,12 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        presenter.getAgreementStatus()
+        contractLabel.text = ""
+        scanButton.isEnabled = false
+        scanButton.alpha = 0.5
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
+        presenter.getAgreementStatus()
     }
 
     private func configureHierarchy() {
@@ -50,8 +53,6 @@ final class HomeViewController: UIViewController {
         contractLabel.textColor = .systemGray
         activityIndicator.hidesWhenStopped = true
 
-        scanButton.isEnabled = false
-        scanButton.alpha = 0.5
         scanButton.addSubview(contractLabel)
         scanButton.addSubview(activityIndicator)
 
