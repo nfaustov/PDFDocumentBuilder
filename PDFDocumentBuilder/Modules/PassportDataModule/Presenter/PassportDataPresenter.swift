@@ -39,10 +39,7 @@ extension PassportDataPresenter: PassportDataInteractorDelegate {
     }
 
     func tokenDidReceived(_ token: Token) {
-        guard let imageData = passportImageBase64String else {
-            print("Couldn't get image data")
-            return
-        }
+        guard let imageData = passportImageBase64String else { return }
 
         interactor.recognizePassport(data: imageData, token: token)
     }

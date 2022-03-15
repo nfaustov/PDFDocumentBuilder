@@ -27,10 +27,10 @@ extension PassportDataInteractor: PassportDataInteraction {
 
         recognitionService?.recognizePassport(data: data, token: token.access)
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [delegate] completion in
                 switch completion {
                 case .failure(let error):
-                    print("Couldn't recognize passport: \(error.localizedDescription)")
+                    delegate?.recognitionFailure(message: error.localizedDescription)
                 case .finished: break
                 }
             }, receiveValue: { [delegate] response in
@@ -56,10 +56,10 @@ extension PassportDataInteractor: PassportDataInteraction {
         } else {
             authorizationService?.getToken()
                 .receive(on: RunLoop.main)
-                .sink(receiveCompletion: { completion in
+                .sink(receiveCompletion: { [delegate] completion in
                     switch completion {
                     case .failure(let error):
-                        print("Couldn't get token: \(error.localizedDescription)")
+                        delegate?.recognitionFailure(message: error.localizedDescription)
                     case .finished: break
                     }
                 }, receiveValue: { [tokenDatabase, delegate] response in
