@@ -132,9 +132,9 @@ extension SelectionViewController {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") { _, _, _ in
-            self.services.remove(at: indexPath.row)
-            self.snapshot()
+        let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") { [weak self] _, _, _ in
+            self?.services.remove(at: indexPath.row)
+            self?.snapshot()
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
 
