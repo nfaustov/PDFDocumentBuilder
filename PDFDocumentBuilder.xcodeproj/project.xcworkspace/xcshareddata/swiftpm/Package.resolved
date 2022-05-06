@@ -1,16 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "CellFactory",
-        "repositoryURL": "https://github.com/nfaustov/CellFactory.git",
-        "state": {
-          "branch": null,
-          "revision": "4215a7e90acd874156c00ffb7f71fd592a886770",
-          "version": "1.0.2"
-        }
+  "pins" : [
+    {
+      "identity" : "cellfactory",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nfaustov/CellFactory.git",
+      "state" : {
+        "revision" : "4215a7e90acd874156c00ffb7f71fd592a886770",
+        "version" : "1.0.2"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }

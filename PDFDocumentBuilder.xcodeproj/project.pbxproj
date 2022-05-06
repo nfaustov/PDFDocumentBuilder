@@ -406,10 +406,10 @@
 		8B3E113326F51ABD00FBE02C /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				8B4B7525270216920071C92A /* Subscriptions */,
 				8B3E113426F51AD800FBE02C /* Coordinator.swift */,
 				8B3E113626F51AF800FBE02C /* MainCoordinator.swift */,
 				8B4B7528270219D50071C92A /* HomeCoordinator.swift */,
+				8B4B7525270216920071C92A /* Subscriptions */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
