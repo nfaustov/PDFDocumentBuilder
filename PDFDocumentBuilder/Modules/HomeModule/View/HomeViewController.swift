@@ -11,9 +11,7 @@ final class HomeViewController: UIViewController {
     typealias PresenterType = HomePresentation
     var presenter: PresenterType!
 
-    let contractLabel = UILabel()
-    let scanButton = UIButton(type: .custom)
-    let activityIndicator = UIActivityIndicatorView(style: .medium)
+    var scanButton: PassportIdentifyButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,24 +22,28 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        contractLabel.text = ""
-        scanButton.isEnabled = false
+        scanButton.changeInfo(text: "")
+        scanButton.isUserInteractionEnabled = false
         scanButton.alpha = 0.5
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
+        scanButton.toggleActivityIndicator()
         presenter.getAgreementStatus()
     }
 
     private func configureHierarchy() {
         view.backgroundColor = .systemBackground
 
-        scanButton.setTitle("Сканировать паспорт", for: .normal)
+        scanButton = PassportIdentifyButton(type: .scan) { [weak self] in
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            self?.present(picker, animated: true)
+        }
 
-        let manualEnterButton = UIButton(type: .custom)
-        manualEnterButton.setTitle("Ввести данные вручную", for: .normal)
+        let manualEnterButton = PassportIdentifyButton(type: .manualEnter) { [presenter] in
+            presenter?.manualEnterPassportData()
+        }
 
-        for button in [scanButton, manualEnterButton] {
-            button.setTitleColor(.label, for: .normal)
+        for button in [scanButton, manualEnterButton].compactMap({ $0 }) {
             button.layer.borderWidth = 1
             button.layer.borderColor = UIColor.lightGray.cgColor
             button.layer.cornerRadius = 10
@@ -49,47 +51,17 @@ final class HomeViewController: UIViewController {
             button.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        contractLabel.font = UIFont.systemFont(ofSize: 13)
-        contractLabel.textColor = .systemGray
-        activityIndicator.hidesWhenStopped = true
-
-        scanButton.addSubview(contractLabel)
-        scanButton.addSubview(activityIndicator)
-
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        contractLabel.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
             scanButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             scanButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             scanButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            scanButton.heightAnchor.constraint(equalToConstant: 160),
+            scanButton.heightAnchor.constraint(equalToConstant: 100),
 
-            contractLabel.centerXAnchor.constraint(equalTo: scanButton.centerXAnchor),
-            contractLabel.bottomAnchor.constraint(equalTo: scanButton.bottomAnchor, constant: -5),
-
-            activityIndicator.centerXAnchor.constraint(equalTo: contractLabel.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: contractLabel.centerYAnchor),
-
-            manualEnterButton.topAnchor.constraint(equalTo: scanButton.bottomAnchor, constant: 50),
+            manualEnterButton.topAnchor.constraint(equalTo: scanButton.bottomAnchor, constant: 40),
             manualEnterButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             manualEnterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            manualEnterButton.heightAnchor.constraint(equalToConstant: 160)
+            manualEnterButton.heightAnchor.constraint(equalToConstant: 100)
         ])
-
-        scanButton.addTarget(self, action: #selector(scanPassport), for: .touchUpInside)
-        manualEnterButton.addTarget(self, action: #selector(manualEnterPassportData), for: .touchUpInside)
-    }
-
-    @objc private func scanPassport() {
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.delegate = self
-        present(picker, animated: true)
-    }
-
-    @objc private func manualEnterPassportData() {
-        presenter.manualEnterPassportData()
     }
 }
 
@@ -116,14 +88,14 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
 
 extension HomeViewController: HomeView {
     func updateStatus(initial: Int, current: Int) {
-        activityIndicator.stopAnimating()
-        scanButton.isEnabled = true
+        scanButton.toggleActivityIndicator()
+        scanButton.isUserInteractionEnabled = true
         scanButton.alpha = 1
-        contractLabel.text = "Доступно распознаваний: \(initial - current)/\(initial)"
+        scanButton.changeInfo(text: "Доступно распознаваний: \(initial - current)/\(initial)")
     }
 
     func updateStatus(message: String) {
-        activityIndicator.stopAnimating()
-        contractLabel.text = message
+        scanButton.toggleActivityIndicator()
+        scanButton.changeInfo(text: message)
     }
 }

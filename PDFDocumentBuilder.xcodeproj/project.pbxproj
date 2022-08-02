@@ -65,6 +65,7 @@
 		8B6D532527A4043500CE9C66 /* SelectionServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6D532427A4043500CE9C66 /* SelectionServiceCell.swift */; };
 		8B718AAE270A70FE006B9A9A /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B718AAD270A70FE006B9A9A /* ServiceCell.swift */; };
 		8B71C14D26FDD6EE003DC6BA /* ContractBodyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */; };
+		8B8F872D28969F1800C0BB17 /* PassportIdentifyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F872C28969F1800C0BB17 /* PassportIdentifyButton.swift */; };
 		8B97FFAF270D8512008492B5 /* PDFPreviewSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */; };
 		8BA3998A2706450A00861B8B /* servicesPriceList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BA399892706450A00861B8B /* servicesPriceList.json */; };
 		8BA3D35027BD978600C2E7DF /* TreatmentPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3D34F27BD978600C2E7DF /* TreatmentPlan.swift */; };
@@ -177,6 +178,7 @@
 		8B6D532427A4043500CE9C66 /* SelectionServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionServiceCell.swift; sourceTree = "<group>"; };
 		8B718AAD270A70FE006B9A9A /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		8B71C14C26FDD6EE003DC6BA /* ContractBodyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractBodyController.swift; sourceTree = "<group>"; };
+		8B8F872C28969F1800C0BB17 /* PassportIdentifyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportIdentifyButton.swift; sourceTree = "<group>"; };
 		8B97FFAE270D8512008492B5 /* PDFPreviewSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewSubscription.swift; sourceTree = "<group>"; };
 		8BA399892706450A00861B8B /* servicesPriceList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = servicesPriceList.json; sourceTree = "<group>"; };
 		8BA3D34F27BD978600C2E7DF /* TreatmentPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentPlan.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 		8B5D2F2F270191E300061322 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8B8F872B28969EE100C0BB17 /* Subviews */,
 				8B5D2F322701931C00061322 /* HomeViewController.swift */,
 			);
 			path = View;
@@ -652,6 +655,14 @@
 				8B5E755227A14FEC009FCC28 /* ServicesCellFactory.swift */,
 			);
 			path = "CollectionView Items";
+			sourceTree = "<group>";
+		};
+		8B8F872B28969EE100C0BB17 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				8B8F872C28969F1800C0BB17 /* PassportIdentifyButton.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		8BA39988270644F400861B8B /* JSON */ = {
@@ -963,6 +974,7 @@
 				8B3006C526B1F24800DBC3AD /* ContractBody.swift in Sources */,
 				8B0B305A270211D1000D6755 /* NetworkServiceDependencies.swift in Sources */,
 				8B4BAEE5270C43450087AE3A /* BillSubscription.swift in Sources */,
+				8B8F872D28969F1800C0BB17 /* PassportIdentifyButton.swift in Sources */,
 				8B21AD1727032F5F00E63DBA /* PassportDataSubscription.swift in Sources */,
 				8B119430279C2E230027DE93 /* TokenDatabase.swift in Sources */,
 				8B718AAE270A70FE006B9A9A /* ServiceCell.swift in Sources */,
