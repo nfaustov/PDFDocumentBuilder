@@ -11,7 +11,7 @@ final class HomeViewController: UIViewController {
     typealias PresenterType = HomePresentation
     var presenter: PresenterType!
 
-    var scanButton: PassportIdentifyButton!
+    private var scanButton: PassportIdentifyButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()

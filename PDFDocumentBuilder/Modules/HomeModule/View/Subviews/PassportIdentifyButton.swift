@@ -23,16 +23,14 @@ final class PassportIdentifyButton: UIView {
     }
 
     private var action: (() -> Void)?
-    private var type: PassportIdentifyType
     private var infoLabel: UILabel?
     private var activityIndicator: UIActivityIndicatorView?
 
     init(type: PassportIdentifyType, action: @escaping () -> Void) {
-        self.type = type
         self.action = action
         super.init(frame: .zero)
 
-        configureHierarchy()
+        configureHierarchy(type: type)
     }
 
     required init?(coder: NSCoder) {
@@ -47,14 +45,14 @@ final class PassportIdentifyButton: UIView {
         guard let activityIndicator = activityIndicator else { return }
 
         if activityIndicator.isAnimating {
-            activityIndicator.isHidden = false
-            activityIndicator.startAnimating()
+            activityIndicator.stopAnimating()
         } else {
+            activityIndicator.isHidden = false
             activityIndicator.startAnimating()
         }
     }
 
-    private func configureHierarchy() {
+    private func configureHierarchy(type: PassportIdentifyType) {
         backgroundColor = .systemBackground
 
         let titleLabel = UILabel()
@@ -79,6 +77,9 @@ final class PassportIdentifyButton: UIView {
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 
+        let tap = UITapGestureRecognizer(target: self, action: #selector (tap))
+        addGestureRecognizer(tap)
+
         guard let infoLabel = infoLabel,
               let activityIndicator = activityIndicator else { return }
 
@@ -92,9 +93,6 @@ final class PassportIdentifyButton: UIView {
             activityIndicator.centerXAnchor.constraint(equalTo: infoLabel.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: infoLabel.centerYAnchor)
         ])
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector (tap))
-        addGestureRecognizer(tap)
     }
 
     @objc private func tap() {
