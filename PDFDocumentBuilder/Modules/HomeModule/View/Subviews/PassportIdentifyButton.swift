@@ -91,7 +91,7 @@ final class PassportIdentifyButton: UIView {
             infoLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
 
             activityIndicator.centerXAnchor.constraint(equalTo: infoLabel.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: infoLabel.centerYAnchor)
+            activityIndicator.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1)
         ])
     }
 
